@@ -81,7 +81,7 @@ jobs:
             *'"configured":false'*) t="not set up (add the GH_LOG_TOKEN secret, then run this workflow)";;
             *) t="status endpoint did not answer";;
           esac
-          echo "::notice title=Deployed::$URL (trading: $t)"
+          echo "::notice title=Deployed::$URL (trading: $t; GH_LOG_TOKEN secret in this repo: $([ -n "$LOGTOK" ] && echo present || echo missing))"
 
       - name: Save snapshot (manual runs only)
         if: github.event_name == 'workflow_dispatch' && inputs.snapshot
