@@ -1,1 +1,2 @@
 trade_id,date,portfolio,symbol,side,quantity,price,amount,fees,reason,source
+V-20261026-001,2026-10-26,balanced,NVDA,buy,200,210.9975,42199.50,8.44,Visitor trade (live price),visitor
