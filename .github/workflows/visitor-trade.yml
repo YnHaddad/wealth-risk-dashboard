@@ -46,7 +46,7 @@ jobs:
           for i in 1 2 3 4 5; do
             git fetch -q origin main && git reset -q --hard origin/main
             python -m wealth.visitors --apply --id "$REQ_ID"
-            git add data/visitor_trades.csv data/visitor_requests.json
+            git add data/visitor_trades.csv data/visitor_requests.json data/visitor_orders.csv
             git commit -qm "Visitor order $REQ_ID" || true
             if git push -q origin HEAD:main; then echo "booked on attempt $i"; exit 0; fi
             sleep $((RANDOM % 6 + 3))

@@ -174,7 +174,7 @@ dialog::backdrop { background: rgba(10,18,26,.5); }
 <header class="bar"><div class="bar-in">
   <div class="brand">
     <h1>Portfolio Desk</h1><span class="tag">Sample data</span>
-    <div class="right"><span class="age" id="priceAge"></span><button class="btn" id="tradeBtn" type="button">New trade</button></div>
+    <div class="right"><span class="age" id="priceAge"></span><button class="btn" id="tradeBtn" type="button">New order</button></div>
   </div>
   <nav class="tabs" id="tabs" aria-label="Portfolios"></nav>
 </div></header>
@@ -303,7 +303,7 @@ function histogram(box, counts, edges, varLine) {
 const tabs = document.getElementById('tabs'), app = document.getElementById('app');
 tabs.innerHTML = `<a href="#overview" data-r="overview">Overview</a>` + IDS.map(id => `<a href="#${id}" data-r="${id}"><i style="background:${PCOL[id]}"></i>${esc(P[id].name)}</a>`).join('');
 document.getElementById('priceAge').textContent = (D.price_mode === 'live' ? 'Live prices ' : 'Closing prices ') + ago(D.prices_asof) + (D.price_mode === 'live' ? ' (delayed ~15 min)' : '');
-const banner = `<p class="note-banner">This is a <b>sample dashboard</b>. Portfolios, clients and trades are simulated; prices are real market data (Yahoo Finance, delayed). Anyone with the link can place trades with <b>New trade</b>; visitor trades are checked against each mandate's limits and expire after 7 days. Not investment advice.</p>`;
+const banner = `<p class="note-banner">This is a <b>sample dashboard</b>. Portfolios, clients and trades are simulated; prices are real market data (Yahoo Finance, delayed). Anyone with the link can place market or limit orders with <b>New order</b>; every order is checked against the mandate's limits, and visitor trades expire after 7 days. Not investment advice.</p>`;
 let current = 'overview';
 function route() { const h = (location.hash || '#overview').slice(1); current = P[h] ? h : 'overview';
   tabs.querySelectorAll('a').forEach(a => a.setAttribute('aria-current', a.dataset.r === current ? 'page' : 'false'));
@@ -341,6 +341,7 @@ function overview() {
       </tbody></table></div></section>
     <section class="panel"><div class="ph"><div><h2>Risk and return</h2><p class="sub">Last 12 months: realized volatility vs return</p></div></div><div class="chart" id="rrChart"></div></section>
   </div>
+  ${ordersPanel(IDS.flatMap(id => P[id].orders || []).sort((a, b) => b.created.localeCompare(a.created)), true)}
   <section class="panel"><div class="ph"><div><h2>Latest activity</h2><p class="sub">Most recent trades across all portfolios</p></div></div><div class="tbl" id="actTbl"></div></section>`;
   app.innerHTML = h;
   app.querySelectorAll('tr[data-go]').forEach(tr => tr.addEventListener('click', () => location.hash = tr.dataset.go));
@@ -370,6 +371,19 @@ function rrChart(box) {
     hr.addEventListener('pointerenter', () => { fillTip(tip, P[p.id].name, [['Return 1Y', spct(p.y)], ['Volatility', pct(p.x)], ['Benchmark return', spct(p.by)], ['Benchmark vol', pct(p.bx)]]); const rr = svg.getBoundingClientRect(); placeTip(tip, box, x(p.x) * rr.width / W, y(p.y) * rr.height / H); });
     hr.addEventListener('pointerleave', () => tip.style.opacity = 0); });
   const lg = document.createElement('div'); lg.className = 'legend'; lg.innerHTML = '<span>● portfolio &nbsp; ○ its benchmark (line joins the pair)</span>'; box.appendChild(lg);
+}
+function ordersPanel(orders, withP) {
+  const working = orders.filter(o => o.status === 'working'), recent = orders.filter(o => o.status !== 'working').slice(0, 10);
+  if (!working.length && !recent.length) return '';
+  const row = o => `<tr><td>${new Date(o.created).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}<span class="sub2">${esc(o.order_id)}</span></td>${withP ? `<td>${esc(P[o.portfolio].name)}</td>` : ''}
+    <td><span class="${o.side === 'buy' ? 'gain' : 'loss'}">${o.side === 'buy' ? 'Buy' : 'Sell'}</span> <span class="sym">${esc(o.symbol)}</span> <span class="chip">${o.type === 'limit' ? 'limit' : 'market'}</span></td>
+    <td class="n">${units(+o.quantity)}</td><td class="n">${o.limit ? money(+o.limit, 2) : '–'}</td><td class="n">${o.fill_price ? money(+o.fill_price, 2) : '–'}</td>
+    <td><span class="status ${o.status === 'filled' ? 'ok' : o.status === 'working' ? 'warning' : 'breach'}">${o.status}</span>${o.note ? `<span class="sub2">${esc(o.note)}</span>` : ''}</td>
+    <td class="n">${o.status === 'working' ? `<button class="linkbtn" data-cancel="${esc(o.order_id)}">Cancel</button>` : ''}</td></tr>`;
+  const head = `<thead><tr><th>Placed</th>${withP ? '<th>Portfolio</th>' : ''}<th>Order</th><th class="n">Quantity</th><th class="n">Limit</th><th class="n">Fill</th><th>Status</th><th></th></tr></thead>`;
+  return `<section class="panel"><div class="ph"><div><h2>Orders</h2><p class="sub">${working.length} working · limit orders are checked against the market every 15 minutes and expire after the close</p></div></div>
+    ${working.length ? `<div class="tbl"><table>${head}<tbody>${working.map(row).join('')}</tbody></table></div>` : '<p class="note">No working orders.</p>'}
+    ${recent.length ? `<details style="margin-top:8px"><summary>Recent orders (${recent.length})</summary><div class="tbl"><table>${head}<tbody>${recent.map(row).join('')}</tbody></table></div></details>` : ''}</section>`;
 }
 function blotterTable(rows, withP) {
   return `<table><thead><tr><th>Date</th>${withP ? '<th>Portfolio</th>' : ''}<th>Trade</th><th class="n">Quantity</th><th class="n">Price</th><th class="n">Amount</th><th>Reason</th></tr></thead><tbody>
@@ -452,6 +466,7 @@ function portfolio(id) {
       <div class="note" style="margin-top:6px">Largest payers: ${inc.top_payers.slice(0, 5).map(t => `${esc(t.symbol)} ${mshort(t.amount)}`).join(' · ')}</div></section>
   </div>
 
+  ${ordersPanel(p.orders || [], false)}
   <section class="panel"><div class="ph"><div><h2>Trade blotter</h2><p class="sub">Latest trades. Visitor trades are marked and expire after 7 days.</p></div></div><div class="tbl">${blotterTable(p.blotter.slice(0, 12), false)}</div>
     ${p.blotter.length > 12 ? `<details style="margin-top:8px"><summary>Show ${p.blotter.length - 12} earlier trades</summary><div class="tbl">${blotterTable(p.blotter.slice(12), false)}</div></details>` : ''}</section>`;
   app.innerHTML = h;
@@ -592,6 +607,13 @@ const dlg = document.getElementById('dlg'), body = document.getElementById('dlgB
 let apiState = null;
 async function checkApi() { if (location.protocol === 'file:') return 'none'; try { const r = await fetch('api/status', { cache: 'no-store' }); if (!r.ok) return 'none'; return (await r.json()).configured; } catch { return 'none'; } }
 function state(pid) { const p = P[pid]; const qty = {}; p.holdings.filter(h => h.open).forEach(h => qty[h.symbol] = h.qty); return { qty, cash: p.cash }; }
+function reserved(pid) { let cash = 0; const sh = {};
+  (P[pid].orders || []).filter(o => o.status === 'working').forEach(o => { const q = +o.quantity, l = +o.limit;
+    if (o.side === 'buy') cash += q * l + Math.max(5, q * l * 2e-4); else sh[o.symbol] = (sh[o.symbol] || 0) + q; });
+  return { cash, sh }; }
+function usMarket() { const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date());
+  const g = t => (parts.find(p => p.type === t) || {}).value; const wd = g('weekday'), m = (+g('hour')) * 60 + (+g('minute'));
+  return !['Sat', 'Sun'].includes(wd) && m >= 570 && m < 960; }
 function measures(qty, cash) { let tv = cash; const w = {}; for (const s in qty) tv += qty[s] * U[s].price; for (const s in qty) w[s] = qty[s] * U[s].price / tv;
   const ac = {}; for (const s in w) for (const [k, x] of Object.entries(U[s].classify.asset_class)) ac[k] = (ac[k] || 0) + w[s] * x; ac['Cash & Equivalents'] = (ac['Cash & Equivalents'] || 0) + cash / tv;
   const pick = kind => Object.entries(w).filter(([s]) => U[s].kind === kind).sort((a, b) => b[1] - a[1])[0] || ['', 0];
@@ -605,14 +627,21 @@ function pretrade(t) {
   const sym = (t.symbol || '').toUpperCase(), u = U[sym]; const q = Number(t.qty);
   if (!u) { res.msg = sym ? `${sym} isn't in the approved universe.` : 'Pick a symbol from the approved list.'; return res; }
   if (!(q > 0) || Math.floor(q) !== q) { res.msg = 'Enter a whole number of shares.'; return res; }
-  const st = state(t.portfolio), before = measures(st.qty, st.cash), held = st.qty[sym] || 0;
-  res.notional = q * u.price; res.fees = Math.max(5, res.notional * 2e-4);
-  if (t.side === 'sell' && q > held) { res.msg = `The portfolio holds ${units(held)} ${sym}; short selling isn't allowed.`; return res; }
+  let px = u.price; res.marketable = true;
+  if (t.type === 'limit') { const l = Number(t.limit);
+    if (!(l > 0)) { res.msg = 'Enter a limit price.'; return res; }
+    if (Math.abs(l / u.price - 1) > 0.2) { res.msg = `Limit is more than 20% from the market (${money(u.price, 2)}); check for a typo.`; return res; }
+    res.marketable = t.side === 'buy' ? u.price <= l : u.price >= l; if (!res.marketable) px = l; }
+  res.px = px;
+  const st = state(t.portfolio), rsv = reserved(t.portfolio), before = measures(st.qty, st.cash), held = st.qty[sym] || 0, free = held - (rsv.sh[sym] || 0);
+  res.notional = q * px; res.fees = Math.max(5, res.notional * 2e-4);
+  if (t.side === 'sell' && q > free) { res.msg = `The portfolio holds ${units(held)} ${sym}${rsv.sh[sym] ? ` (${units(rsv.sh[sym])} already in working sell orders)` : ''}; short selling isn't allowed.`; return res; }
   if (res.notional > 0.25 * before.tv) { res.msg = `One trade can't exceed 25% of the portfolio (${mshort(0.25 * before.tv)}).`; return res; }
   const qty = { ...st.qty }; qty[sym] = held + (t.side === 'buy' ? q : -q); if (Math.abs(qty[sym]) < 1e-9) delete qty[sym];
+  const pxSave = u.price; u.price = px;
   const cash = st.cash - (t.side === 'buy' ? res.notional : -res.notional) - res.fees;
-  if (cash < 0) { res.msg = `Not enough cash: needs ${money(res.notional + res.fees)}, the portfolio has ${money(st.cash)}.`; return res; }
-  const after = measures(qty, cash); res.after = after; let blocked = false;
+  if (cash - rsv.cash < 0) { u.price = pxSave; res.msg = `Not enough cash: needs ${money(res.notional + res.fees)}, the portfolio has ${money(Math.max(0, st.cash - rsv.cash))} available${rsv.cash ? ` after ${money(rsv.cash)} reserved for working orders` : ''}.`; return res; }
+  const after = measures(qty, cash); u.price = pxSave; res.after = after; let blocked = false;
   D.limits[t.portfolio].forEach(l => { const [v0] = ruleVal(l.rule, before), [v1, who] = ruleVal(l.rule, after); if (v1 == null) return;
     const d0 = outside(v0, l.min, l.max), d1 = outside(v1, l.min, l.max); const worse = d1 > d0 + 1e-12;
     if (worse && l.severity === 'hard') blocked = true;
@@ -621,26 +650,32 @@ function pretrade(t) {
   return res;
 }
 function openTrade(pre = {}) {
-  const st = { portfolio: current !== 'overview' ? current : IDS[0], side: 'buy', symbol: '', qty: '', ...pre };
+  const st = { portfolio: current !== 'overview' ? current : IDS[0], side: 'buy', symbol: '', qty: '', type: 'market', limit: '', ...pre };
   if (pre.side) st.side = pre.side;
   function render(err) {
     const res = st.symbol && st.qty ? pretrade(st) : null; const u = U[(st.symbol || '').toUpperCase()]; const held = u ? (state(st.portfolio).qty[u.symbol] || 0) : 0;
-    body.innerHTML = `<h3 id="dlgTitle">New trade</h3><p class="note" style="margin:0 0 12px">Executes at the latest market price with 2 bp commission. Visitor trades expire after 7 days.</p>
+    const open = usMarket();
+    body.innerHTML = `<h3 id="dlgTitle">New order</h3><p class="note" style="margin:0 0 12px">US market ${open ? '<b class="gain">open</b>' : '<b>closed</b>'}. Market orders fill at the latest price${open ? '' : ' (the last close while the market is shut)'}; limit orders fill only at your price or better and expire after today's close. 2 bp commission. Visitor trades expire after 7 days.</p>
       ${apiState === 'none' ? '<p class="msg info">Trading works on the hosted dashboard; this copy can only preview.</p>' : apiState === false ? '<p class="msg info">Trading isn\'t switched on for this site yet.</p>' : ''}
       ${err ? `<p class="msg err">${esc(err)}</p>` : ''}
       <div class="field"><label for="t-p">Portfolio</label><select id="t-p">${IDS.map(id => `<option value="${id}" ${id === st.portfolio ? 'selected' : ''}>${esc(P[id].name)}</option>`).join('')}</select></div>
-      <div class="field"><div class="seg full" id="t-side"><button type="button" class="buy" data-v="buy" aria-pressed="${st.side === 'buy'}">Buy</button><button type="button" class="sell" data-v="sell" aria-pressed="${st.side === 'sell'}">Sell</button></div></div>
+      <div class="two"><div class="field"><div class="seg full" id="t-side"><button type="button" class="buy" data-v="buy" aria-pressed="${st.side === 'buy'}">Buy</button><button type="button" class="sell" data-v="sell" aria-pressed="${st.side === 'sell'}">Sell</button></div></div>
+      <div class="field"><div class="seg full" id="t-type"><button type="button" data-v="market" aria-pressed="${st.type === 'market'}">Market</button><button type="button" data-v="limit" aria-pressed="${st.type === 'limit'}">Limit</button></div></div></div>
       <div class="two"><div class="field"><label for="t-s">Symbol</label><input id="t-s" list="t-list" autocomplete="off" autocapitalize="characters" placeholder="e.g. MSFT" value="${esc(st.symbol)}"><datalist id="t-list">${D.universe.map(x => `<option value="${esc(x.symbol)}">${esc(x.name)}</option>`).join('')}</datalist></div>
       <div class="field"><label for="t-q">Shares${held && st.side === 'sell' ? ` <button type="button" class="linkbtn" id="t-all">all ${units(held)}</button>` : ''}</label><input id="t-q" inputmode="numeric" value="${esc(st.qty)}"></div></div>
+      ${st.type === 'limit' ? `<div class="field"><label for="t-l">Limit price (USD) ${u ? `<span class="muted">· market ${money(u.price, 2)}</span>` : ''}</label><input id="t-l" inputmode="decimal" value="${esc(st.limit)}" placeholder="${u ? u.price.toFixed(2) : ''}"></div>` : ''}
       <div class="preview" id="t-prev">${u ? `<b>${esc(u.symbol)}</b> ${esc(u.name)} · ${money(u.price, 2)} · held ${units(held)}` : 'Choose a symbol from the approved list (stocks and funds).'}
-      ${res ? (res.after || res.notional ? `<br>${st.side === 'buy' ? 'Buy' : 'Sell'} ${units(st.qty)} = <b>${money(res.notional)}</b> + ${money(res.fees, 2)} commission${res.after ? ` → <b>${pct(res.after.w[u.symbol] || 0, 2)}</b> of the portfolio` : ''}` : '') : ''}
+      ${res ? (res.after || res.notional ? `<br>${st.side === 'buy' ? 'Buy' : 'Sell'} ${units(st.qty)} ${st.type === 'limit' && !res.marketable ? `at ${money(res.px, 2)}` : `at ~${money(res.px, 2)}`} = <b>${money(res.notional)}</b> + ${money(res.fees, 2)} commission${res.after ? ` → <b>${pct(res.after.w[u.symbol] || 0, 2)}</b> of the portfolio` : ''}` : '') : ''}
+      ${res && st.type === 'limit' && res.notional && !res.msg ? `<br><span class="${res.marketable ? 'gain' : ''}">${res.marketable ? 'Marketable: fills now at the market price (your limit or better).' : `Rests as a working order until ${u.symbol} trades at ${money(res.px, 2)} or better; ${st.side === 'buy' ? 'cash' : 'shares'} reserved; expires after today's close.`}</span>` : ''}
       ${res && res.checks.length ? `<ul class="checks">${res.checks.map(c => `<li><span class="status ${c.state === 'block' ? 'breach' : c.state === 'warn' || c.state === 'still' ? 'warning' : 'ok'}">${c.state === 'block' ? 'Blocks' : c.state === 'warn' ? 'Warning' : c.state === 'still' ? 'Already outside' : 'OK'}</span><span>${esc(c.label)}${c.who ? ' (' + esc(c.who) + ')' : ''}: ${pct(c.v, 1)} vs ${c.l.min != null && c.l.max != null ? pct(c.l.min, 0) + '–' + pct(c.l.max, 0) : c.l.max != null ? '≤ ' + pct(c.l.max, 0) : '≥ ' + pct(c.l.min, 0)}</span></li>`).join('')}</ul>` : ''}
       ${res && res.msg ? `<p class="msg err" style="margin:8px 0 0">${esc(res.msg)}</p>` : ''}</div>
-      <div class="dlg-foot"><button type="button" class="btn ghost" id="t-cancel">Cancel</button><button type="button" class="btn" id="t-go" ${res && res.ok && apiState === true ? '' : 'disabled'}>${st.side === 'buy' ? 'Place buy order' : 'Place sell order'}</button></div>`;
+      <div class="dlg-foot"><button type="button" class="btn ghost" id="t-cancel">Cancel</button><button type="button" class="btn" id="t-go" ${res && res.ok && apiState === true ? '' : 'disabled'}>${st.type === 'limit' ? 'Place limit ' : 'Place '}${st.side === 'buy' ? 'buy' : 'sell'} order</button></div>`;
     body.querySelector('#t-p').addEventListener('change', e => { st.portfolio = e.target.value; render(); });
     body.querySelector('#t-side').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.side = b.dataset.v; render(); } });
+    body.querySelector('#t-type').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.type = b.dataset.v; if (st.type === 'limit' && !st.limit && u) st.limit = u.price.toFixed(2); render(); } });
+    const lim = body.querySelector('#t-l'); if (lim) { lim.addEventListener('change', () => { st.limit = lim.value.replace(/[$,\s]/g, ''); render(); }); lim.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); lim.dispatchEvent(new Event('change')); } }); }
     const s = body.querySelector('#t-s'), q = body.querySelector('#t-q');
-    s.addEventListener('change', () => { st.symbol = s.value.trim().toUpperCase(); render(); });
+    s.addEventListener('change', () => { st.symbol = s.value.trim().toUpperCase(); const uu = U[st.symbol]; if (st.type === 'limit' && uu) st.limit = uu.price.toFixed(2); render(); });
     q.addEventListener('change', () => { st.qty = q.value.replace(/[,\s]/g, ''); render(); });
     [s, q].forEach(i => i.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); i.dispatchEvent(new Event('change')); } }));
     const all = body.querySelector('#t-all'); if (all) all.addEventListener('click', () => { st.qty = String(held); render(); });
@@ -649,7 +684,7 @@ function openTrade(pre = {}) {
   }
   async function submit() {
     const b = body.querySelector('#t-go'); b.disabled = true; b.textContent = 'Sending…';
-    try { const r = await fetch('api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ portfolio: st.portfolio, side: st.side, symbol: st.symbol.toUpperCase(), qty: Number(st.qty) }) });
+    try { const r = await fetch('api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ portfolio: st.portfolio, side: st.side, symbol: st.symbol.toUpperCase(), qty: Number(st.qty), type: st.type, limit: st.type === 'limit' ? Number(st.limit) : undefined }) });
       const j = await r.json().catch(() => ({})); if (!r.ok) return render(j.error || `Couldn't send the order (HTTP ${r.status}).`); progress(j.id); }
     catch (e) { render('Network error. Check your connection and try again.'); }
   }
@@ -667,13 +702,25 @@ function progress(id) {
     try { const j = await (await fetch('api/status?id=' + encodeURIComponent(id), { cache: 'no-store' })).json();
       if (j.log && j.log.status === 'completed') {
         if (j.log.conclusion !== 'success') { set(2, 'fail', '!'); body.querySelector('#pg-msg').innerHTML = `<p class="msg err">${esc(j.log.message || 'The order was rejected.')}</p>`; return; }
-        set(2, 'done', '✓'); set(3, 'active'); if (j.log.message) body.querySelector('#pg-msg').innerHTML = `<p class="msg good">${esc(j.log.message)}</p>`;
+        set(2, 'done', '✓'); set(3, 'active'); if (j.log.message) body.querySelector('#pg-msg').innerHTML = `<p class="msg ${j.log.order_status === 'working' ? 'info' : 'good'}">${esc(j.log.message)}</p>`;
         if (j.refresh && j.refresh.status === 'completed') { if (j.refresh.conclusion === 'success') { set(3, 'done', '✓'); setTimeout(() => location.reload(), 1800); return; } set(3, 'fail', '!'); return; } } }
     catch (e) {}
     if (Date.now() - t0 < 6 * 60000) setTimeout(tick, 4000); else body.querySelector('#pg-note').textContent = 'Still working; reload in a minute to see the trade.'; };
   setTimeout(tick, 3000);
 }
 document.getElementById('tradeBtn').addEventListener('click', () => openTrade());
+async function cancelOrder(oid) {
+  if (apiState === null) apiState = await checkApi();
+  body.innerHTML = `<h3>Cancel ${esc(oid)}?</h3><p class="note">The order stops working and its reserved cash or shares are released.</p><div id="cx-msg"></div>
+    <div class="dlg-foot"><button type="button" class="btn ghost" id="cx-no">Keep order</button><button type="button" class="btn" id="cx-yes" ${apiState === true ? '' : 'disabled'}>Cancel order</button></div>`;
+  if (!dlg.open) dlg.showModal();
+  body.querySelector('#cx-no').addEventListener('click', () => dlg.close());
+  body.querySelector('#cx-yes').addEventListener('click', async () => {
+    try { const r = await fetch('api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ cancel: oid }) });
+      const j = await r.json().catch(() => ({})); if (!r.ok) { body.querySelector('#cx-msg').innerHTML = `<p class="msg err">${esc(j.error || 'Could not cancel.')}</p>`; return; } progress(j.id); }
+    catch (e) { body.querySelector('#cx-msg').innerHTML = '<p class="msg err">Network error.</p>'; } });
+}
+app.addEventListener('click', e => { const b = e.target.closest('[data-cancel]'); if (b) cancelOrder(b.dataset.cancel); });
 
 route();
 const born = Date.now(); setInterval(() => { if (document.visibilityState === 'visible' && !dlg.open && Date.now() - born > 15 * 60000) location.reload(); }, 30000);

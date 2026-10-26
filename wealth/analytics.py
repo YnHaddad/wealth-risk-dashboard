@@ -711,6 +711,11 @@ def run(quotes: dict | None = None) -> dict:
                  "classify": refdata.classify(s)}
                 for s, r in ins.items() if r["kind"] != "benchmark"]
     visitors = trades[trades["source"] == "visitor"]
+    of = refdata.DATA / "visitor_orders.csv"
+    orders = pd.read_csv(of, dtype=str).fillna("").to_dict("records") if of.exists() else []
+    orders = sorted(orders, key=lambda o: o["created"], reverse=True)[:100]
+    for pid, rep in reports.items():
+        rep["orders"] = [o for o in orders if o["portfolio"] == pid]
     return {
         "asof": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "prices_asof": (max(q["time"] for q in quotes.values()) if quotes else
@@ -723,7 +728,8 @@ def run(quotes: dict | None = None) -> dict:
                  "breaches": sum(1 for r in reports.values() for l in r["limits"] if l["status"] == "breach"),
                  "warnings": sum(1 for r in reports.values() for l in r["limits"] if l["status"] == "warning"),
                  "history": {"dates": [days[i].strftime("%Y-%m-%d") for i in idx], "aum": aum},
-                 "visitor_trades": int(len(visitors))},
+                 "visitor_trades": int(len(visitors)),
+                 "working_orders": sum(1 for o in orders if o["status"] == "working")},
         "portfolios": reports,
         "universe": universe,
         "limits": refdata.limits(),

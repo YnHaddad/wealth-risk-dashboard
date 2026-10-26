@@ -37,7 +37,7 @@ export async function onRequestGet({ request, env }) {
         const f = await gh(env, "/contents/data/visitor_requests.json?ref=main", "application/vnd.github.raw");
         if (f.ok) {
           const rec = (await f.json())[id];
-          if (rec) { log.ok = rec.ok; log.message = rec.message; }
+          if (rec) { log.ok = rec.ok; log.message = rec.message; log.order_status = rec.status || null; }
         }
         if (log.ok === null && run.conclusion !== "success") {
           log.ok = false;

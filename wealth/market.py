@@ -168,6 +168,36 @@ def live_quotes(tickers: list[str]) -> dict[str, dict]:
     return out
 
 
+def intraday_bars(tickers: list[str]) -> dict[str, list[dict]]:
+    """15-minute bars for the last few sessions: {ticker: [{"end": utc datetime, "high", "low", "close"}]}."""
+    out: dict[str, list[dict]] = {}
+    if not tickers:
+        return out
+    try:
+        df = _download(tickers, period="5d", interval="15m", prepost=False)
+    except Exception as e:  # noqa: BLE001
+        log.warning("intraday bars failed: %s", e)
+        return out
+    fields = {}
+    for f in ("High", "Low", "Close"):
+        x = df[f]
+        if isinstance(x, pd.Series):
+            x = x.to_frame(tickers[0])
+        fields[f] = x
+    for t in fields["Close"].columns:
+        rows = []
+        for ix in fields["Close"].index:
+            hi, lo, cl = fields["High"].at[ix, t], fields["Low"].at[ix, t], fields["Close"].at[ix, t]
+            if pd.isna(hi) or pd.isna(lo):
+                continue
+            ts = pd.Timestamp(ix)
+            ts = ts.tz_convert("UTC") if ts.tzinfo else ts.tz_localize("UTC")
+            rows.append({"end": (ts + pd.Timedelta(minutes=15)).to_pydatetime(), "high": float(hi),
+                         "low": float(lo), "close": float(cl)})
+        out[t] = rows
+    return out
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     g = ap.add_mutually_exclusive_group(required=True)

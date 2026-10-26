@@ -27,7 +27,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: write  # snapshot branch only
+  contents: write  # limit-order fills and the snapshot branch
 
 jobs:
   build:
@@ -44,6 +44,20 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements.txt
+
+      - name: Fill working limit orders
+        run: |
+          git config user.name "dashboard-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for i in 1 2 3 4; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python -m wealth.visitors --match
+            git add data/visitor_orders.csv data/visitor_trades.csv
+            if git diff --cached --quiet; then break; fi
+            git commit -qm "Fill working limit orders"
+            git push -q origin HEAD:main && break
+            sleep $((RANDOM % 6 + 3))
+          done
 
       - name: Build dashboard
         run: python -m wealth.build --out site
