@@ -18,5 +18,10 @@
 "ok": false,
 "message": "Not enough cash: the trade needs $463,643, the portfolio has $394,531",
 "at": "2026-10-26T10:37:30+00:00"
+},
+"test-short-008": {
+"ok": false,
+"message": "The portfolio holds 0 AMD; short selling is not allowed",
+"at": "2026-10-26T10:37:37+00:00"
 }
 }
