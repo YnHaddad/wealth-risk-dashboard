@@ -54,5 +54,11 @@
 "message": "Limit order O-20261026-001 working: buy 10 KO at $92.50 or better in Balanced (market $92.71). It fills if the price reaches the limit today and expires after the close.",
 "status": "working",
 "at": "2026-10-26T13:05:11+00:00"
+},
+"lim-typo-04": {
+"ok": false,
+"message": "Limit $21.00 is more than 20% from the market ($211.00); check for a typo",
+"status": "rejected",
+"at": "2026-10-26T13:05:18+00:00"
 }
 }
