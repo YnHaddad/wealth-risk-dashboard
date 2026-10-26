@@ -78,5 +78,11 @@
 "message": "Cancelled O-20261026-003: buy 10 GLD at $340.00",
 "status": "cancelled",
 "at": "2026-10-26T13:06:08+00:00"
+},
+"cxl-06": {
+"ok": false,
+"message": "Order O-20261026-003 is already cancelled",
+"status": "rejected",
+"at": "2026-10-26T13:06:18+00:00"
 }
 }
