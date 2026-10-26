@@ -39,6 +39,10 @@ export async function onRequestGet({ request, env }) {
           const rec = (await f.json())[id];
           if (rec) { log.ok = rec.ok; log.message = rec.message; }
         }
+        if (log.ok === null && run.conclusion !== "success") {
+          log.ok = false;
+          log.message = "The order couldn't be processed right now. Please try again.";
+        }
         if (log.ok === false) log.conclusion = "failure";
         if (log.ok && run.conclusion === "success") refresh = rebuildState(await runs(env, "refresh.yml"), run.created_at);
       }

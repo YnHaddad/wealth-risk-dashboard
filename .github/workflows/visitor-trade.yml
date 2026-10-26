@@ -18,9 +18,8 @@ permissions:
   contents: write
   actions: write
 
-concurrency:
-  group: ledger-write
-  cancel-in-progress: false
+# No concurrency group: GitHub keeps only one pending run per group and would drop orders
+# placed in a burst. The booking step retries against the latest ledger instead.
 
 jobs:
   book:
