@@ -2,3 +2,4 @@ trade_id,date,portfolio,symbol,side,quantity,price,amount,fees,reason,source
 V-20261026-001,2026-10-26,balanced,NVDA,buy,200,210.9975,42199.50,8.44,Visitor trade (live price),visitor
 V-20261026-002,2026-10-26,growth,LQD,sell,500,103.8350,51917.50,10.38,Visitor trade (live price),visitor
 V-20261026-003,2026-10-26,multi_asset,GLD,buy,100,366.6000,36660.00,7.33,Visitor trade (live price),visitor
+V-20261026-004,2026-10-26,balanced,KO,buy,1,92.7100,92.71,5.00,Visitor trade (live price),visitor

@@ -33,5 +33,10 @@
 "ok": false,
 "message": "Blocked by pre-trade compliance: max single stock would be 4.8% (KO), outside its limit (max 3%)",
 "at": "2026-10-26T10:38:22+00:00"
+},
+"mvp5n238-3683d2": {
+"ok": true,
+"message": "Bought 1 KO at $92.71 (live price) in Balanced; now 0.0% of the portfolio",
+"at": "2026-10-26T11:10:14+00:00"
 }
 }
