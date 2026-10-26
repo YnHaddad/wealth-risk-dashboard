@@ -3,5 +3,10 @@
 "ok": true,
 "message": "Bought 200 NVDA at $211.00 (live price) in Balanced; now 0.1% of the portfolio",
 "at": "2026-10-26T10:33:52+00:00"
+},
+"test-block-003": {
+"ok": false,
+"message": "Not enough cash: the trade needs $2,113,593, the portfolio has $394,531",
+"at": "2026-10-26T10:36:07+00:00"
 }
 }
