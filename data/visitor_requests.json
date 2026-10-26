@@ -28,5 +28,10 @@
 "ok": true,
 "message": "Bought 100 GLD at $366.60 (live price) in Global Multi-Asset; now 7.8% of the portfolio",
 "at": "2026-10-26T10:37:41+00:00"
+},
+"test-limit-009": {
+"ok": false,
+"message": "Blocked by pre-trade compliance: max single stock would be 4.8% (KO), outside its limit (max 3%)",
+"at": "2026-10-26T10:38:22+00:00"
 }
 }
