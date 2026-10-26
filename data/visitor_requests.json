@@ -66,5 +66,11 @@
 "message": "Sold 5 MSFT at $524.52 (live price) in Growth; now 3.2% of the portfolio",
 "status": "filled",
 "at": "2026-10-26T13:05:22+00:00"
+},
+"lim-cxl-03": {
+"ok": true,
+"message": "Limit order O-20261026-003 working: buy 10 GLD at $340.00 or better in Global Multi-Asset (market $366.60). It fills if the price reaches the limit today and expires after the close.",
+"status": "working",
+"at": "2026-10-26T13:05:27+00:00"
 }
 }

@@ -1,3 +1,4 @@
 order_id,created,portfolio,symbol,side,quantity,type,limit,status,updated,fill_price,trade_id,note
 O-20261026-001,2026-10-26T13:05:11+00:00,balanced,KO,buy,10,limit,92.5000,working,2026-10-26T13:05:11+00:00,,,market $92.71 (live) when placed
 O-20261026-002,2026-10-26T13:05:22+00:00,growth,MSFT,sell,5,limit,500.0000,filled,2026-10-26T13:05:22+00:00,524.5250,V-20261026-007,"Limit $500.00, marketable"
+O-20261026-003,2026-10-26T13:05:27+00:00,multi_asset,GLD,buy,10,limit,340.0000,working,2026-10-26T13:05:27+00:00,,,market $366.60 (live) when placed
