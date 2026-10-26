@@ -48,5 +48,11 @@
 "ok": true,
 "message": "Bought 1,111 AAPL at $347.73 (live price) in Growth; now 4.5% of the portfolio",
 "at": "2026-10-26T12:32:44+00:00"
+},
+"lim-work-01": {
+"ok": true,
+"message": "Limit order O-20261026-001 working: buy 10 KO at $92.50 or better in Balanced (market $92.71). It fills if the price reaches the limit today and expires after the close.",
+"status": "working",
+"at": "2026-10-26T13:05:11+00:00"
 }
 }
