@@ -13,5 +13,10 @@
 "ok": true,
 "message": "Sold 500 LQD at $103.83 (live price) in Growth; now 3.6% of the portfolio",
 "at": "2026-10-26T10:36:30+00:00"
+},
+"test-limit-006": {
+"ok": false,
+"message": "Not enough cash: the trade needs $463,643, the portfolio has $394,531",
+"at": "2026-10-26T10:37:30+00:00"
 }
 }
