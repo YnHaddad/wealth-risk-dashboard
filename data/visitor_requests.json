@@ -84,5 +84,11 @@
 "message": "Order O-20261026-003 is already cancelled",
 "status": "rejected",
 "at": "2026-10-26T13:06:18+00:00"
+},
+"mvpaq10s-216ddc": {
+"ok": true,
+"message": "Sold 6,190 AAPL at $342.34 (live price) in Growth; now 0.0% of the portfolio",
+"status": "filled",
+"at": "2026-10-26T13:32:35+00:00"
 }
 }

@@ -6,3 +6,4 @@ V-20261026-004,2026-10-26,balanced,KO,buy,1,92.7100,92.71,5.00,Visitor trade (li
 V-20261026-005,2026-10-26,growth,NVDA,buy,100,210.9975,21099.75,5.00,Visitor trade (live price),visitor
 V-20261026-006,2026-10-26,growth,AAPL,buy,1111,347.7250,386322.48,77.26,Visitor trade (live price),visitor
 V-20261026-007,2026-10-26,growth,MSFT,sell,5,524.5250,2622.62,5.00,"Visitor limit $500.00, marketable (live price)",visitor
+V-20261026-008,2026-10-26,growth,AAPL,sell,6190,342.3410,2119090.79,423.82,Visitor market order (live price),visitor
