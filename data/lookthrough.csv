@@ -1,0 +1,158 @@
+symbol,dimension,bucket,weight
+IVV,sector,Information Technology,0.3367
+IVV,sector,Financials,0.1327
+IVV,sector,Consumer Discretionary,0.102
+IVV,sector,Communication Services,0.102
+IVV,sector,Health Care,0.0918
+IVV,sector,Industrials,0.0816
+IVV,sector,Consumer Staples,0.051
+IVV,sector,Energy,0.0306
+IVV,sector,Utilities,0.0255
+IVV,sector,Real Estate,0.0204
+IVV,sector,Materials,0.0255
+IVV,region,North America,1
+QQQ,sector,Information Technology,0.51
+QQQ,sector,Communication Services,0.16
+QQQ,sector,Consumer Discretionary,0.14
+QQQ,sector,Consumer Staples,0.05
+QQQ,sector,Health Care,0.05
+QQQ,sector,Industrials,0.05
+QQQ,sector,Utilities,0.01
+QQQ,sector,Materials,0.01
+QQQ,sector,Financials,0.01
+QQQ,sector,Energy,0.01
+QQQ,region,North America,1
+VUG,sector,Information Technology,0.48
+VUG,sector,Consumer Discretionary,0.17
+VUG,sector,Communication Services,0.13
+VUG,sector,Financials,0.07
+VUG,sector,Health Care,0.05
+VUG,sector,Industrials,0.05
+VUG,sector,Consumer Staples,0.02
+VUG,sector,Real Estate,0.01
+VUG,sector,Materials,0.01
+VUG,sector,Energy,0.01
+VUG,region,North America,1
+SCHD,sector,Energy,0.2
+SCHD,sector,Consumer Staples,0.19
+SCHD,sector,Health Care,0.16
+SCHD,sector,Industrials,0.12
+SCHD,sector,Financials,0.09
+SCHD,sector,Consumer Discretionary,0.09
+SCHD,sector,Information Technology,0.08
+SCHD,sector,Communication Services,0.04
+SCHD,sector,Materials,0.02
+SCHD,sector,Utilities,0.01
+SCHD,region,North America,1
+VIG,sector,Information Technology,0.26
+VIG,sector,Financials,0.22
+VIG,sector,Health Care,0.14
+VIG,sector,Industrials,0.12
+VIG,sector,Consumer Staples,0.1
+VIG,sector,Consumer Discretionary,0.07
+VIG,sector,Materials,0.03
+VIG,sector,Utilities,0.03
+VIG,sector,Energy,0.02
+VIG,sector,Communication Services,0.01
+VIG,region,North America,1
+VYM,sector,Financials,0.21
+VYM,sector,Information Technology,0.13
+VYM,sector,Health Care,0.12
+VYM,sector,Industrials,0.12
+VYM,sector,Consumer Staples,0.11
+VYM,sector,Energy,0.09
+VYM,sector,Consumer Discretionary,0.06
+VYM,sector,Utilities,0.06
+VYM,sector,Communication Services,0.05
+VYM,sector,Materials,0.03
+VYM,sector,Real Estate,0.02
+VYM,region,North America,1
+JEPI,sector,Information Technology,0.17
+JEPI,sector,Health Care,0.14
+JEPI,sector,Financials,0.13
+JEPI,sector,Industrials,0.13
+JEPI,sector,Consumer Staples,0.1
+JEPI,sector,Consumer Discretionary,0.09
+JEPI,sector,Communication Services,0.07
+JEPI,sector,Utilities,0.06
+JEPI,sector,Energy,0.04
+JEPI,sector,Real Estate,0.04
+JEPI,sector,Materials,0.03
+JEPI,region,North America,1
+USMV,sector,Information Technology,0.25
+USMV,sector,Health Care,0.14
+USMV,sector,Financials,0.13
+USMV,sector,Consumer Staples,0.09
+USMV,sector,Communication Services,0.09
+USMV,sector,Industrials,0.09
+USMV,sector,Utilities,0.07
+USMV,sector,Consumer Discretionary,0.06
+USMV,sector,Energy,0.04
+USMV,sector,Materials,0.02
+USMV,sector,Real Estate,0.02
+USMV,region,North America,1
+VEA,sector,Financials,0.23
+VEA,sector,Industrials,0.19
+VEA,sector,Consumer Discretionary,0.1
+VEA,sector,Health Care,0.09
+VEA,sector,Information Technology,0.09
+VEA,sector,Consumer Staples,0.07
+VEA,sector,Materials,0.07
+VEA,sector,Energy,0.05
+VEA,sector,Communication Services,0.04
+VEA,sector,Real Estate,0.04
+VEA,sector,Utilities,0.03
+VEA,region,Europe,0.62
+VEA,region,Japan,0.22
+VEA,region,Asia Pacific ex-Japan,0.1
+VEA,region,North America,0.06
+VWO,sector,Information Technology,0.23
+VWO,sector,Financials,0.23
+VWO,sector,Consumer Discretionary,0.13
+VWO,sector,Communication Services,0.09
+VWO,sector,Industrials,0.07
+VWO,sector,Materials,0.07
+VWO,sector,Energy,0.05
+VWO,sector,Consumer Staples,0.05
+VWO,sector,Health Care,0.04
+VWO,sector,Utilities,0.03
+VWO,sector,Real Estate,0.01
+VWO,region,Emerging Markets,1
+IDV,sector,Financials,0.35
+IDV,sector,Utilities,0.12
+IDV,sector,Energy,0.1
+IDV,sector,Communication Services,0.09
+IDV,sector,Materials,0.08
+IDV,sector,Consumer Staples,0.07
+IDV,sector,Industrials,0.07
+IDV,sector,Consumer Discretionary,0.05
+IDV,sector,Real Estate,0.04
+IDV,sector,Health Care,0.02
+IDV,sector,Information Technology,0.01
+IDV,region,Europe,0.62
+IDV,region,Asia Pacific ex-Japan,0.17
+IDV,region,Japan,0.08
+IDV,region,North America,0.13
+IGF,sector,Utilities,0.4
+IGF,sector,Industrials,0.4
+IGF,sector,Energy,0.2
+IGF,region,North America,0.45
+IGF,region,Europe,0.3
+IGF,region,Asia Pacific ex-Japan,0.15
+IGF,region,Emerging Markets,0.1
+ACWI,sector,Information Technology,0.27
+ACWI,sector,Financials,0.17
+ACWI,sector,Consumer Discretionary,0.1
+ACWI,sector,Industrials,0.11
+ACWI,sector,Health Care,0.09
+ACWI,sector,Communication Services,0.08
+ACWI,sector,Consumer Staples,0.06
+ACWI,sector,Energy,0.04
+ACWI,sector,Materials,0.035
+ACWI,sector,Utilities,0.025
+ACWI,sector,Real Estate,0.02
+ACWI,region,North America,0.66
+ACWI,region,Europe,0.15
+ACWI,region,Japan,0.05
+ACWI,region,Asia Pacific ex-Japan,0.04
+ACWI,region,Emerging Markets,0.1

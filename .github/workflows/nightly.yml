@@ -1,0 +1,56 @@
+name: Nightly market data and simulation
+
+# Updates the market-data cache, extends the simulated portfolios to the latest close,
+# expires visitor trades older than 7 days, then rebuilds the dashboard.
+on:
+  schedule:
+    - cron: "17 23 * * 1-5"   # after the US close
+  workflow_dispatch:
+    inputs:
+      full:
+        description: Rebuild the whole market-data cache
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: ledger-write
+  cancel-in-progress: false
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Update market data
+        run: python -m wealth.market ${{ inputs.full && '--full' || '--update' }}
+
+      - name: Extend simulation and expire visitor trades
+        run: |
+          if [ -f wealth/simulate.py ]; then python -m wealth.simulate; fi
+          if [ -f wealth/visitors.py ]; then python -m wealth.visitors --expire; fi
+
+      - name: Commit
+        run: |
+          git config user.name "dashboard-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --cached --quiet; then echo "no changes"; exit 0; fi
+          git commit -qm "Nightly market data and simulation update"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
+
+      - name: Rebuild dashboard
+        if: hashFiles('.github/workflows/refresh.yml') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run refresh.yml --ref main

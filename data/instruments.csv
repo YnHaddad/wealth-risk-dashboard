@@ -1,0 +1,76 @@
+symbol,name,kind,asset_class,sub_class,sector,region,country,duration,credit,stress_proxy,price_source
+MSFT,Microsoft,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,MSFT
+NVDA,NVIDIA,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,NVDA
+AAPL,Apple,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,AAPL
+AMZN,Amazon,stock,Equity,Single Stock,Consumer Discretionary,North America,United States,,,XLY,AMZN
+GOOGL,Alphabet,stock,Equity,Single Stock,Communication Services,North America,United States,,,XLC|QQQ,GOOGL
+META,Meta Platforms,stock,Equity,Single Stock,Communication Services,North America,United States,,,XLC|QQQ,META
+AVGO,Broadcom,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,AVGO
+LLY,Eli Lilly,stock,Equity,Single Stock,Health Care,North America,United States,,,XLV,LLY
+V,Visa,stock,Equity,Single Stock,Financials,North America,United States,,,XLF,V
+MA,Mastercard,stock,Equity,Single Stock,Financials,North America,United States,,,XLF,MA
+ASML,ASML Holding (ADR),stock,Equity,Single Stock,Information Technology,Europe,Netherlands,,,XLK,ASML
+TSM,Taiwan Semiconductor (ADR),stock,Equity,Single Stock,Information Technology,Emerging Markets,Taiwan,,,XLK,TSM
+COST,Costco,stock,Equity,Single Stock,Consumer Staples,North America,United States,,,XLP,COST
+NOW,ServiceNow,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,NOW
+ISRG,Intuitive Surgical,stock,Equity,Single Stock,Health Care,North America,United States,,,XLV,ISRG
+JNJ,Johnson & Johnson,stock,Equity,Single Stock,Health Care,North America,United States,,,XLV,JNJ
+PG,Procter & Gamble,stock,Equity,Single Stock,Consumer Staples,North America,United States,,,XLP,PG
+KO,Coca-Cola,stock,Equity,Single Stock,Consumer Staples,North America,United States,,,XLP,KO
+PEP,PepsiCo,stock,Equity,Single Stock,Consumer Staples,North America,United States,,,XLP,PEP
+XOM,Exxon Mobil,stock,Equity,Single Stock,Energy,North America,United States,,,XLE,XOM
+CVX,Chevron,stock,Equity,Single Stock,Energy,North America,United States,,,XLE,CVX
+JPM,JPMorgan Chase,stock,Equity,Single Stock,Financials,North America,United States,,,XLF,JPM
+ABBV,AbbVie,stock,Equity,Single Stock,Health Care,North America,United States,,,XLV,ABBV
+NEE,NextEra Energy,stock,Equity,Single Stock,Utilities,North America,United States,,,XLU,NEE
+O,Realty Income,stock,Equity,Single Stock,Real Estate,North America,United States,,,XLRE|VNQ,O
+HD,Home Depot,stock,Equity,Single Stock,Consumer Discretionary,North America,United States,,,XLY,HD
+TXN,Texas Instruments,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,TXN
+UNH,UnitedHealth,stock,Equity,Single Stock,Health Care,North America,United States,,,XLV,UNH
+BRK-B,Berkshire Hathaway B,stock,Equity,Single Stock,Financials,North America,United States,,,XLF,BRK-B
+WMT,Walmart,stock,Equity,Single Stock,Consumer Staples,North America,United States,,,XLP,WMT
+MCD,McDonald's,stock,Equity,Single Stock,Consumer Discretionary,North America,United States,,,XLY,MCD
+MRK,Merck,stock,Equity,Single Stock,Health Care,North America,United States,,,XLV,MRK
+VZ,Verizon,stock,Equity,Single Stock,Communication Services,North America,United States,,,XLC|QQQ,VZ
+NVO,Novo Nordisk (ADR),stock,Equity,Single Stock,Health Care,Europe,Denmark,,,XLV,NVO
+SAP,SAP (ADR),stock,Equity,Single Stock,Information Technology,Europe,Germany,,,XLK,SAP
+TM,Toyota (ADR),stock,Equity,Single Stock,Consumer Discretionary,Japan,Japan,,,XLY,TM
+SHEL,Shell (ADR),stock,Equity,Single Stock,Energy,Europe,United Kingdom,,,XLE,SHEL
+NVS,Novartis (ADR),stock,Equity,Single Stock,Health Care,Europe,Switzerland,,,XLV,NVS
+UL,Unilever (ADR),stock,Equity,Single Stock,Consumer Staples,Europe,United Kingdom,,,XLP,UL
+BHP,BHP Group (ADR),stock,Equity,Single Stock,Materials,Asia Pacific ex-Japan,Australia,,,XLB,BHP
+AMD,Advanced Micro Devices,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,AMD
+NFLX,Netflix,stock,Equity,Single Stock,Communication Services,North America,United States,,,XLC|QQQ,NFLX
+ORCL,Oracle,stock,Equity,Single Stock,Information Technology,North America,United States,,,XLK,ORCL
+BAC,Bank of America,stock,Equity,Single Stock,Financials,North America,United States,,,XLF,BAC
+CAT,Caterpillar,stock,Equity,Single Stock,Industrials,North America,United States,,,XLI,CAT
+LIN,Linde,stock,Equity,Single Stock,Materials,North America,United States,,,XLB,LIN
+UNP,Union Pacific,stock,Equity,Single Stock,Industrials,North America,United States,,,XLI,UNP
+DIS,Walt Disney,stock,Equity,Single Stock,Communication Services,North America,United States,,,XLC|QQQ,DIS
+IVV,iShares Core S&P 500,etf,Equity,US Large Cap,look-through,look-through,,,,,IVV
+QQQ,Invesco QQQ (Nasdaq-100),etf,Equity,US Growth,look-through,look-through,,,,,QQQ
+VUG,Vanguard Growth,etf,Equity,US Growth,look-through,look-through,,,,,VUG
+SCHD,Schwab US Dividend Equity,etf,Equity,US Dividend,look-through,look-through,,,,VYM,SCHD
+VIG,Vanguard Dividend Appreciation,etf,Equity,US Dividend,look-through,look-through,,,,,VIG
+VYM,Vanguard High Dividend Yield,etf,Equity,US Dividend,look-through,look-through,,,,,VYM
+JEPI,JPMorgan Equity Premium Income,etf,Equity,US Covered Call,look-through,look-through,,,,VIG,JEPI
+USMV,iShares MSCI USA Min Vol,etf,Equity,US Min Volatility,look-through,look-through,,,,VIG,USMV
+VEA,Vanguard FTSE Developed Markets,etf,Equity,Developed ex-US,look-through,look-through,,,,,VEA
+VWO,Vanguard FTSE Emerging Markets,etf,Equity,Emerging Markets,look-through,look-through,,,,,VWO
+IDV,iShares Intl Select Dividend,etf,Equity,Intl Dividend,look-through,look-through,,,,,IDV
+BIL,SPDR 1-3 Month T-Bill,etf,Cash & Equivalents,T-Bills,,North America,,0.1,Government,,BIL
+SHY,iShares 1-3 Year Treasury,etf,Fixed Income,Short Treasuries,,North America,,1.9,Government,,SHY
+IEF,iShares 7-10 Year Treasury,etf,Fixed Income,Intermediate Treasuries,,North America,,7.1,Government,,IEF
+TLT,iShares 20+ Year Treasury,etf,Fixed Income,Long Treasuries,,North America,,16.0,Government,,TLT
+AGG,iShares Core US Aggregate Bond,etf,Fixed Income,US Aggregate,,North America,,6.0,Investment Grade,,AGG
+LQD,iShares iBoxx IG Corporate,etf,Fixed Income,IG Corporate,,North America,,8.2,Investment Grade,,LQD
+VCSH,Vanguard Short-Term Corporate,etf,Fixed Income,Short IG Corporate,,North America,,2.6,Investment Grade,SHY,VCSH
+HYG,iShares iBoxx High Yield Corporate,etf,Fixed Income,High Yield,,North America,,3.0,High Yield,,HYG
+TIP,iShares TIPS Bond,etf,Fixed Income,Inflation-Linked,,North America,,6.6,Government,,TIP
+EMB,iShares JPM USD EM Bond,etf,Fixed Income,EM Sovereign,,Emerging Markets,,7.0,EM Sovereign,,EMB
+PFF,iShares Preferred & Income,etf,Fixed Income,Preferreds,,North America,,4.5,Preferred,,PFF
+VNQ,Vanguard Real Estate,etf,Real Assets,Listed Real Estate,Real Estate,North America,,,,,VNQ
+GLD,SPDR Gold Shares,etf,Real Assets,Gold,,Global,,,,,GLD
+DBC,Invesco DB Commodity Index,etf,Real Assets,Broad Commodities,,Global,,,,,DBC
+IGF,iShares Global Infrastructure,etf,Real Assets,Listed Infrastructure,look-through,look-through,,,,,IGF
+ACWI,iShares MSCI ACWI (benchmark proxy),benchmark,Equity,Global Equity,look-through,look-through,,,,,ACWI

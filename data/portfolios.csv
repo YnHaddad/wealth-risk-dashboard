@@ -1,0 +1,6 @@
+id,name,strategy,inception,initial_aum,description
+growth,Growth,Long-term capital growth with a quality and technology tilt,2024-01-02,25000000,"Maximises long-term capital appreciation. ~90% equities, half through broad and growth ETFs, half through 15 high-quality large caps; a small bond sleeve for liquidity."
+equity_income,Equity Income,Dividend income from equities,2024-01-02,15000000,"Targets a sustainable, growing income stream from dividend payers, covered-call and international dividend funds, with preferreds and credit for extra yield. Client draws a monthly income."
+balanced,Balanced,Classic 60/40 with partial fixed income,2024-01-02,20000000,"Growth with moderated volatility: 60% equities (half ETFs, half blue chips), 35% investment-grade bonds and TIPS, a small gold hedge."
+conservative_income,Conservative Income,Capital preservation and yield,2024-01-02,10000000,"Protects capital and pays income: two-thirds short and intermediate high-quality bonds, a defensive equity sleeve, and a T-bill buffer. Client draws a monthly income."
+multi_asset,Global Multi-Asset,Diversified all-weather allocation,2024-01-02,12000000,"Diversified across global equities (including non-US leaders), inflation-linked and EM bonds, gold, commodities, listed real estate and infrastructure."

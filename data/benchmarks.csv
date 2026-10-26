@@ -1,0 +1,16 @@
+portfolio,symbol,weight,label
+growth,ACWI,0.9,90% MSCI ACWI / 10% US Agg
+growth,AGG,0.1,90% MSCI ACWI / 10% US Agg
+equity_income,VYM,0.7,70% US High Dividend / 15% Intl Dividend / 15% US Agg
+equity_income,IDV,0.15,70% US High Dividend / 15% Intl Dividend / 15% US Agg
+equity_income,AGG,0.15,70% US High Dividend / 15% Intl Dividend / 15% US Agg
+balanced,ACWI,0.6,60% MSCI ACWI / 40% US Agg
+balanced,AGG,0.4,60% MSCI ACWI / 40% US Agg
+conservative_income,ACWI,0.25,25% MSCI ACWI / 65% US Agg / 10% T-Bills
+conservative_income,AGG,0.65,25% MSCI ACWI / 65% US Agg / 10% T-Bills
+conservative_income,BIL,0.1,25% MSCI ACWI / 65% US Agg / 10% T-Bills
+multi_asset,ACWI,0.5,50% ACWI / 30% US Agg / 10% TIPS / 5% Gold / 5% Commodities
+multi_asset,AGG,0.3,50% ACWI / 30% US Agg / 10% TIPS / 5% Gold / 5% Commodities
+multi_asset,TIP,0.1,50% ACWI / 30% US Agg / 10% TIPS / 5% Gold / 5% Commodities
+multi_asset,GLD,0.05,50% ACWI / 30% US Agg / 10% TIPS / 5% Gold / 5% Commodities
+multi_asset,DBC,0.05,50% ACWI / 30% US Agg / 10% TIPS / 5% Gold / 5% Commodities
