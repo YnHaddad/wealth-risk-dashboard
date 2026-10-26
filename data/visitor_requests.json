@@ -60,5 +60,11 @@
 "message": "Limit $21.00 is more than 20% from the market ($211.00); check for a typo",
 "status": "rejected",
 "at": "2026-10-26T13:05:18+00:00"
+},
+"lim-mkt-02": {
+"ok": true,
+"message": "Sold 5 MSFT at $524.52 (live price) in Growth; now 3.2% of the portfolio",
+"status": "filled",
+"at": "2026-10-26T13:05:22+00:00"
 }
 }
