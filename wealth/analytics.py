@@ -617,7 +617,8 @@ class PortfolioAnalytics:
         ttm = float(d[d["date"] > cutoff]["amt"].sum())
         q = self.Q.iloc[-1]
         proj = {s: float(q[s] * self.mk.ttm_div(s)) for s in self.symbols if q[s] > 0}
-        withdrawals = f[(f["type"] == "withdrawal") & (f["date"] > cutoff)]["amt"].sum()
+        wd = f[(f["type"] == "withdrawal") & (f["date"] > cutoff)]
+        withdrawals = wd["amt"].sum() if len(wd) >= 6 else 0.0  # coverage only for regular income draws
         tv = float(self.mv.iloc[-1])
         return {"ttm": ttm, "projected_12m": sum(proj.values()), "projected_yield": sum(proj.values()) / tv,
                 "by_month": [{"month": k, "amount": float(v)} for k, v in by_month.items()],
