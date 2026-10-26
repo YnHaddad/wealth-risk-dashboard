@@ -23,5 +23,10 @@
 "ok": false,
 "message": "The portfolio holds 0 AMD; short selling is not allowed",
 "at": "2026-10-26T10:37:37+00:00"
+},
+"test-ok-007": {
+"ok": true,
+"message": "Bought 100 GLD at $366.60 (live price) in Global Multi-Asset; now 7.8% of the portfolio",
+"at": "2026-10-26T10:37:41+00:00"
 }
 }
