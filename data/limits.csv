@@ -1,13 +1,13 @@
 portfolio,rule,min,max,severity
 growth,max_single_stock,,0.06,hard
 growth,max_single_fund,,0.2,hard
-growth,max_sector,,0.3,soft
+growth,max_sector,,0.4,soft
 growth,cash,,0.1,soft
 growth,min_cash,0,,hard
 growth,equity,0.8,0.97,hard
 growth,fixed_income,0,0.15,soft
 growth,emerging_markets,,0.15,soft
-growth,tracking_error,,0.05,soft
+growth,tracking_error,,0.06,soft
 growth,var_95_1d,,0.025,soft
 equity_income,max_single_stock,,0.06,hard
 equity_income,max_single_fund,,0.2,hard
@@ -38,7 +38,7 @@ conservative_income,equity,0.15,0.35,hard
 conservative_income,fixed_income,0.5,0.8,hard
 conservative_income,high_yield_of_portfolio,,0.05,soft
 conservative_income,duration,2.5,6.0,soft
-conservative_income,tracking_error,,0.03,soft
+conservative_income,tracking_error,,0.04,soft
 conservative_income,var_95_1d,,0.008,soft
 multi_asset,max_single_stock,,0.06,hard
 multi_asset,max_single_fund,,0.2,hard
@@ -48,6 +48,6 @@ multi_asset,min_cash,0,,hard
 multi_asset,equity,0.4,0.6,hard
 multi_asset,fixed_income,0.15,0.35,soft
 multi_asset,real_assets,0.15,0.3,soft
-multi_asset,emerging_markets,,0.15,soft
+multi_asset,emerging_markets,,0.2,soft
 multi_asset,tracking_error,,0.04,soft
 multi_asset,var_95_1d,,0.015,soft

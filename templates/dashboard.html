@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Portfolio Desk</title>
+<meta name="description" content="Sample multi-asset wealth management dashboard: five simulated model portfolios on real market prices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --page: #eef1f4; --surface: #ffffff; --surface-2: #f3f5f8; --ink: #111d2b; --ink-2: #4b5866; --muted: #7b8692;
+  --line: #e0e5eb; --axis: #c3cad3; --ring: rgba(17,29,43,.08); --accent: #111d2b; --on-accent: #ffffff; --link: #1f63b8;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --bench: #7b8692;
+  --gain: #0f7b45; --loss: #c43b3b; --gain-wash: rgba(15,123,69,.10); --loss-wash: rgba(196,59,59,.10);
+  --warn: #8a5a00; --warn-bg: #fdf3dc; --ok-bg: #e5f3ea;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0e1318; --surface: #151b22; --surface-2: #1c232b; --ink: #e7ecf1; --ink-2: #a6b1bc; --muted: #7d8994;
+    --line: #262e37; --axis: #3a444f; --ring: rgba(255,255,255,.08); --accent: #e7ecf1; --on-accent: #111d2b; --link: #7fb0ec;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --bench: #8f9aa5;
+    --gain: #3fbf7f; --loss: #f07474; --gain-wash: rgba(63,191,127,.12); --loss-wash: rgba(240,116,116,.12);
+    --warn: #e9b949; --warn-bg: #33290f; --ok-bg: #16301f;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0e1318; --surface: #151b22; --surface-2: #1c232b; --ink: #e7ecf1; --ink-2: #a6b1bc; --muted: #7d8994;
+  --line: #262e37; --axis: #3a444f; --ring: rgba(255,255,255,.08); --accent: #e7ecf1; --on-accent: #111d2b; --link: #7fb0ec;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --bench: #8f9aa5;
+  --gain: #3fbf7f; --loss: #f07474; --gain-wash: rgba(63,191,127,.12); --loss-wash: rgba(240,116,116,.12);
+  --warn: #e9b949; --warn-bg: #33290f; --ok-bg: #16301f;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--page); color: var(--ink); }
+body { font: 14.5px/1.5 "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }
+button, input, select { font: inherit; color: inherit; }
+a { color: var(--link); }
+:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1240px; margin: 0 auto; padding: 0 16px 72px; }
+.gain { color: var(--gain); } .loss { color: var(--loss); } .muted { color: var(--muted); } .ink2 { color: var(--ink-2); }
+.tnum { font-variant-numeric: tabular-nums; }
+
+/* header + nav */
+.bar { position: sticky; top: 0; z-index: 20; background: var(--page); border-bottom: 1px solid var(--line); }
+.bar-in { max-width: 1240px; margin: 0 auto; padding: 12px 16px 0; }
+.brand { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.brand h1 { font-size: 16px; font-weight: 600; margin: 0; }
+.tag { font-size: 12px; font-weight: 500; padding: 2px 9px; border-radius: 999px; background: var(--warn-bg); color: var(--warn); }
+.brand .right { margin-left: auto; display: flex; align-items: center; gap: 10px; color: var(--ink-2); font-size: 13px; flex-wrap: wrap; }
+.btn { border: 0; border-radius: 8px; padding: 8px 14px; font-weight: 600; font-size: 13.5px; cursor: pointer; background: var(--accent); color: var(--on-accent); white-space: nowrap; }
+.btn.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+nav.tabs { display: flex; gap: 2px; overflow-x: auto; margin-top: 10px; scrollbar-width: none; }
+nav.tabs::-webkit-scrollbar { display: none; }
+nav.tabs a { padding: 9px 12px; font-size: 13.5px; font-weight: 500; color: var(--ink-2); text-decoration: none; border-bottom: 2px solid transparent; white-space: nowrap; display: flex; align-items: center; gap: 7px; }
+nav.tabs a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+nav.tabs a i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; }
+.note-banner { font-size: 13px; color: var(--ink-2); background: var(--surface); box-shadow: 0 0 0 1px var(--ring); border-radius: 10px; padding: 9px 13px; margin: 14px 0 0; }
+
+/* layout */
+.panel { background: var(--surface); border-radius: 12px; box-shadow: 0 0 0 1px var(--ring); padding: 18px; margin-top: 14px; min-width: 0; }
+.panel h2 { font-size: 15.5px; font-weight: 600; margin: 0; }
+.panel .sub { color: var(--ink-2); font-size: 13px; margin: 2px 0 0; }
+.ph { display: flex; justify-content: space-between; align-items: flex-end; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } .g2 > .panel { margin-top: 14px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; } .g3 > .panel { margin-top: 14px; }
+.g2 > *, .g3 > * { min-width: 0; }
+@media (max-width: 960px) { .g2, .g3 { grid-template-columns: 1fr; } .g2 > .panel + .panel, .g3 > .panel + .panel { margin-top: 0; } }
+.pagehead { margin: 22px 2px 4px; display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+.pagehead h2 { font-size: 26px; font-weight: 600; margin: 0; letter-spacing: -0.02em; }
+.pagehead p { margin: 4px 0 0; color: var(--ink-2); max-width: 70ch; }
+.pagehead .meta { margin-left: auto; font-size: 13px; color: var(--ink-2); text-align: right; }
+
+/* stat tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 14px; }
+.tile { background: var(--surface); box-shadow: 0 0 0 1px var(--ring); border-radius: 12px; padding: 12px 14px; }
+.tile .l { font-size: 12.5px; color: var(--ink-2); }
+.tile .v { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin-top: 2px; }
+.tile .s { font-size: 12.5px; color: var(--muted); margin-top: 1px; }
+.tile.hero .v { font-size: 30px; }
+.mini { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 8px; }
+.mini > div { background: var(--surface-2); border-radius: 9px; padding: 9px 11px; }
+.mini .l { font-size: 12px; color: var(--ink-2); } .mini .v { font-size: 16px; font-weight: 600; white-space: nowrap; } .mini .s { font-size: 11.5px; color: var(--muted); }
+
+/* segmented controls */
+.seg { display: inline-flex; background: var(--surface-2); border-radius: 8px; padding: 3px; flex-wrap: wrap; }
+.seg button { border: 0; background: transparent; padding: 4px 10px; border-radius: 6px; font-size: 12.5px; font-weight: 500; color: var(--ink-2); cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 0 0 1px var(--ring), 0 1px 2px var(--ring); }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* tables */
+.tbl { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th { text-align: left; font-weight: 500; color: var(--muted); font-size: 12px; padding: 6px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th.sort { cursor: pointer; user-select: none; } th.sort:hover { color: var(--ink); }
+td { padding: 7px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+tbody tr:last-child td { border-bottom: 0; }
+tfoot td { font-weight: 600; border-top: 1px solid var(--axis); border-bottom: 0; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
+tr.click { cursor: pointer; } tr.click:hover td { background: var(--surface-2); }
+td.n .sub2 { white-space: nowrap; }
+.sym { font-weight: 600; } .sub2 { display: block; font-size: 11.5px; color: var(--muted); white-space: normal; }
+.chip { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); font-weight: 500; margin-left: 6px; }
+.chip.v { background: var(--warn-bg); color: var(--warn); }
+.status { font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.status.ok { background: var(--ok-bg); color: var(--gain); } .status.warning { background: var(--warn-bg); color: var(--warn); }
+.status.breach { background: var(--loss-wash); color: var(--loss); }
+.linkbtn { border: 0; background: none; color: var(--link); font-weight: 600; cursor: pointer; padding: 2px 4px; font-size: 12.5px; }
+.note { color: var(--ink-2); font-size: 13px; }
+details > summary { cursor: pointer; color: var(--ink-2); font-size: 13.5px; font-weight: 500; padding: 4px 0; }
+
+/* bars & charts */
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; overflow: visible; }
+.chart text { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-2); margin-top: 8px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.legend i.ln { height: 2px; width: 14px; border-radius: 1px; vertical-align: 3px; }
+.tip { position: absolute; pointer-events: none; background: var(--surface); box-shadow: 0 0 0 1px var(--ring), 0 6px 20px rgba(0,0,0,.14); border-radius: 10px; padding: 8px 10px; font-size: 12.5px; min-width: 150px; opacity: 0; z-index: 5; }
+.tip .d { color: var(--muted); font-size: 11.5px; margin-bottom: 3px; }
+.tip .r { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+.tip .r span:first-child { display: flex; align-items: center; gap: 6px; color: var(--ink-2); }
+.tip .r b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.tip .k { display: inline-block; width: 12px; height: 2px; border-radius: 1px; }
+.hbar { display: grid; grid-template-columns: minmax(110px, 32%) 1fr 92px; gap: 10px; align-items: center; font-size: 13px; padding: 4px 0; }
+.hbar .track { position: relative; height: 18px; }
+.hbar .b1 { position: absolute; left: 0; top: 2px; height: 8px; border-radius: 0 3px 3px 0; }
+.hbar .b2 { position: absolute; left: 0; top: 11px; height: 5px; border-radius: 0 3px 3px 0; background: var(--bench); opacity: .55; }
+.hbar .tick { position: absolute; top: 0; width: 2px; height: 18px; background: var(--ink); border-radius: 1px; }
+.hbar .v { text-align: right; font-variant-numeric: tabular-nums; }
+.gauge { position: relative; height: 8px; background: var(--surface-2); border-radius: 4px; width: 110px; }
+.gauge .zone { position: absolute; top: 0; height: 8px; background: var(--ok-bg); border-radius: 4px; }
+.gauge .pin { position: absolute; top: -3px; width: 3px; height: 14px; border-radius: 2px; background: var(--ink); }
+.heat td.cell { text-align: right; font-variant-numeric: tabular-nums; }
+.stack { display: flex; height: 12px; gap: 2px; border-radius: 6px; overflow: hidden; margin: 4px 0 10px; }
+.stack span { display: block; height: 100%; }
+
+/* dialog */
+dialog { border: 0; border-radius: 16px; padding: 0; width: min(480px, calc(100vw - 24px)); background: var(--surface); color: var(--ink); box-shadow: 0 20px 60px rgba(0,0,0,.28); }
+dialog::backdrop { background: rgba(10,18,26,.5); }
+.dlg { padding: 20px; }
+.dlg h3 { margin: 0 0 4px; font-size: 18px; font-weight: 600; }
+.field { margin-bottom: 11px; }
+.field label { display: block; font-size: 12.5px; color: var(--ink-2); margin-bottom: 4px; }
+.field input, .field select { width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.seg.full { display: flex; width: 100%; } .seg.full button { flex: 1; padding: 6px 8px; }
+.seg button.buy[aria-pressed="true"] { color: var(--gain); } .seg button.sell[aria-pressed="true"] { color: var(--loss); }
+.preview { background: var(--surface-2); border-radius: 10px; padding: 10px 12px; font-size: 13px; color: var(--ink-2); margin: 4px 0 12px; }
+.preview b { color: var(--ink); font-weight: 600; }
+.checks { list-style: none; padding: 0; margin: 6px 0 0; }
+.checks li { display: flex; gap: 8px; align-items: baseline; padding: 2px 0; font-size: 12.5px; }
+.dlg-foot { display: flex; gap: 8px; justify-content: flex-end; }
+.msg { font-size: 13px; margin: 8px 0 10px; padding: 8px 11px; border-radius: 8px; }
+.msg.err { background: var(--loss-wash); color: var(--loss); } .msg.info { background: var(--warn-bg); color: var(--warn); } .msg.good { background: var(--ok-bg); color: var(--gain); }
+.steps { list-style: none; padding: 0; margin: 4px 0 14px; }
+.steps li { display: flex; gap: 10px; align-items: center; padding: 6px 0; color: var(--muted); font-size: 14px; }
+.steps li .dot { width: 18px; height: 18px; border-radius: 50%; box-shadow: inset 0 0 0 2px var(--line); flex: none; display: grid; place-items: center; font-size: 11px; }
+.steps li.active { color: var(--ink); } .steps li.active .dot { box-shadow: inset 0 0 0 2px var(--s1); animation: pulse 1.2s ease-in-out infinite; }
+.steps li.done { color: var(--ink); } .steps li.done .dot { background: var(--gain); box-shadow: none; color: #fff; }
+.steps li.fail .dot { background: var(--loss); box-shadow: none; color: #fff; }
+@keyframes pulse { 50% { box-shadow: inset 0 0 0 5px var(--s1); } }
+@media (prefers-reduced-motion: reduce) { .steps li.active .dot { animation: none; } }
+@media (max-width: 600px) { .panel { padding: 14px; } .pagehead .meta { margin-left: 0; text-align: left; } .brand .right .age { display: none; } }
+</style>
+</head>
+<body>
+<header class="bar"><div class="bar-in">
+  <div class="brand">
+    <h1>Portfolio Desk</h1><span class="tag">Sample data</span>
+    <div class="right"><span class="age" id="priceAge"></span><button class="btn" id="tradeBtn" type="button">New trade</button></div>
+  </div>
+  <nav class="tabs" id="tabs" aria-label="Portfolios"></nav>
+</div></header>
+<main class="wrap" id="app"></main>
+<dialog id="dlg" aria-labelledby="dlgTitle"><div class="dlg" id="dlgBody"></div></dialog>
+<script id="data" type="application/json">__DATA_JSON__</script>
+<script>
+(function () {
+'use strict';
+const D = JSON.parse(document.getElementById('data').textContent);
+const P = D.portfolios, IDS = Object.keys(P);
+const PCOL = {}; IDS.forEach((id, i) => PCOL[id] = `var(--s${i + 1})`);
+const U = {}; D.universe.forEach(u => U[u.symbol] = u);
+const NS = 'http://www.w3.org/2000/svg';
+
+// ---------------- format
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const money = (v, d = 0) => v == null || !isFinite(v) ? '–' : (v < 0 ? '−' : '') + '$' + Math.abs(v).toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+const mshort = v => { if (v == null || !isFinite(v)) return '–'; const a = Math.abs(v), s = v < 0 ? '−' : '';
+  return a >= 1e9 ? s + '$' + (a / 1e9).toFixed(2) + 'B' : a >= 1e6 ? s + '$' + (a / 1e6).toFixed(a >= 1e8 ? 0 : a >= 1e7 ? 1 : 2) + 'M' : a >= 1e3 ? s + '$' + (a / 1e3).toFixed(0) + 'K' : s + '$' + a.toFixed(0); };
+const smoney = (v, d = 0) => v == null || !isFinite(v) ? '–' : (v > 0.004 ? '+' : '') + money(v, d);
+const pct = (v, d = 1) => v == null || !isFinite(v) ? '–' : (v < 0 ? '−' : '') + Math.abs(v * 100).toFixed(d) + '%';
+const spct = (v, d = 1) => v == null || !isFinite(v) ? '–' : (v > 0.00005 ? '+' : v < -0.00005 ? '−' : '') + Math.abs(v * 100).toFixed(d) + '%';
+const bps = v => v == null || !isFinite(v) ? '–' : (v > 0.000005 ? '+' : v < -0.000005 ? '−' : '') + Math.abs(v * 1e4).toFixed(0) + ' bp';
+const cls = v => v > 0.000005 ? 'gain' : v < -0.000005 ? 'loss' : 'muted';
+const num = (v, d = 2) => v == null || !isFinite(v) ? '–' : v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
+const units = v => (+v).toLocaleString('en-US', { maximumFractionDigits: 0 });
+const fdate = (s, o = { day: 'numeric', month: 'short', year: 'numeric' }) => new Date(s + 'T12:00:00').toLocaleDateString('en-GB', o);
+const ago = iso => { if (!iso) return ''; const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : m < 2880 ? Math.round(m / 60) + ' h ago' : Math.round(m / 1440) + ' days ago'; };
+const AC_COL = { 'Equity': 'var(--s1)', 'Fixed Income': 'var(--s3)', 'Real Assets': 'var(--s4)', 'Cash & Equivalents': 'var(--bench)' };
+
+// ---------------- svg helpers
+const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+function niceTicks(lo, hi, n = 4) {
+  if (lo === hi) hi = lo + 1;
+  const raw = (hi - lo) / n, mag = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = [1, 2, 2.5, 5, 10].map(m => m * mag).find(s => s >= raw);
+  const out = []; for (let v = Math.floor(lo / step) * step; v <= hi + step * 1e-9; v += step) out.push(+v.toFixed(10));
+  if (out[out.length - 1] < hi) out.push(out[out.length - 1] + step);
+  return out;
+}
+function makeTip(box) { const t = document.createElement('div'); t.className = 'tip'; box.appendChild(t); return t; }
+function fillTip(tip, title, rows) {
+  tip.replaceChildren(); const d = document.createElement('div'); d.className = 'd'; d.textContent = title; tip.appendChild(d);
+  rows.forEach(([label, value, color, vc]) => { const r = document.createElement('div'); r.className = 'r'; const a = document.createElement('span');
+    if (color) { const k = document.createElement('i'); k.className = 'k'; k.style.background = color; a.appendChild(k); }
+    a.appendChild(document.createTextNode(label)); const b = document.createElement('b'); b.textContent = value; if (vc) b.className = vc; r.append(a, b); tip.appendChild(r); });
+}
+function placeTip(tip, box, x, y) { const w = tip.offsetWidth, bw = box.clientWidth; let left = x + 14; if (left + w > bw) left = x - w - 14; if (left < 0) left = 0;
+  tip.style.left = left + 'px'; tip.style.top = Math.max(0, y - 10) + 'px'; tip.style.opacity = 1; }
+const watchers = []; const onResize = fn => { watchers.push(fn); fn(); };
+let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => watchers.forEach(f => { try { f(); } catch (e) {} }), 150); });
+
+// line / stacked-area chart with crosshair. series: [{label,color,values,area?,dash?}] ; stacked: bool
+function lineChart(box, { dates, series, height = 260, fmtY = mshort, stacked = false, zeroLine = false, tipTitle, tipRows }) {
+  box.replaceChildren(); const n = dates.length; if (n < 2) { box.innerHTML = '<p class="note">Not enough history yet.</p>'; return; }
+  const W = Math.max(280, box.clientWidth), H = height, pl = 56, pr = 12, pt = 10, pb = 26;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, height: H, role: 'img' }, box); const tip = makeTip(box);
+  let tops = series.map(s => s.values);
+  if (stacked) { const acc = new Array(n).fill(0); tops = series.map(s => s.values.map((v, i) => (acc[i] += v || 0))); }
+  let lo = Infinity, hi = -Infinity; tops.forEach(a => a.forEach(v => { if (v != null) { lo = Math.min(lo, v); hi = Math.max(hi, v); } }));
+  if (stacked || zeroLine) lo = Math.min(lo, 0);
+  const pad = (hi - lo) * 0.06 || 1; if (!stacked) lo -= pad; hi += pad;
+  const ticks = niceTicks(lo, hi, 4); lo = Math.min(lo, ticks[0]); hi = Math.max(hi, ticks[ticks.length - 1]);
+  const x = i => pl + i / (n - 1) * (W - pl - pr), y = v => pt + (hi - v) / (hi - lo) * (H - pt - pb);
+  ticks.forEach(v => { if (v < lo || v > hi) return; el('line', { x1: pl, x2: W - pr, y1: y(v), y2: y(v), stroke: v === 0 && zeroLine ? 'var(--axis)' : 'var(--line)' }, svg);
+    el('text', { x: pl - 8, y: y(v) + 4, 'text-anchor': 'end' }, svg).textContent = fmtY(v); });
+  const k = Math.min(W < 520 ? 3 : 6, n); const span = (new Date(dates[n - 1]) - new Date(dates[0])) / 864e5;
+  for (let j = 0; j < k; j++) { const i = Math.round(j * (n - 1) / (k - 1));
+    el('text', { x: x(i), y: H - 6, 'text-anchor': j === 0 ? 'start' : j === k - 1 ? 'end' : 'middle' }, svg).textContent = fdate(dates[i], span > 300 ? { month: 'short', year: '2-digit' } : { day: 'numeric', month: 'short' }); }
+  const path = arr => arr.map((v, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join('');
+  if (stacked) { let base = new Array(n).fill(0);
+    tops.forEach((t, si) => { const d = path(t) + base.map((v, i) => `L${x(n - 1 - i).toFixed(1)},${y(base[n - 1 - i]).toFixed(1)}`).join('') + 'Z';
+      el('path', { d, fill: series[si].color, 'fill-opacity': 0.85 }, svg); el('path', { d: path(t), fill: 'none', stroke: 'var(--surface)', 'stroke-width': 1.5 }, svg); base = t; }); }
+  else series.forEach((s, si) => { if (s.area) { const d = path(tops[si]) + `L${x(n - 1)},${y(Math.max(lo, 0))}L${x(0)},${y(Math.max(lo, 0))}Z`; el('path', { d, fill: s.color, 'fill-opacity': 0.08 }, svg); }
+    el('path', { d: path(tops[si]), fill: 'none', stroke: s.color, 'stroke-width': s.width || 2, 'stroke-dasharray': s.dash || '', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg); });
+  const cross = el('line', { y1: pt, y2: H - pb, stroke: 'var(--axis)', opacity: 0 }, svg);
+  const dots = tops.map((t, si) => el('circle', { r: 4, fill: series[si].color, stroke: 'var(--surface)', 'stroke-width': 2, opacity: 0 }, svg));
+  const hit = el('rect', { x: pl, y: pt, width: W - pl - pr, height: H - pt - pb, fill: 'transparent' }, svg);
+  const move = cx => { const r = svg.getBoundingClientRect(); const px = (cx - r.left) * W / r.width; const i = Math.max(0, Math.min(n - 1, Math.round((px - pl) / (W - pl - pr) * (n - 1))));
+    cross.setAttribute('x1', x(i)); cross.setAttribute('x2', x(i)); cross.setAttribute('opacity', 1);
+    dots.forEach((d, si) => { d.setAttribute('cx', x(i)); d.setAttribute('cy', y(tops[si][i])); d.setAttribute('opacity', 1); });
+    fillTip(tip, tipTitle ? tipTitle(i) : fdate(dates[i]), tipRows(i)); placeTip(tip, box, x(i) * r.width / W, y(Math.max(...tops.map(t => t[i]))) * r.height / H); };
+  hit.addEventListener('pointermove', e => move(e.clientX)); hit.addEventListener('pointerdown', e => move(e.clientX));
+  hit.addEventListener('pointerleave', () => { cross.setAttribute('opacity', 0); dots.forEach(d => d.setAttribute('opacity', 0)); tip.style.opacity = 0; });
+}
+
+// diverging horizontal bars. items [{label,value,rows,color?}]
+function divBars(box, items, fmt = v => spct(v, 2)) {
+  box.replaceChildren(); if (!items.length) { box.innerHTML = '<p class="note">Nothing to show.</p>'; return; }
+  const W = Math.max(280, box.clientWidth), rowH = 24, H = items.length * rowH + 4, lab = 70, valW = 64;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, height: H }, box); const tip = makeTip(box);
+  const neg = Math.max(0, ...items.map(i => -i.value)), pos = Math.max(0, ...items.map(i => i.value));
+  const L = lab + (neg > 0 ? valW : 0), R = W - (pos > 0 ? valW : 8), scale = (R - L) / ((neg + pos) || 1), x0 = L + neg * scale;
+  el('line', { x1: x0, x2: x0, y1: 0, y2: H, stroke: 'var(--axis)' }, svg);
+  items.forEach((it, i) => { const cy = i * rowH + rowH / 2 + 2, w = Math.abs(it.value) * scale, up = it.value >= 0, bh = 11, xs = up ? x0 : x0 - w, r = Math.min(4, w / 2);
+    const d = up ? `M${xs},${cy - bh / 2}H${xs + w - r}Q${xs + w},${cy - bh / 2} ${xs + w},${cy - bh / 2 + r}V${cy + bh / 2 - r}Q${xs + w},${cy + bh / 2} ${xs + w - r},${cy + bh / 2}H${xs}Z`
+      : `M${x0},${cy - bh / 2}H${xs + r}Q${xs},${cy - bh / 2} ${xs},${cy - bh / 2 + r}V${cy + bh / 2 - r}Q${xs},${cy + bh / 2} ${xs + r},${cy + bh / 2}H${x0}Z`;
+    const bar = el('path', { d, fill: it.color || (up ? 'var(--gain)' : 'var(--loss)') }, svg);
+    const t = el('text', { x: 0, y: cy + 4 }, svg); t.textContent = it.label; t.style.fill = 'var(--ink)'; t.style.fontWeight = 600; t.style.fontSize = '12px';
+    const v = el('text', { x: up ? xs + w + 6 : xs - 6, y: cy + 4, 'text-anchor': up ? 'start' : 'end' }, svg); v.textContent = fmt(it.value);
+    const hr = el('rect', { x: 0, y: i * rowH + 2, width: W, height: rowH, fill: 'transparent', tabindex: 0 }, svg);
+    const show = () => { bar.setAttribute('opacity', .8); fillTip(tip, it.title || it.label, it.rows || [['Value', fmt(it.value)]]); const rr = svg.getBoundingClientRect(); placeTip(tip, box, (up ? xs + w : xs) * rr.width / W, cy * rr.height / H); };
+    const hide = () => { bar.setAttribute('opacity', 1); tip.style.opacity = 0; };
+    hr.addEventListener('pointerenter', show); hr.addEventListener('pointerleave', hide); hr.addEventListener('focus', show); hr.addEventListener('blur', hide); });
+}
+
+// histogram with VaR marker
+function histogram(box, counts, edges, varLine) {
+  box.replaceChildren(); const W = Math.max(280, box.clientWidth), H = 170, pl = 8, pr = 8, pt = 16, pb = 24;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, height: H }, box); const tip = makeTip(box);
+  const mx = Math.max(...counts), n = counts.length, lo = edges[0], hi = edges[n];
+  const x = v => pl + (v - lo) / (hi - lo) * (W - pl - pr), bw = (W - pl - pr) / n;
+  counts.forEach((c, i) => { const h = c / mx * (H - pt - pb); const left = edges[i] < -varLine;
+    const r = el('rect', { x: pl + i * bw + 1, y: H - pb - h, width: Math.max(1, bw - 2), height: h, rx: 2, fill: left ? 'var(--loss)' : 'var(--s1)', 'fill-opacity': left ? 0.9 : 0.55 }, svg);
+    const hr = el('rect', { x: pl + i * bw, y: pt, width: bw, height: H - pt - pb, fill: 'transparent' }, svg);
+    hr.addEventListener('pointerenter', () => { fillTip(tip, `${spct(edges[i], 2)} to ${spct(edges[i + 1], 2)}`, [['Days', String(c)]]); const rr = svg.getBoundingClientRect(); placeTip(tip, box, (pl + i * bw) * rr.width / W, (H - pb - h) * rr.height / H); });
+    hr.addEventListener('pointerleave', () => tip.style.opacity = 0); });
+  el('line', { x1: x(-varLine), x2: x(-varLine), y1: pt - 6, y2: H - pb, stroke: 'var(--ink)', 'stroke-width': 1.5 }, svg);
+  const t = el('text', { x: x(-varLine) + 5, y: pt + 2 }, svg); t.textContent = `VaR 95% ${spct(-varLine, 2)}`; t.style.fill = 'var(--ink)';
+  [lo, 0, hi].forEach((v, j) => { el('text', { x: x(v), y: H - 6, 'text-anchor': j === 0 ? 'start' : j === 2 ? 'end' : 'middle' }, svg).textContent = spct(v, 1); });
+}
+
+// ---------------- routing & chrome
+const tabs = document.getElementById('tabs'), app = document.getElementById('app');
+tabs.innerHTML = `<a href="#overview" data-r="overview">Overview</a>` + IDS.map(id => `<a href="#${id}" data-r="${id}"><i style="background:${PCOL[id]}"></i>${esc(P[id].name)}</a>`).join('');
+document.getElementById('priceAge').textContent = (D.price_mode === 'live' ? 'Live prices ' : 'Closing prices ') + ago(D.prices_asof) + (D.price_mode === 'live' ? ' (delayed ~15 min)' : '');
+const banner = `<p class="note-banner">This is a <b>sample dashboard</b>. Portfolios, clients and trades are simulated; prices are real market data (Yahoo Finance, delayed). Anyone with the link can place trades with <b>New trade</b>; visitor trades are checked against each mandate's limits and expire after 7 days. Not investment advice.</p>`;
+let current = 'overview';
+function route() { const h = (location.hash || '#overview').slice(1); current = P[h] ? h : 'overview';
+  tabs.querySelectorAll('a').forEach(a => a.setAttribute('aria-current', a.dataset.r === current ? 'page' : 'false'));
+  watchers.length = 0; app.innerHTML = ''; if (current === 'overview') overview(); else portfolio(current); window.scrollTo(0, 0); }
+window.addEventListener('hashchange', route);
+
+// ================= OVERVIEW
+function overview() {
+  const F = D.firm; const ps = IDS.map(id => P[id]);
+  let h = banner + `<div class="pagehead"><div><h2>Firm overview</h2><p>Five model portfolios across the risk spectrum, each run against its own benchmark and mandate limits.</p></div>
+    <div class="meta">Last close ${fdate(D.last_close)}<br>Built ${new Date(D.asof).toLocaleString()}</div></div>
+  <div class="tiles">
+    <div class="tile hero"><div class="l">Assets under management</div><div class="v">${mshort(F.aum)}</div><div class="s">${money(F.aum)}</div></div>
+    <div class="tile"><div class="l">Today</div><div class="v ${cls(F.day_change)}">${smoney(F.day_change)}</div><div class="s">market move, all portfolios</div></div>
+    <div class="tile"><div class="l">Net client flows YTD</div><div class="v ${cls(F.net_flows_ytd)}">${smoney(F.net_flows_ytd)}</div><div class="s">contributions − withdrawals</div></div>
+    <div class="tile"><div class="l">Mandate limits</div><div class="v">${F.breaches ? `<span class="loss">${F.breaches} breach${F.breaches > 1 ? 'es' : ''}</span>` : '<span class="gain">All within</span>'}</div><div class="s">${F.warnings} near a limit</div></div>
+    <div class="tile"><div class="l">Visitor trades (7 days)</div><div class="v">${F.visitor_trades}</div><div class="s">placed from this page</div></div>
+  </div>
+  <section class="panel"><div class="ph"><div><h2>Assets under management</h2><p class="sub">Market value by portfolio, including client flows</p></div></div>
+    <div class="chart" id="aumChart"></div><div class="legend">${ps.map(p => `<span><i style="background:${PCOL[p.id]}"></i>${esc(p.name)}</span>`).join('')}</div></section>
+  <section class="panel"><div class="ph"><div><h2>Portfolios</h2><p class="sub">Time-weighted returns against each benchmark. Select a row to open the portfolio.</p></div></div>
+  <div class="tbl"><table><thead><tr><th>Portfolio</th><th class="n">Value</th><th class="n">YTD</th><th class="n">vs bench</th><th class="n">1Y</th><th class="n">Since inception (ann.)</th><th class="n">vs bench</th><th class="n">Volatility</th><th class="n">1-day VaR 95%</th><th class="n">Max drawdown</th><th class="n">Sharpe 1Y</th><th>Limits</th></tr></thead><tbody>
+  ${ps.map(p => { const pf = p.performance, r = p.risk, br = p.limits.filter(l => l.status === 'breach').length, wn = p.limits.filter(l => l.status === 'warning').length;
+    return `<tr class="click" data-go="${p.id}"><td><span class="sym"><i style="display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:7px;background:${PCOL[p.id]}"></i>${esc(p.name)}</span><span class="sub2">${esc(p.strategy)}</span></td>
+    <td class="n">${mshort(p.value)}</td><td class="n ${cls(pf.YTD.twr)}">${spct(pf.YTD.twr)}</td><td class="n ${cls(pf.YTD.excess)}">${bps(pf.YTD.excess)}</td>
+    <td class="n ${cls(pf['1Y'].twr)}">${spct(pf['1Y'].twr)}</td><td class="n ${cls(pf.SI.twr_ann)}">${spct(pf.SI.twr_ann)}</td><td class="n ${cls(pf.SI.twr_ann - pf.SI.bench_ann)}">${bps(pf.SI.twr_ann - pf.SI.bench_ann)}</td>
+    <td class="n">${pct(r.vol_exante)}</td><td class="n">${pct(r.var95, 2)}<span class="sub2">${mshort(r.var95_usd)}</span></td><td class="n">${pct(r.max_drawdown)}</td><td class="n">${num(r.sharpe_1y)}</td>
+    <td>${br ? `<span class="status breach">${br} breach</span>` : wn ? `<span class="status warning">${wn} near</span>` : '<span class="status ok">OK</span>'}</td></tr>`; }).join('')}
+  </tbody></table></div></section>
+  <div class="g2">
+    <section class="panel"><div class="ph"><div><h2>Stress tests</h2><p class="sub">Estimated return on today's holdings</p></div></div>
+      <div class="tbl"><table class="heat"><thead><tr><th>Scenario</th>${ps.map(p => `<th class="n">${esc(p.name.split(' ')[0])}</th>`).join('')}</tr></thead><tbody>
+      ${ps[0].stress.map((s, i) => `<tr><td>${esc(s.name)}<span class="sub2">${s.type === 'historical' ? fdate(s.start, { month: 'short', year: 'numeric' }) + ' – ' + fdate(s.end, { month: 'short', year: 'numeric' }) : 'Hypothetical'}</span></td>
+        ${ps.map(p => { const v = p.stress[i].portfolio; const a = Math.min(1, Math.abs(v) / 0.35); return `<td class="cell" style="background:color-mix(in srgb, var(${v < 0 ? '--loss' : '--gain'}) ${Math.round(a * 32)}%, transparent)">${spct(v)}</td>`; }).join('')}</tr>`).join('')}
+      </tbody></table></div></section>
+    <section class="panel"><div class="ph"><div><h2>Risk and return</h2><p class="sub">Last 12 months: realized volatility vs return</p></div></div><div class="chart" id="rrChart"></div></section>
+  </div>
+  <section class="panel"><div class="ph"><div><h2>Latest activity</h2><p class="sub">Most recent trades across all portfolios</p></div></div><div class="tbl" id="actTbl"></div></section>`;
+  app.innerHTML = h;
+  app.querySelectorAll('tr[data-go]').forEach(tr => tr.addEventListener('click', () => location.hash = tr.dataset.go));
+  const Hh = F.history;
+  onResize(() => lineChart(document.getElementById('aumChart'), { dates: Hh.dates, stacked: true, height: 280,
+    series: IDS.map(id => ({ label: P[id].name, color: PCOL[id], values: Hh.aum[id] })),
+    tipRows: i => [...IDS.map(id => [P[id].name, mshort(Hh.aum[id][i]), PCOL[id]]).reverse(), ['Total', mshort(IDS.reduce((a, id) => a + Hh.aum[id][i], 0))]] }));
+  onResize(() => rrChart(document.getElementById('rrChart')));
+  const all = IDS.flatMap(id => P[id].blotter.map(t => ({ ...t, pid: id }))).sort((a, b) => (b.date + b.id).localeCompare(a.date + a.id)).slice(0, 15);
+  document.getElementById('actTbl').innerHTML = blotterTable(all, true);
+}
+function rrChart(box) {
+  box.replaceChildren(); const pts = IDS.map(id => { const p = P[id]; return { id, x: p.risk.vol_realized_1y, y: p.performance['1Y'].twr, bx: p.risk.bench_vol, by: p.performance['1Y'].bench }; });
+  const W = Math.max(280, box.clientWidth), H = 250, pl = 46, pr = 16, pt = 12, pb = 30;
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, height: H }, box); const tip = makeTip(box);
+  const xs = pts.flatMap(p => [p.x, p.bx]), ys = pts.flatMap(p => [p.y, p.by]);
+  const xt = niceTicks(0, Math.max(...xs) * 1.1, 4), yt = niceTicks(Math.min(0, ...ys), Math.max(...ys) * 1.1, 4);
+  const x = v => pl + (v - xt[0]) / (xt[xt.length - 1] - xt[0]) * (W - pl - pr), y = v => pt + (yt[yt.length - 1] - v) / (yt[yt.length - 1] - yt[0]) * (H - pt - pb);
+  yt.forEach(v => { el('line', { x1: pl, x2: W - pr, y1: y(v), y2: y(v), stroke: v === 0 ? 'var(--axis)' : 'var(--line)' }, svg); el('text', { x: pl - 6, y: y(v) + 4, 'text-anchor': 'end' }, svg).textContent = pct(v, 0); });
+  xt.forEach(v => { el('text', { x: x(v), y: H - 12, 'text-anchor': 'middle' }, svg).textContent = pct(v, 0); });
+  el('text', { x: W - pr, y: H - 0, 'text-anchor': 'end' }, svg).textContent = 'volatility →';
+  pts.forEach(p => { el('line', { x1: x(p.bx), y1: y(p.by), x2: x(p.x), y2: y(p.y), stroke: PCOL[p.id], 'stroke-opacity': .5, 'stroke-width': 1.5 }, svg);
+    el('circle', { cx: x(p.bx), cy: y(p.by), r: 4, fill: 'var(--surface)', stroke: PCOL[p.id], 'stroke-width': 2 }, svg);
+    el('circle', { cx: x(p.x), cy: y(p.y), r: 6, fill: PCOL[p.id], stroke: 'var(--surface)', 'stroke-width': 2 }, svg);
+    const t = el('text', { x: x(p.x) + 9, y: y(p.y) + 4 }, svg); t.textContent = P[p.id].name.split(' ')[0]; t.style.fill = 'var(--ink-2)';
+    const hr = el('circle', { cx: x(p.x), cy: y(p.y), r: 14, fill: 'transparent' }, svg);
+    hr.addEventListener('pointerenter', () => { fillTip(tip, P[p.id].name, [['Return 1Y', spct(p.y)], ['Volatility', pct(p.x)], ['Benchmark return', spct(p.by)], ['Benchmark vol', pct(p.bx)]]); const rr = svg.getBoundingClientRect(); placeTip(tip, box, x(p.x) * rr.width / W, y(p.y) * rr.height / H); });
+    hr.addEventListener('pointerleave', () => tip.style.opacity = 0); });
+  const lg = document.createElement('div'); lg.className = 'legend'; lg.innerHTML = '<span>● portfolio &nbsp; ○ its benchmark (line joins the pair)</span>'; box.appendChild(lg);
+}
+function blotterTable(rows, withP) {
+  return `<table><thead><tr><th>Date</th>${withP ? '<th>Portfolio</th>' : ''}<th>Trade</th><th class="n">Quantity</th><th class="n">Price</th><th class="n">Amount</th><th>Reason</th></tr></thead><tbody>
+  ${rows.map(t => `<tr><td>${fdate(t.date)}</td>${withP ? `<td>${esc(P[t.pid].name)}</td>` : ''}<td><span class="${t.side === 'buy' ? 'gain' : 'loss'}">${t.side === 'buy' ? 'Buy' : 'Sell'}</span> <span class="sym">${esc(t.symbol)}</span>${t.source === 'visitor' ? '<span class="chip v">visitor</span>' : ''}</td>
+  <td class="n">${units(t.qty)}</td><td class="n">${money(t.price, 2)}</td><td class="n">${money(t.amount)}</td><td class="ink2" style="white-space:normal;min-width:180px">${esc(t.reason)}</td></tr>`).join('')}</tbody></table>`;
+}
+
+// ================= PORTFOLIO
+function portfolio(id) {
+  const p = P[id], pf = p.performance, r = p.risk, ex = p.exposures, inc = p.income;
+  const br = p.limits.filter(l => l.status === 'breach').length, wn = p.limits.filter(l => l.status === 'warning').length;
+  let h = banner + `<div class="pagehead"><div><h2>${esc(p.name)}</h2><p>${esc(p.description)}</p></div>
+    <div class="meta">Benchmark: ${esc(p.benchmark)}<br>Inception ${fdate(p.inception)}</div></div>
+  <div class="tiles">
+    <div class="tile hero"><div class="l">Market value</div><div class="v">${mshort(p.value)}</div><div class="s"><span class="${cls(p.day_change)}">${smoney(p.day_change)}</span> today · cash ${pct(p.cash / p.value)}</div></div>
+    <div class="tile"><div class="l">YTD return</div><div class="v ${cls(pf.YTD.twr)}">${spct(pf.YTD.twr)}</div><div class="s">benchmark ${spct(pf.YTD.bench)} · <span class="${cls(pf.YTD.excess)}">${bps(pf.YTD.excess)}</span></div></div>
+    <div class="tile"><div class="l">Since inception, annualized</div><div class="v ${cls(pf.SI.twr_ann)}">${spct(pf.SI.twr_ann)}</div><div class="s">benchmark ${spct(pf.SI.bench_ann)} · money-weighted ${spct(pf.SI.mwr_ann)}</div></div>
+    <div class="tile"><div class="l">1-day VaR 95%</div><div class="v">${mshort(r.var95_usd)}</div><div class="s">${pct(r.var95, 2)} · ES ${pct(r.es95, 2)}</div></div>
+    <div class="tile"><div class="l">Income yield</div><div class="v">${pct(inc.projected_yield, 2)}</div><div class="s">${mshort(inc.projected_12m)} projected next 12 months</div></div>
+    <div class="tile"><div class="l">Mandate limits</div><div class="v">${br ? `<span class="loss">${br} breach${br > 1 ? 'es' : ''}</span>` : wn ? `<span style="color:var(--warn)">${wn} near limit</span>` : '<span class="gain">All within</span>'}</div><div class="s"><a href="#" data-jump="limits">See compliance</a></div></div>
+  </div>
+  <section class="panel"><div class="ph"><div><h2>Performance</h2><p class="sub" id="perfSub"></p></div>
+    <div class="controls"><div class="seg" id="pMode"><button aria-pressed="true" data-v="ret">Return</button><button aria-pressed="false" data-v="val">Value</button></div>
+    <div class="seg" id="pRange">${['1M', '3M', 'YTD', '1Y', 'SI'].map(x => `<button aria-pressed="${x === 'SI'}" data-v="${x}">${x === 'SI' ? 'All' : x}</button>`).join('')}</div></div></div>
+    <div class="chart" id="perfChart"></div><div class="legend" id="perfLegend"></div>
+    <div class="tbl" style="margin-top:12px"><table><thead><tr><th></th>${['1M', '3M', 'YTD', '1Y', 'SI'].map(x => `<th class="n">${x === 'SI' ? 'Since inception' : x}</th>`).join('')}<th class="n">SI annualized</th></tr></thead><tbody>
+      <tr><td>Portfolio (time-weighted)</td>${['1M', '3M', 'YTD', '1Y', 'SI'].map(x => `<td class="n ${cls(pf[x].twr)}">${spct(pf[x].twr, 2)}</td>`).join('')}<td class="n ${cls(pf.SI.twr_ann)}">${spct(pf.SI.twr_ann, 2)}</td></tr>
+      <tr><td>Benchmark</td>${['1M', '3M', 'YTD', '1Y', 'SI'].map(x => `<td class="n">${spct(pf[x].bench, 2)}</td>`).join('')}<td class="n">${spct(pf.SI.bench_ann, 2)}</td></tr>
+      <tr><td>Excess</td>${['1M', '3M', 'YTD', '1Y', 'SI'].map(x => `<td class="n ${cls(pf[x].excess)}">${bps(pf[x].excess)}</td>`).join('')}<td class="n ${cls(pf.SI.twr_ann - pf.SI.bench_ann)}">${bps(pf.SI.twr_ann - pf.SI.bench_ann)}</td></tr>
+    </tbody></table></div></section>
+
+  <div class="g2">
+    <section class="panel"><div class="ph"><div><h2>Allocation vs model</h2><p class="sub">Bar: actual · tick: model target · thin bar: benchmark</p></div></div><div id="acBars"></div>
+      <div class="mini" style="margin-top:12px">
+        <div><div class="l">Equity: funds / stocks</div><div class="v">${pct(ex.equity_split.funds, 0)} / ${pct(ex.equity_split.stocks, 0)}</div></div>
+        <div><div class="l">Bond duration</div><div class="v">${ex.fixed_income.duration ? num(ex.fixed_income.duration, 1) + ' yrs' : '–'}</div><div class="s">${ex.fixed_income.weight ? pct(ex.fixed_income.weight, 0) + ' in bonds' : ''}</div></div>
+        <div><div class="l">Largest drift</div><div class="v">${pct(p.rebalancing.max_drift, 2)}</div><div class="s">${p.rebalancing.trades.length} rebalancing trade${p.rebalancing.trades.length === 1 ? '' : 's'} suggested</div></div>
+      </div>
+      <div class="note" style="margin:14px 0 4px">Building blocks</div><div id="subBars"></div></section>
+    <section class="panel"><div class="ph"><div><h2>Exposure vs benchmark</h2><p class="sub">Share of the whole portfolio; ETFs looked through (approximate)</p></div>
+      <div class="seg" id="exDim"><button aria-pressed="true" data-v="sector">Sector</button><button aria-pressed="false" data-v="region">Region</button></div></div><div id="exBars"></div></section>
+  </div>
+
+  <section class="panel"><div class="ph"><div><h2>Holdings</h2><p class="sub">${p.holdings.filter(x => x.open).length} positions. Select a column to sort.</p></div>
+    <div class="seg" id="hFilter"><button aria-pressed="true" data-v="all">All</button><button aria-pressed="false" data-v="stock">Stocks</button><button aria-pressed="false" data-v="etf">Funds</button><button aria-pressed="false" data-v="closed">Closed</button></div></div>
+    <div class="tbl" id="holdTbl"></div></section>
+
+  <section class="panel"><div class="ph"><div><h2>Attribution</h2><p class="sub">Why the portfolio beat or lagged its benchmark (Brinson-Fachler by asset class) and which holdings drove return</p></div>
+    <div class="seg" id="aPer">${['YTD', '1Y', 'SI'].map(x => `<button aria-pressed="${x === 'YTD'}" data-v="${x}">${x === 'SI' ? 'Since inception' : x}</button>`).join('')}</div></div>
+    <div class="g2" style="gap:18px"><div id="brinson"></div><div><div class="note" style="margin-bottom:6px">Contribution to return: top and bottom 8</div><div class="chart" id="ctrChart"></div></div></div></section>
+
+  <section class="panel"><div class="ph"><div><h2>Risk</h2><p class="sub">Current holdings, ${r.lookback_days} days of daily returns; realized figures from the last 12 months</p></div></div>
+    <div class="mini">
+      <div><div class="l">VaR 95% / 99%</div><div class="v">${pct(r.var95, 2)} / ${pct(r.var99, 2)}</div><div class="s">${mshort(r.var95_usd)} / ${mshort(r.var99_usd)} in a day</div></div>
+      <div><div class="l">Expected shortfall 95%</div><div class="v">${pct(r.es95, 2)}</div><div class="s">${mshort(r.es95_usd)} average bad day</div></div>
+      <div><div class="l">Volatility</div><div class="v">${pct(r.vol_exante)}</div><div class="s">benchmark ${pct(r.bench_vol)}</div></div>
+      <div><div class="l">Tracking error</div><div class="v">${pct(r.te_exante, 2)}</div><div class="s">realized ${pct(r.te_realized_1y, 2)}</div></div>
+      <div><div class="l">Beta</div><div class="v">${num(r.beta)}</div><div class="s">to its benchmark</div></div>
+      <div><div class="l">Sharpe / Sortino</div><div class="v">${num(r.sharpe_1y)} / ${num(r.sortino_1y)}</div><div class="s">T-bill rate ${pct(r.rf_1y)}</div></div>
+      <div><div class="l">Max drawdown</div><div class="v loss">${pct(r.max_drawdown)}</div><div class="s">${fdate(r.max_drawdown_date)} · now ${pct(r.current_drawdown)}</div></div>
+      <div><div class="l">Concentration</div><div class="v">${num(r.effective_n, 1)}</div><div class="s">effective holdings · top 10 ${pct(r.top10, 0)}</div></div>
+    </div>
+    <div class="g2" style="gap:18px;margin-top:14px">
+      <div><div class="note">Simulated daily returns of today's holdings</div><div class="chart" id="histChart"></div><div class="note" style="font-size:12px">Worst day ${spct(r.worst_day, 2)}, best day ${spct(r.best_day, 2)} (extreme tails folded into the end bars)</div></div>
+      <div><div class="note">Share of portfolio risk by holding (top 10)</div><div class="stack" id="rcStack"></div><div class="legend" id="rcLegend" style="margin:0 0 8px"></div><div class="chart" id="rcChart"></div></div>
+    </div></section>
+
+  <div class="g2">
+    <section class="panel" id="limits"><div class="ph"><div><h2>Compliance</h2><p class="sub">Mandate limits. Hard limits block trades; soft limits are monitored.</p></div></div><div class="tbl" id="limTbl"></div></section>
+    <section class="panel"><div class="ph"><div><h2>Stress tests</h2><p class="sub">Today's holdings through past crises and hypothetical shocks</p></div></div><div class="tbl" id="stressTbl"></div></section>
+  </div>
+
+  <div class="g2">
+    <section class="panel"><div class="ph"><div><h2>Rebalancing</h2><p class="sub">Positions outside tolerance (±20% of target, min 0.5 pt) and trades to bring them back</p></div></div><div id="rebal"></div></section>
+    <section class="panel"><div class="ph"><div><h2>Income</h2><p class="sub">Dividends and distributions received, and what today's holdings would pay over 12 months</p></div></div>
+      <div class="mini"><div><div class="l">Last 12 months</div><div class="v">${mshort(inc.ttm)}</div></div><div><div class="l">Projected 12 months</div><div class="v">${mshort(inc.projected_12m)}</div><div class="s">yield ${pct(inc.projected_yield, 2)}</div></div>
+      ${inc.coverage != null && inc.withdrawals_ttm > 0 ? `<div><div class="l">Covers client withdrawals</div><div class="v">${num(inc.coverage * 100, 0)}%</div><div class="s">${mshort(inc.withdrawals_ttm)} drawn in 12 months</div></div>` : ''}
+      ${ex.fixed_income.distribution_yield != null ? `<div><div class="l">Bond yield</div><div class="v">${pct(ex.fixed_income.distribution_yield, 2)}</div><div class="s">trailing distributions</div></div>` : ''}</div>
+      <div class="chart" id="incChart" style="margin-top:12px"></div>
+      <div class="note" style="margin-top:6px">Largest payers: ${inc.top_payers.slice(0, 5).map(t => `${esc(t.symbol)} ${mshort(t.amount)}`).join(' · ')}</div></section>
+  </div>
+
+  <section class="panel"><div class="ph"><div><h2>Trade blotter</h2><p class="sub">Latest trades. Visitor trades are marked and expire after 7 days.</p></div></div><div class="tbl">${blotterTable(p.blotter.slice(0, 12), false)}</div>
+    ${p.blotter.length > 12 ? `<details style="margin-top:8px"><summary>Show ${p.blotter.length - 12} earlier trades</summary><div class="tbl">${blotterTable(p.blotter.slice(12), false)}</div></details>` : ''}</section>`;
+  app.innerHTML = h;
+  app.querySelector('[data-jump="limits"]').addEventListener('click', e => { e.preventDefault(); document.getElementById('limits').scrollIntoView({ behavior: 'smooth' }); });
+
+  // performance chart
+  let mode = 'ret', range = 'SI';
+  const H = p.history;
+  const drawPerf = () => {
+    const box = document.getElementById('perfChart'), lg = document.getElementById('perfLegend');
+    const end = new Date(H.dates[H.dates.length - 1] + 'T12:00:00'); let from = null;
+    if (range === '1M') from = new Date(end - 31 * 864e5); else if (range === '3M') from = new Date(end - 92 * 864e5); else if (range === 'YTD') from = new Date(end.getFullYear() - 1, 11, 31); else if (range === '1Y') from = new Date(end - 366 * 864e5);
+    let i0 = from ? H.dates.findIndex(d => new Date(d + 'T12:00:00') >= from) : 0; if (i0 > 0) i0 -= 1; if (i0 < 0) i0 = 0;
+    const dates = H.dates.slice(i0);
+    if (mode === 'ret') {
+      const t0 = H.twr[i0], b0 = H.bench[i0]; const pr = H.twr.slice(i0).map(v => v / t0 - 1), bm = H.bench.slice(i0).map(v => v / b0 - 1);
+      lineChart(box, { dates, height: 270, zeroLine: true, fmtY: v => spct(v, 0),
+        series: [{ label: p.name, color: PCOL[id], values: pr, area: true }, { label: 'Benchmark', color: 'var(--bench)', values: bm, width: 1.5 }],
+        tipRows: i => [[p.name, spct(pr[i], 2), PCOL[id]], ['Benchmark', spct(bm[i], 2), 'var(--bench)'], ['Excess', bps(pr[i] - bm[i]), null, cls(pr[i] - bm[i])]] });
+      lg.innerHTML = `<span><i class="ln" style="background:${PCOL[id]}"></i>${esc(p.name)} (time-weighted)</span><span><i class="ln" style="background:var(--bench)"></i>${esc(p.benchmark)}</span>`;
+      document.getElementById('perfSub').textContent = `Cumulative return over the range: portfolio ${spct(pr[pr.length - 1], 2)}, benchmark ${spct(bm[bm.length - 1], 2)}`;
+    } else {
+      const v = H.value.slice(i0), f = H.net_flows.slice(i0);
+      lineChart(box, { dates, height: 270, series: [{ label: 'Market value', color: PCOL[id], values: v, area: true }, { label: 'Net client money in', color: 'var(--bench)', values: f, width: 1.5, dash: '0' }],
+        tipRows: i => [['Market value', money(v[i]), PCOL[id]], ['Net money in', money(f[i]), 'var(--bench)'], ['Investment gain', smoney(v[i] - f[i]), null, cls(v[i] - f[i])]] });
+      lg.innerHTML = `<span><i class="ln" style="background:${PCOL[id]}"></i>Market value</span><span><i class="ln" style="background:var(--bench)"></i>Net client money in (contributions − withdrawals)</span>`;
+      document.getElementById('perfSub').textContent = `Market value ${money(v[v.length - 1])}; investment gain over net money in ${smoney(v[v.length - 1] - f[f.length - 1])}`;
+    }
+  };
+  segment('pMode', v => { mode = v; drawPerf(); }); segment('pRange', v => { range = v; drawPerf(); }); onResize(drawPerf);
+
+  // allocation bars
+  const acRows = D.asset_classes.map(ac => ({ ac, w: ex.portfolio.asset_class[ac] || 0, t: Object.entries(p.model).filter(([s]) => (s === 'CASH' ? 'Cash & Equivalents' : (U[s] || {}).asset_class) === ac).reduce((a, [, v]) => a + v, 0), b: ex.benchmark.asset_class[ac] || 0 }));
+  const acMax = Math.max(...acRows.flatMap(r => [r.w, r.t, r.b]));
+  document.getElementById('acBars').innerHTML = acRows.map(r => `<div class="hbar"><span>${esc(r.ac)}</span><div class="track"><div class="b1" style="width:${r.w / acMax * 100}%;background:${AC_COL[r.ac]}"></div><div class="b2" style="width:${r.b / acMax * 100}%"></div><div class="tick" style="left:calc(${r.t / acMax * 100}% - 1px)" title="Model ${pct(r.t)}"></div></div><span class="v">${pct(r.w)}<span class="sub2">model ${pct(r.t, 0)}</span></span></div>`).join('');
+
+  const subs = Object.entries(ex.portfolio.sub_class).sort((a, b) => b[1] - a[1]); const sMax = subs.length ? subs[0][1] : 1;
+  document.getElementById('subBars').innerHTML = subs.map(([k, v]) => `<div class="hbar"><span>${esc(k)}</span><div class="track"><div class="b1" style="top:5px;width:${v / sMax * 100}%;background:var(--ink-2)"></div></div><span class="v">${pct(v)}</span></div>`).join('');
+  // exposure bars
+  const drawEx = dim => { const keys = dim === 'sector' ? D.sectors : D.regions; const rows = keys.map(k => ({ k, w: ex.portfolio[dim][k] || 0, b: ex.benchmark[dim][k] || 0 })).filter(r => r.w > 0.0005 || r.b > 0.0005).sort((a, b) => b.w - a.w);
+    const mx = Math.max(...rows.flatMap(r => [r.w, r.b]), 0.01);
+    document.getElementById('exBars').innerHTML = rows.map(r => `<div class="hbar"><span>${esc(r.k)}</span><div class="track"><div class="b1" style="width:${r.w / mx * 100}%;background:${PCOL[id]}"></div><div class="b2" style="width:${r.b / mx * 100}%"></div></div><span class="v">${pct(r.w)}<span class="sub2 ${cls(r.w - r.b)}">${spct(r.w - r.b)} vs bench</span></span></div>`).join('') + '<div class="legend"><span><i style="background:' + PCOL[id] + '"></i>Portfolio</span><span><i style="background:var(--bench);opacity:.55"></i>Benchmark</span></div>'; };
+  segment('exDim', drawEx); drawEx('sector');
+
+  // holdings
+  let hf = 'all', sortKey = 'value', sortDir = -1;
+  const ctrSI = p.ctr.SI.by_symbol, ctrY = p.ctr.YTD.by_symbol;
+  const drawHold = () => {
+    let rows = p.holdings.filter(x => hf === 'closed' ? !x.open : x.open && (hf === 'all' || x.kind === hf));
+    rows = rows.map(x => ({ ...x, drift: x.weight - x.target, ctr_ytd: ctrY[x.symbol] || 0, ctr_si: ctrSI[x.symbol] || 0, total: x.unrealized + x.realized + x.dividends - x.fees }));
+    rows.sort((a, b) => sortDir * ((a[sortKey] ?? -1e18) > (b[sortKey] ?? -1e18) ? 1 : (a[sortKey] ?? -1e18) < (b[sortKey] ?? -1e18) ? -1 : 0));
+    const th = (k, l, n = true) => `<th class="${n ? 'n ' : ''}sort" data-k="${k}">${l}${sortKey === k ? (sortDir < 0 ? ' ↓' : ' ↑') : ''}</th>`;
+    const tot = rows.reduce((a, x) => { a.v += x.value; a.w += x.weight; a.u += x.unrealized; a.c += x.ctr_ytd; a.d += x.day_change; return a; }, { v: 0, w: 0, u: 0, c: 0, d: 0 });
+    document.getElementById('holdTbl').innerHTML = `<table><thead><tr>${th('symbol', 'Holding', false)}${th('asset_class', 'Class', false)}${th('weight', 'Weight')}${th('target', 'Target')}${th('drift', 'Drift')}${th('value', 'Value')}${th('day_change', 'Today')}${th('unrealized', 'Unrealized')}${th('total', 'Total P&L')}${th('ctr_ytd', 'YTD contribution')}<th></th></tr></thead><tbody>
+    ${rows.map(x => `<tr><td><span class="sym">${esc(x.symbol)}</span>${x.kind === 'etf' ? '<span class="chip">fund</span>' : ''}${x.visitor ? '<span class="chip v">visitor</span>' : ''}<span class="sub2">${esc(x.name)}</span></td>
+      <td>${esc(x.asset_class)}<span class="sub2">${esc(x.kind === 'stock' ? x.sector : x.sub_class)}</span></td>
+      <td class="n">${pct(x.weight, 2)}</td><td class="n">${pct(x.target, 2)}</td><td class="n ${Math.abs(x.drift) > Math.max(0.005, 0.2 * x.target) ? 'loss' : 'muted'}">${spct(x.drift, 2)}</td>
+      <td class="n">${money(x.value)}<span class="sub2">${units(x.qty)} @ ${money(x.price, 2)}</span></td><td class="n ${cls(x.day_change)}">${smoney(x.day_change)}</td>
+      <td class="n ${cls(x.unrealized)}">${smoney(x.unrealized)}${x.avg_cost ? `<span class="sub2">${spct(x.price / x.avg_cost - 1)} on cost</span>` : ''}</td>
+      <td class="n ${cls(x.total)}">${smoney(x.total)}</td><td class="n ${cls(x.ctr_ytd)}">${bps(x.ctr_ytd)}</td>
+      <td class="n"><button class="linkbtn" data-trade="${esc(x.symbol)}">Trade</button></td></tr>`).join('')}</tbody>
+    ${hf !== 'closed' ? `<tfoot><tr><td>Total ${hf === 'all' ? 'securities' : hf === 'stock' ? 'stocks' : 'funds'}</td><td></td><td class="n">${pct(tot.w, 2)}</td><td></td><td></td><td class="n">${money(tot.v)}</td><td class="n ${cls(tot.d)}">${smoney(tot.d)}</td><td class="n ${cls(tot.u)}">${smoney(tot.u)}</td><td></td><td class="n ${cls(tot.c)}">${bps(tot.c)}</td><td></td></tr>
+    ${hf === 'all' ? `<tr><td>Cash</td><td></td><td class="n">${pct(p.cash / p.value, 2)}</td><td class="n">${pct(p.model.CASH || 0, 2)}</td><td></td><td class="n">${money(p.cash)}</td><td colspan="5"></td></tr>` : ''}</tfoot>` : ''}</table>`;
+    document.querySelectorAll('#holdTbl th.sort').forEach(t => t.addEventListener('click', () => { const k = t.dataset.k; if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = ['symbol', 'asset_class'].includes(k) ? 1 : -1; } drawHold(); }));
+    document.querySelectorAll('#holdTbl [data-trade]').forEach(b => b.addEventListener('click', () => openTrade({ portfolio: id, symbol: b.dataset.trade })));
+  };
+  segment('hFilter', v => { hf = v; drawHold(); }); drawHold();
+
+  // attribution
+  const drawAttr = per => {
+    const b = p.brinson[per], c = p.ctr[per];
+    const classes = D.asset_classes.filter(k => b.classes[k] && (b.classes[k].w_port > 0.0005 || b.classes[k].w_bench > 0));
+    document.getElementById('brinson').innerHTML = `<div class="tbl"><table><thead><tr><th>Asset class</th><th class="n">Weight</th><th class="n">Return</th><th class="n">Allocation</th><th class="n">Selection</th><th class="n">Interaction</th><th class="n">Total</th></tr></thead><tbody>
+      ${classes.map(k => { const x = b.classes[k]; return `<tr><td>${esc(k)}</td><td class="n">${pct(x.w_port)}<span class="sub2">bench ${pct(x.w_bench, 0)}</span></td><td class="n">${x.r_port == null ? '–' : spct(x.r_port)}<span class="sub2">bench ${x.r_bench == null ? '–' : spct(x.r_bench)}</span></td>
+        <td class="n ${cls(x.allocation)}">${bps(x.allocation)}</td><td class="n ${cls(x.selection)}">${bps(x.selection)}</td><td class="n ${cls(x.interaction)}">${bps(x.interaction)}</td><td class="n ${cls(x.total)}">${bps(x.total)}</td></tr>`; }).join('')}
+      <tr><td>Trading costs</td><td></td><td></td><td></td><td></td><td></td><td class="n ${cls(b.costs)}">${bps(b.costs)}</td></tr></tbody>
+      <tfoot><tr><td>Active return</td><td></td><td></td><td class="n ${cls(b.totals.allocation)}">${bps(b.totals.allocation)}</td><td class="n ${cls(b.totals.selection)}">${bps(b.totals.selection)}</td><td class="n ${cls(b.totals.interaction)}">${bps(b.totals.interaction)}</td><td class="n ${cls(b.active_arith)}">${bps(b.active_arith)}</td></tr></tfoot></table></div>
+      <p class="note" style="margin-top:8px">Effects are summed daily (arithmetic). Compounded, the portfolio ${b.active_geo >= 0 ? 'beat' : 'lagged'} its benchmark by <b class="${cls(b.active_geo)}">${spct(Math.abs(b.active_geo), 2).replace(/^[+−]/, '')}</b> over the period; the gap to the arithmetic total is compounding.
+      <b>Allocation</b>: over/underweighting asset classes. <b>Selection</b>: picking holdings that beat or lagged their class.</p>`;
+    const items = Object.entries(c.by_symbol).sort((a, b) => b[1] - a[1]); const sel = items.length > 16 ? [...items.slice(0, 8), ...items.slice(-8)] : items;
+    divBars(document.getElementById('ctrChart'), sel.map(([s, v]) => ({ label: s, value: v, rows: [['Contribution', bps(v)], ['Weight now', pct((p.holdings.find(x => x.symbol === s) || {}).weight || 0, 2)]] })), v => bps(v));
+  };
+  let per = 'YTD'; segment('aPer', v => { per = v; drawAttr(v); }); onResize(() => drawAttr(per));
+
+  // risk visuals
+  onResize(() => histogram(document.getElementById('histChart'), r.var_hist, r.var_hist_edges, r.var95));
+  const rc = Object.entries(r.risk_contrib), top = rc.slice(0, 10), restV = rc.slice(10).reduce((a, [, v]) => a + v, 0);
+  document.getElementById('rcStack').innerHTML = D.asset_classes.filter(k => (r.risk_contrib_class[k] || 0) > 0.001).map(k => `<span style="flex:${r.risk_contrib_class[k]};background:${AC_COL[k]}" title="${esc(k)} ${pct(r.risk_contrib_class[k])}"></span>`).join('');
+  document.getElementById('rcLegend').innerHTML = D.asset_classes.filter(k => Math.abs(r.risk_contrib_class[k] || 0) > 0.001).map(k => `<span><i style="background:${AC_COL[k]}"></i>${esc(k)} ${pct(r.risk_contrib_class[k], 0)} of risk</span>`).join('');
+  onResize(() => divBars(document.getElementById('rcChart'), [...top.map(([s, v]) => ({ label: s, value: v, color: AC_COL[(U[s] || {}).asset_class] || 'var(--s1)', rows: [['Share of risk', pct(v, 1)], ['Weight', pct((p.holdings.find(x => x.symbol === s) || {}).weight || 0, 2)]] })), { label: `Other ${rc.length - 10}`, value: restV, color: 'var(--bench)' }], v => pct(v, 1)));
+
+  // compliance
+  document.getElementById('limTbl').innerHTML = `<table><thead><tr><th>Limit</th><th class="n">Now</th><th>Range</th><th></th><th>Status</th></tr></thead><tbody>
+    ${p.limits.map(l => { const f = l.unit === 'years' ? v => v == null ? '–' : num(v, 1) : v => pct(v, 1);
+      const hi = l.max != null ? l.max : Math.max(l.value || 0, (l.min || 0) * 1.5, 0.01), scale = Math.max(hi * 1.25, (l.value || 0) * 1.05, 1e-9);
+      const zoneL = (l.min != null ? l.min : 0) / scale * 100, zoneW = ((l.max != null ? l.max : scale) - (l.min != null ? l.min : 0)) / scale * 100;
+      return `<tr><td>${esc(l.label)}${l.detail ? ` <span class="muted">${esc(l.detail)}</span>` : ''}<span class="sub2">${l.severity === 'hard' ? 'Hard limit, blocks trades' : 'Soft limit, monitored'}</span></td>
+      <td class="n">${f(l.value)}</td><td class="ink2">${l.min != null && l.max != null ? f(l.min) + ' – ' + f(l.max) : l.max != null ? '≤ ' + f(l.max) : '≥ ' + f(l.min)}</td>
+      <td style="min-width:100px"><div class="gauge"><div class="zone" style="left:${zoneL}%;width:${Math.min(100 - zoneL, zoneW)}%"></div><div class="pin" style="left:calc(${Math.min(100, Math.max(0, (l.value || 0) / scale * 100))}% - 1px);background:${l.status === 'breach' ? 'var(--loss)' : l.status === 'warning' ? 'var(--warn)' : 'var(--ink)'}"></div></div></td>
+      <td><span class="status ${l.status}">${l.status === 'ok' ? 'Within' : l.status === 'warning' ? 'Near limit' : 'Breach'}</span></td></tr>`; }).join('')}</tbody></table>
+    <p class="note" style="margin-top:8px">Sector and region figures use approximate look-through weights for funds. VaR and tracking error are recomputed on every refresh.</p>`;
+
+  // stress
+  document.getElementById('stressTbl').innerHTML = `<table><thead><tr><th>Scenario</th><th class="n">Portfolio</th><th class="n">P&amp;L</th><th class="n">Benchmark</th><th>Biggest drags</th></tr></thead><tbody>
+    ${p.stress.map(s => `<tr><td>${esc(s.name)}<span class="sub2">${s.type === 'historical' ? fdate(s.start) + ' – ' + fdate(s.end) : esc(s.description)}</span>${Object.keys(s.proxied || {}).length ? `<span class="sub2">Proxied (no history then): ${Object.entries(s.proxied).map(([a, b]) => esc(a) + '→' + esc(b)).join(', ')}</span>` : ''}</td>
+      <td class="n ${cls(s.portfolio)}">${spct(s.portfolio)}</td><td class="n ${cls(s.pnl)}">${mshort(s.pnl)}</td><td class="n">${spct(s.benchmark)}<span class="sub2 ${cls(s.portfolio - s.benchmark)}">${bps(s.portfolio - s.benchmark)} relative</span></td>
+      <td class="ink2" style="white-space:normal;min-width:140px">${s.worst.slice(0, 3).filter(w => w.contribution < 0).map(w => `${esc(w.symbol)} ${spct(w.contribution, 1)}`).join(', ') || '–'}</td></tr>`).join('')}</tbody></table>
+    <p class="note" style="margin-top:8px">Historical scenarios replay each holding's actual return over the window (holdings with no history then use a sector or asset-class proxy). Hypothetical shocks use 2-year betas and bond durations.</p>`;
+
+  // rebalancing
+  const rb = p.rebalancing, out = rb.rows.filter(r => r.outside);
+  document.getElementById('rebal').innerHTML = (rb.trades.length ? `<div class="tbl"><table><thead><tr><th>Trade</th><th class="n">Quantity</th><th class="n">Notional</th><th class="n">Weight</th><th class="n">Est. cost</th><th></th></tr></thead><tbody>
+    ${rb.trades.map(t => `<tr><td><span class="${t.side === 'buy' ? 'gain' : 'loss'}">${t.side === 'buy' ? 'Buy' : 'Sell'}</span> <span class="sym">${esc(t.symbol)}</span><span class="sub2">${esc(t.reason)}</span></td><td class="n">${units(t.qty)}</td><td class="n">${money(t.notional)}</td><td class="n">${pct(t.from, 2)} → ${pct(t.to, 2)}</td><td class="n">${money(t.est_cost)}</td>
+      <td class="n"><button class="linkbtn" data-rb="${esc(t.symbol)}|${t.side}|${t.qty}">Trade</button></td></tr>`).join('')}</tbody></table></div>
+    <p class="note" style="margin-top:8px">Turnover ${pct(rb.turnover, 2)} of the portfolio; net cash ${smoney(rb.net_cash)}.</p>` : '<p class="note">Every holding is within tolerance of its model weight. No trades needed.</p>') +
+    `<details style="margin-top:6px"><summary>Drift by holding</summary><div class="tbl"><table><thead><tr><th>Holding</th><th class="n">Weight</th><th class="n">Target</th><th class="n">Drift</th><th class="n">Tolerance</th></tr></thead><tbody>
+    ${rb.rows.map(r => `<tr><td class="sym">${esc(r.symbol === 'CASH' ? 'Cash' : r.symbol)}</td><td class="n">${pct(r.weight, 2)}</td><td class="n">${pct(r.target, 2)}</td><td class="n ${r.outside ? 'loss' : 'muted'}">${spct(r.drift, 2)}</td><td class="n">±${pct(r.tolerance, 2)}</td></tr>`).join('')}</tbody></table></div></details>`;
+  document.querySelectorAll('[data-rb]').forEach(b => b.addEventListener('click', () => { const [s, side, q] = b.dataset.rb.split('|'); openTrade({ portfolio: id, symbol: s, side, qty: q }); }));
+
+  // income chart (monthly columns, last 24 months)
+  onResize(() => { const box = document.getElementById('incChart'); const m = inc.by_month.slice(-24); if (!m.length) { box.innerHTML = ''; return; }
+    box.replaceChildren(); const W = Math.max(280, box.clientWidth), Hh = 150, pl = 44, pb = 22, pt = 8;
+    const svg = el('svg', { viewBox: `0 0 ${W} ${Hh}`, height: Hh }, box); const tip = makeTip(box); const mx = Math.max(...m.map(x => x.amount)); const tk = niceTicks(0, mx, 3); const top = tk[tk.length - 1];
+    const band = (W - pl) / m.length, bw = Math.min(18, band * 0.7);
+    tk.forEach(v => { const yy = pt + (top - v) / top * (Hh - pt - pb); el('line', { x1: pl, x2: W, y1: yy, y2: yy, stroke: v === 0 ? 'var(--axis)' : 'var(--line)' }, svg); el('text', { x: pl - 6, y: yy + 4, 'text-anchor': 'end' }, svg).textContent = mshort(v); });
+    m.forEach((x, i) => { const hgt = x.amount / top * (Hh - pt - pb), cx = pl + band * i + band / 2; const rr = Math.min(3, hgt);
+      el('path', { d: `M${cx - bw / 2},${Hh - pb}V${Hh - pb - hgt + rr}Q${cx - bw / 2},${Hh - pb - hgt} ${cx - bw / 2 + rr},${Hh - pb - hgt}H${cx + bw / 2 - rr}Q${cx + bw / 2},${Hh - pb - hgt} ${cx + bw / 2},${Hh - pb - hgt + rr}V${Hh - pb}Z`, fill: PCOL[id] }, svg);
+      if (i % Math.ceil(m.length / 8) === 0) el('text', { x: cx, y: Hh - 6, 'text-anchor': 'middle' }, svg).textContent = fdate(x.month + '-01', { month: 'short', year: '2-digit' });
+      const hr = el('rect', { x: pl + band * i, y: pt, width: band, height: Hh - pt - pb, fill: 'transparent' }, svg);
+      hr.addEventListener('pointerenter', () => { fillTip(tip, fdate(x.month + '-01', { month: 'long', year: 'numeric' }), [['Income received', money(x.amount)]]); const r2 = svg.getBoundingClientRect(); placeTip(tip, box, cx * r2.width / W, (Hh - pb - hgt) * r2.height / Hh); });
+      hr.addEventListener('pointerleave', () => tip.style.opacity = 0); }); });
+}
+function segment(elId, fn) { const g = document.getElementById(elId); g.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+  [...g.children].forEach(x => x.setAttribute('aria-pressed', x === b)); fn(b.dataset.v); }); }
+
+// ================= TRADE TICKET (with pre-trade compliance preview)
+const dlg = document.getElementById('dlg'), body = document.getElementById('dlgBody');
+let apiState = null;
+async function checkApi() { if (location.protocol === 'file:') return 'none'; try { const r = await fetch('api/status', { cache: 'no-store' }); if (!r.ok) return 'none'; return (await r.json()).configured; } catch { return 'none'; } }
+function state(pid) { const p = P[pid]; const qty = {}; p.holdings.filter(h => h.open).forEach(h => qty[h.symbol] = h.qty); return { qty, cash: p.cash }; }
+function measures(qty, cash) { let tv = cash; const w = {}; for (const s in qty) tv += qty[s] * U[s].price; for (const s in qty) w[s] = qty[s] * U[s].price / tv;
+  const ac = {}; for (const s in w) for (const [k, x] of Object.entries(U[s].classify.asset_class)) ac[k] = (ac[k] || 0) + w[s] * x; ac['Cash & Equivalents'] = (ac['Cash & Equivalents'] || 0) + cash / tv;
+  const pick = kind => Object.entries(w).filter(([s]) => U[s].kind === kind).sort((a, b) => b[1] - a[1])[0] || ['', 0];
+  return { tv, w, cash_w: cash / tv, ac, stock: pick('stock'), fund: pick('etf') }; }
+function ruleVal(rule, m) { if (rule === 'max_single_stock') return [m.stock[1], m.stock[0]]; if (rule === 'max_single_fund') return [m.fund[1], m.fund[0]]; if (rule === 'min_cash' || rule === 'cash') return [m.cash_w, ''];
+  const n = { equity: 'Equity', fixed_income: 'Fixed Income', real_assets: 'Real Assets' }[rule]; return n ? [m.ac[n] || 0, ''] : [null, '']; }
+const outside = (v, lo, hi) => v == null ? 0 : hi != null && v > hi ? v - hi : lo != null && v < lo ? lo - v : 0;
+const LBL = { max_single_stock: 'Single stock', max_single_fund: 'Single fund', min_cash: 'Cash ≥ 0', cash: 'Uninvested cash', equity: 'Equity allocation', fixed_income: 'Fixed income allocation', real_assets: 'Real assets allocation' };
+function pretrade(t) {
+  const res = { ok: false, msg: '', checks: [], notional: 0, fees: 0, after: null };
+  const sym = (t.symbol || '').toUpperCase(), u = U[sym]; const q = Number(t.qty);
+  if (!u) { res.msg = sym ? `${sym} isn't in the approved universe.` : 'Pick a symbol from the approved list.'; return res; }
+  if (!(q > 0) || Math.floor(q) !== q) { res.msg = 'Enter a whole number of shares.'; return res; }
+  const st = state(t.portfolio), before = measures(st.qty, st.cash), held = st.qty[sym] || 0;
+  res.notional = q * u.price; res.fees = Math.max(5, res.notional * 2e-4);
+  if (t.side === 'sell' && q > held) { res.msg = `The portfolio holds ${units(held)} ${sym}; short selling isn't allowed.`; return res; }
+  if (res.notional > 0.25 * before.tv) { res.msg = `One trade can't exceed 25% of the portfolio (${mshort(0.25 * before.tv)}).`; return res; }
+  const qty = { ...st.qty }; qty[sym] = held + (t.side === 'buy' ? q : -q); if (Math.abs(qty[sym]) < 1e-9) delete qty[sym];
+  const cash = st.cash - (t.side === 'buy' ? res.notional : -res.notional) - res.fees;
+  if (cash < 0) { res.msg = `Not enough cash: needs ${money(res.notional + res.fees)}, the portfolio has ${money(st.cash)}.`; return res; }
+  const after = measures(qty, cash); res.after = after; let blocked = false;
+  D.limits[t.portfolio].forEach(l => { const [v0] = ruleVal(l.rule, before), [v1, who] = ruleVal(l.rule, after); if (v1 == null) return;
+    const d0 = outside(v0, l.min, l.max), d1 = outside(v1, l.min, l.max); const worse = d1 > d0 + 1e-12;
+    if (worse && l.severity === 'hard') blocked = true;
+    res.checks.push({ label: LBL[l.rule] || l.rule, who, v: v1, l, state: worse ? (l.severity === 'hard' ? 'block' : 'warn') : d1 > 0 ? 'still' : 'ok' }); });
+  res.ok = !blocked; if (blocked) res.msg = 'Blocked by pre-trade compliance: the trade would breach a hard mandate limit.';
+  return res;
+}
+function openTrade(pre = {}) {
+  const st = { portfolio: current !== 'overview' ? current : IDS[0], side: 'buy', symbol: '', qty: '', ...pre };
+  if (pre.side) st.side = pre.side;
+  function render(err) {
+    const res = st.symbol && st.qty ? pretrade(st) : null; const u = U[(st.symbol || '').toUpperCase()]; const held = u ? (state(st.portfolio).qty[u.symbol] || 0) : 0;
+    body.innerHTML = `<h3 id="dlgTitle">New trade</h3><p class="note" style="margin:0 0 12px">Executes at the latest market price with 2 bp commission. Visitor trades expire after 7 days.</p>
+      ${apiState === 'none' ? '<p class="msg info">Trading works on the hosted dashboard; this copy can only preview.</p>' : apiState === false ? '<p class="msg info">Trading isn\'t switched on for this site yet.</p>' : ''}
+      ${err ? `<p class="msg err">${esc(err)}</p>` : ''}
+      <div class="field"><label for="t-p">Portfolio</label><select id="t-p">${IDS.map(id => `<option value="${id}" ${id === st.portfolio ? 'selected' : ''}>${esc(P[id].name)}</option>`).join('')}</select></div>
+      <div class="field"><div class="seg full" id="t-side"><button type="button" class="buy" data-v="buy" aria-pressed="${st.side === 'buy'}">Buy</button><button type="button" class="sell" data-v="sell" aria-pressed="${st.side === 'sell'}">Sell</button></div></div>
+      <div class="two"><div class="field"><label for="t-s">Symbol</label><input id="t-s" list="t-list" autocomplete="off" autocapitalize="characters" placeholder="e.g. MSFT" value="${esc(st.symbol)}"><datalist id="t-list">${D.universe.map(x => `<option value="${esc(x.symbol)}">${esc(x.name)}</option>`).join('')}</datalist></div>
+      <div class="field"><label for="t-q">Shares${held && st.side === 'sell' ? ` <button type="button" class="linkbtn" id="t-all">all ${units(held)}</button>` : ''}</label><input id="t-q" inputmode="numeric" value="${esc(st.qty)}"></div></div>
+      <div class="preview" id="t-prev">${u ? `<b>${esc(u.symbol)}</b> ${esc(u.name)} · ${money(u.price, 2)} · held ${units(held)}` : 'Choose a symbol from the approved list (stocks and funds).'}
+      ${res ? (res.after || res.notional ? `<br>${st.side === 'buy' ? 'Buy' : 'Sell'} ${units(st.qty)} = <b>${money(res.notional)}</b> + ${money(res.fees, 2)} commission${res.after ? ` → <b>${pct(res.after.w[u.symbol] || 0, 2)}</b> of the portfolio` : ''}` : '') : ''}
+      ${res && res.checks.length ? `<ul class="checks">${res.checks.map(c => `<li><span class="status ${c.state === 'block' ? 'breach' : c.state === 'warn' || c.state === 'still' ? 'warning' : 'ok'}">${c.state === 'block' ? 'Blocks' : c.state === 'warn' ? 'Warning' : c.state === 'still' ? 'Already outside' : 'OK'}</span><span>${esc(c.label)}${c.who ? ' (' + esc(c.who) + ')' : ''}: ${pct(c.v, 1)} vs ${c.l.min != null && c.l.max != null ? pct(c.l.min, 0) + '–' + pct(c.l.max, 0) : c.l.max != null ? '≤ ' + pct(c.l.max, 0) : '≥ ' + pct(c.l.min, 0)}</span></li>`).join('')}</ul>` : ''}
+      ${res && res.msg ? `<p class="msg err" style="margin:8px 0 0">${esc(res.msg)}</p>` : ''}</div>
+      <div class="dlg-foot"><button type="button" class="btn ghost" id="t-cancel">Cancel</button><button type="button" class="btn" id="t-go" ${res && res.ok && apiState === true ? '' : 'disabled'}>${st.side === 'buy' ? 'Place buy order' : 'Place sell order'}</button></div>`;
+    body.querySelector('#t-p').addEventListener('change', e => { st.portfolio = e.target.value; render(); });
+    body.querySelector('#t-side').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { st.side = b.dataset.v; render(); } });
+    const s = body.querySelector('#t-s'), q = body.querySelector('#t-q');
+    s.addEventListener('change', () => { st.symbol = s.value.trim().toUpperCase(); render(); });
+    q.addEventListener('change', () => { st.qty = q.value.replace(/[,\s]/g, ''); render(); });
+    [s, q].forEach(i => i.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); i.dispatchEvent(new Event('change')); } }));
+    const all = body.querySelector('#t-all'); if (all) all.addEventListener('click', () => { st.qty = String(held); render(); });
+    body.querySelector('#t-cancel').addEventListener('click', () => dlg.close());
+    body.querySelector('#t-go').addEventListener('click', submit);
+  }
+  async function submit() {
+    const b = body.querySelector('#t-go'); b.disabled = true; b.textContent = 'Sending…';
+    try { const r = await fetch('api/log', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ portfolio: st.portfolio, side: st.side, symbol: st.symbol.toUpperCase(), qty: Number(st.qty) }) });
+      const j = await r.json().catch(() => ({})); if (!r.ok) return render(j.error || `Couldn't send the order (HTTP ${r.status}).`); progress(j.id); }
+    catch (e) { render('Network error. Check your connection and try again.'); }
+  }
+  render(); if (!dlg.open) dlg.showModal();
+  if (apiState === null) checkApi().then(v => { apiState = v; if (dlg.open) render(); });
+}
+function progress(id) {
+  body.innerHTML = `<h3>Order sent</h3><p class="note" id="pg-note" style="margin:0 0 8px">Compliance check, booking and a full dashboard rebuild usually take 1–2 minutes.</p>
+    <ul class="steps"><li class="done" id="s1"><span class="dot">✓</span>Sent</li><li class="active" id="s2"><span class="dot"></span>Pre-trade compliance and booking</li><li id="s3"><span class="dot"></span>Rebuilding the dashboard</li></ul>
+    <div id="pg-msg"></div><div class="dlg-foot"><button type="button" class="btn ghost" id="pg-close">Close</button></div>`;
+  body.querySelector('#pg-close').addEventListener('click', () => dlg.close());
+  const set = (n, s, mark = '') => { const li = body.querySelector('#s' + n); if (li) { li.className = s; li.querySelector('.dot').textContent = mark; } };
+  const t0 = Date.now();
+  const tick = async () => { if (!dlg.open) return;
+    try { const j = await (await fetch('api/status?id=' + encodeURIComponent(id), { cache: 'no-store' })).json();
+      if (j.log && j.log.status === 'completed') {
+        if (j.log.conclusion !== 'success') { set(2, 'fail', '!'); body.querySelector('#pg-msg').innerHTML = `<p class="msg err">${esc(j.log.message || 'The order was rejected.')}</p>`; return; }
+        set(2, 'done', '✓'); set(3, 'active'); if (j.log.message) body.querySelector('#pg-msg').innerHTML = `<p class="msg good">${esc(j.log.message)}</p>`;
+        if (j.refresh && j.refresh.status === 'completed') { if (j.refresh.conclusion === 'success') { set(3, 'done', '✓'); setTimeout(() => location.reload(), 1800); return; } set(3, 'fail', '!'); return; } } }
+    catch (e) {}
+    if (Date.now() - t0 < 6 * 60000) setTimeout(tick, 4000); else body.querySelector('#pg-note').textContent = 'Still working; reload in a minute to see the trade.'; };
+  setTimeout(tick, 3000);
+}
+document.getElementById('tradeBtn').addEventListener('click', () => openTrade());
+
+route();
+const born = Date.now(); setInterval(() => { if (document.visibilityState === 'visible' && !dlg.open && Date.now() - born > 15 * 60000) location.reload(); }, 30000);
+})();
+</script>
+</body>
+</html>

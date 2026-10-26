@@ -1,0 +1,92 @@
+name: Refresh dashboard
+
+on:
+  schedule:
+    # Every 15 minutes on weekdays, 13:00-21:45 UTC (US market hours in summer and winter).
+    - cron: "*/15 13-21 * * 1-5"
+  push:
+    branches: [main]
+    paths: ["wealth/**", "templates/**", "functions/**", ".github/workflows/refresh.yml", "data/*.csv"]
+  workflow_dispatch:
+    inputs:
+      quick:
+        description: Skip re-sending secrets to Cloudflare
+        type: boolean
+        default: false
+      snapshot:
+        description: Also save the built page to the "snapshot" branch
+        type: boolean
+        default: false
+
+concurrency:
+  group: refresh
+  cancel-in-progress: true
+
+permissions:
+  contents: write  # snapshot branch only
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      PROJECT: ${{ vars.CLOUDFLARE_PROJECT || 'portfolio-desk-demo' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      - name: Build dashboard
+        run: python -m wealth.build --out site
+
+      - name: Deploy to Cloudflare Pages and verify
+        if: env.CF_TOKEN != '' && env.CF_ACCOUNT != ''
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          LOGTOK: ${{ secrets.GH_LOG_TOKEN }}
+          REPO: ${{ github.repository }}
+          EVENT: ${{ github.event_name }}
+          QUICK: ${{ inputs.quick }}
+          WRANGLER_SEND_METRICS: "false"
+        run: |
+          report() {  # $1 title, $2 log file
+            msg=$(sed -e 's/\x1b\[[0-9;]*m//g' "$2" | LC_ALL=C tr -cd '\12\40-\176' | grep -v '^\s*$' | tail -n 12 | tr '\n' ' ' | cut -c1-900)
+            echo "::error title=$1::$msg"
+          }
+          wr() { npx -y wrangler@4 "$@"; }
+          if ! wr pages project list > list.txt 2>&1; then report "wrangler project list failed" list.txt; exit 1; fi
+          if ! grep -qw "$PROJECT" list.txt; then
+            if ! wr pages project create "$PROJECT" --production-branch=main > create.txt 2>&1; then report "project create failed" create.txt; exit 1; fi
+            wr pages project list > list.txt 2>&1 || true
+          fi
+          domain=$(sed -e 's/\x1b\[[0-9;]*m//g' list.txt | grep -w "$PROJECT" | grep -oE '[a-z0-9-]+\.pages\.dev' | head -1)
+          URL="https://${domain:-$PROJECT.pages.dev}/"
+          if [ -n "$LOGTOK" ] && [ "$EVENT" != "schedule" ] && [ "$QUICK" != "true" ]; then
+            for kv in "GH_LOG_TOKEN=$LOGTOK" "GH_REPO=$REPO"; do
+              if ! printf '%s' "${kv#*=}" | wr pages secret put "${kv%%=*}" --project-name="$PROJECT" > secret.txt 2>&1; then report "setting ${kv%%=*} failed" secret.txt; exit 1; fi
+            done
+          fi
+          if ! wr pages deploy site --project-name="$PROJECT" --branch=main --commit-dirty=true > deploy.txt 2>&1; then report "deploy failed" deploy.txt; exit 1; fi
+          for i in $(seq 1 12); do n=$(curl -s "$URL" | grep -c 'id="data"' || true); [ "$n" -ge 1 ] && break; sleep 5; done
+          [ "$n" -ge 1 ] || { echo "::error title=Site check failed::$URL did not serve the dashboard"; exit 1; }
+          api=$(curl -s "${URL}api/status" || true)
+          case "$api" in
+            *'"configured":true'*) t="ready";;
+            *'"configured":false'*) t="not set up (add the GH_LOG_TOKEN secret, then run this workflow)";;
+            *) t="status endpoint did not answer";;
+          esac
+          echo "::notice title=Deployed::$URL (trading: $t)"
+
+      - name: Save snapshot (manual runs only)
+        if: github.event_name == 'workflow_dispatch' && inputs.snapshot
+        run: |
+          cp site/index.html /tmp/index.html
+          git config user.name "dashboard-bot"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q --orphan snapshot-tmp && git rm -rfq . && cp /tmp/index.html index.html
+          git add index.html && git commit -qm "Dashboard snapshot" && git push -qf origin HEAD:snapshot

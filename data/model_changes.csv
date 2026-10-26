@@ -1,0 +1,5 @@
+date,portfolio,from_symbol,to_symbol,reason
+2024-07-01,multi_asset,IEF,TIP,add inflation protection
+2024-10-01,balanced,DIS,HD,swap media for home-improvement exposure
+2025-01-02,growth,AMD,NOW,rotate part of semiconductor exposure into software
+2025-07-01,equity_income,VZ,TXN,replace telecom with a dividend-growing semiconductor name

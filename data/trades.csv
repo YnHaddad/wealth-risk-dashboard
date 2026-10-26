@@ -1,0 +1,719 @@
+trade_id,date,portfolio,symbol,side,quantity,price,amount,fees,reason,source
+S-BAL-20240102-002,2024-01-02,balanced,IVV,buy,5896,474.89,2799951.44,559.99,Initial allocation,simulated
+S-BAL-20240102-003,2024-01-02,balanced,VEA,buy,37998,47.37,1799965.26,359.99,Initial allocation,simulated
+S-BAL-20240102-004,2024-01-02,balanced,VWO,buy,19694,40.62,799970.28,159.99,Initial allocation,simulated
+S-BAL-20240102-005,2024-01-02,balanced,USMV,buy,7659,78.33,599929.47,119.99,Initial allocation,simulated
+S-BAL-20240102-006,2024-01-02,balanced,MSFT,buy,1348,370.87,499932.76,99.99,Initial allocation,simulated
+S-BAL-20240102-007,2024-01-02,balanced,AAPL,buy,2693,185.64,499928.52,99.99,Initial allocation,simulated
+S-BAL-20240102-008,2024-01-02,balanced,GOOGL,buy,3618,138.17,499899.06,99.98,Initial allocation,simulated
+S-BAL-20240102-009,2024-01-02,balanced,AMZN,buy,3334,149.93,499866.62,99.97,Initial allocation,simulated
+S-BAL-20240102-010,2024-01-02,balanced,JPM,buy,2905,172.08,499892.40,99.98,Initial allocation,simulated
+S-BAL-20240102-011,2024-01-02,balanced,JNJ,buy,3125,159.97,499906.25,99.98,Initial allocation,simulated
+S-BAL-20240102-012,2024-01-02,balanced,UNH,buy,927,539.34,499968.18,99.99,Initial allocation,simulated
+S-BAL-20240102-013,2024-01-02,balanced,PG,buy,3361,148.74,499915.14,99.98,Initial allocation,simulated
+S-BAL-20240102-014,2024-01-02,balanced,V,buy,1931,258.87,499877.97,99.98,Initial allocation,simulated
+S-BAL-20240102-015,2024-01-02,balanced,BRK-B,buy,1379,362.46,499832.34,99.97,Initial allocation,simulated
+S-BAL-20240102-016,2024-01-02,balanced,XOM,buy,4884,102.36,499926.24,99.99,Initial allocation,simulated
+S-BAL-20240102-017,2024-01-02,balanced,AGG,buy,30370,98.78,2999948.60,599.99,Initial allocation,simulated
+S-BAL-20240102-018,2024-01-02,balanced,IEF,buy,16661,96.03,1599955.83,319.99,Initial allocation,simulated
+S-BAL-20240102-019,2024-01-02,balanced,LQD,buy,12737,109.91,1399923.67,279.98,Initial allocation,simulated
+S-BAL-20240102-020,2024-01-02,balanced,TIP,buy,9316,107.34,999979.44,200.00,Initial allocation,simulated
+S-BAL-20240102-021,2024-01-02,balanced,GLD,buy,3145,190.72,599814.40,119.96,Initial allocation,simulated
+S-BAL-20240102-022,2024-01-02,balanced,DIS,buy,5512,90.71,499993.52,100.00,Initial allocation,simulated
+S-CON-20240102-002,2024-01-02,conservative_income,USMV,buy,8298,78.33,649982.34,130.00,Initial allocation,simulated
+S-CON-20240102-003,2024-01-02,conservative_income,VIG,buy,3527,170.07,599836.89,119.97,Initial allocation,simulated
+S-CON-20240102-004,2024-01-02,conservative_income,PG,buy,840,148.74,124941.60,24.99,Initial allocation,simulated
+S-CON-20240102-005,2024-01-02,conservative_income,KO,buy,2089,59.82,124963.98,24.99,Initial allocation,simulated
+S-CON-20240102-006,2024-01-02,conservative_income,JNJ,buy,781,159.97,124936.57,24.99,Initial allocation,simulated
+S-CON-20240102-007,2024-01-02,conservative_income,WMT,buy,2354,53.0967,124989.63,25.00,Initial allocation,simulated
+S-CON-20240102-008,2024-01-02,conservative_income,PEP,buy,722,172.91,124841.02,24.97,Initial allocation,simulated
+S-CON-20240102-009,2024-01-02,conservative_income,MCD,buy,420,297.04,124756.80,24.95,Initial allocation,simulated
+S-CON-20240102-010,2024-01-02,conservative_income,BRK-B,buy,344,362.46,124686.24,24.94,Initial allocation,simulated
+S-CON-20240102-011,2024-01-02,conservative_income,NEE,buy,2030,61.57,124987.10,25.00,Initial allocation,simulated
+S-CON-20240102-012,2024-01-02,conservative_income,MRK,buy,1103,113.24,124903.72,24.98,Initial allocation,simulated
+S-CON-20240102-013,2024-01-02,conservative_income,VZ,buy,3215,38.88,124999.20,25.00,Initial allocation,simulated
+S-CON-20240102-014,2024-01-02,conservative_income,SHY,buy,18306,81.94,1499993.64,300.00,Initial allocation,simulated
+S-CON-20240102-015,2024-01-02,conservative_income,VCSH,buy,19435,77.18,1499993.30,300.00,Initial allocation,simulated
+S-CON-20240102-016,2024-01-02,conservative_income,AGG,buy,15185,98.78,1499974.30,299.99,Initial allocation,simulated
+S-CON-20240102-017,2024-01-02,conservative_income,IEF,buy,10413,96.03,999960.39,199.99,Initial allocation,simulated
+S-CON-20240102-018,2024-01-02,conservative_income,TIP,buy,4658,107.34,499989.72,100.00,Initial allocation,simulated
+S-CON-20240102-019,2024-01-02,conservative_income,LQD,buy,4549,109.91,499980.59,100.00,Initial allocation,simulated
+S-CON-20240102-020,2024-01-02,conservative_income,BIL,buy,7658,91.4,699941.20,139.99,Initial allocation,simulated
+S-EQU-20240102-002,2024-01-02,equity_income,SCHD,buy,70413,25.5633,1799988.64,360.00,Initial allocation,simulated
+S-EQU-20240102-003,2024-01-02,equity_income,VIG,buy,7055,170.07,1199843.85,239.97,Initial allocation,simulated
+S-EQU-20240102-004,2024-01-02,equity_income,JEPI,buy,27213,55.12,1499980.56,300.00,Initial allocation,simulated
+S-EQU-20240102-005,2024-01-02,equity_income,IDV,buy,53763,27.9,1499987.70,300.00,Initial allocation,simulated
+S-EQU-20240102-006,2024-01-02,equity_income,JNJ,buy,3125,159.97,499906.25,99.98,Initial allocation,simulated
+S-EQU-20240102-007,2024-01-02,equity_income,PG,buy,3361,148.74,499915.14,99.98,Initial allocation,simulated
+S-EQU-20240102-008,2024-01-02,equity_income,KO,buy,8358,59.82,499975.56,100.00,Initial allocation,simulated
+S-EQU-20240102-009,2024-01-02,equity_income,PEP,buy,2891,172.91,499882.81,99.98,Initial allocation,simulated
+S-EQU-20240102-010,2024-01-02,equity_income,XOM,buy,4884,102.36,499926.24,99.99,Initial allocation,simulated
+S-EQU-20240102-011,2024-01-02,equity_income,CVX,buy,3344,149.48,499861.12,99.97,Initial allocation,simulated
+S-EQU-20240102-012,2024-01-02,equity_income,JPM,buy,2905,172.08,499892.40,99.98,Initial allocation,simulated
+S-EQU-20240102-013,2024-01-02,equity_income,ABBV,buy,3128,159.82,499916.96,99.98,Initial allocation,simulated
+S-EQU-20240102-014,2024-01-02,equity_income,NEE,buy,8120,61.57,499948.40,99.99,Initial allocation,simulated
+S-EQU-20240102-015,2024-01-02,equity_income,O,buy,8536,58.57,499953.52,99.99,Initial allocation,simulated
+S-EQU-20240102-016,2024-01-02,equity_income,HD,buy,1448,345.08,499675.84,99.94,Initial allocation,simulated
+S-EQU-20240102-017,2024-01-02,equity_income,PFF,buy,28892,31.15,899985.80,180.00,Initial allocation,simulated
+S-EQU-20240102-018,2024-01-02,equity_income,HYG,buy,11668,77.13,899952.84,179.99,Initial allocation,simulated
+S-EQU-20240102-019,2024-01-02,equity_income,LQD,buy,8188,109.91,899943.08,179.99,Initial allocation,simulated
+S-EQU-20240102-020,2024-01-02,equity_income,VZ,buy,12859,38.88,499957.92,99.99,Initial allocation,simulated
+S-GRO-20240102-002,2024-01-02,growth,IVV,buy,6317,474.89,2999880.13,599.98,Initial allocation,simulated
+S-GRO-20240102-003,2024-01-02,growth,QQQ,buy,6209,402.59,2499681.31,499.94,Initial allocation,simulated
+S-GRO-20240102-004,2024-01-02,growth,VUG,buy,39269,50.93,1999970.17,399.99,Initial allocation,simulated
+S-GRO-20240102-005,2024-01-02,growth,VEA,buy,42220,47.37,1999961.40,399.99,Initial allocation,simulated
+S-GRO-20240102-006,2024-01-02,growth,VWO,buy,43082,40.62,1749990.84,350.00,Initial allocation,simulated
+S-GRO-20240102-007,2024-01-02,growth,MSFT,buy,2022,370.87,749899.14,149.98,Initial allocation,simulated
+S-GRO-20240102-008,2024-01-02,growth,NVDA,buy,15570,48.168,749975.76,150.00,Initial allocation,simulated
+S-GRO-20240102-009,2024-01-02,growth,AAPL,buy,4040,185.64,749985.60,150.00,Initial allocation,simulated
+S-GRO-20240102-010,2024-01-02,growth,AMZN,buy,5002,149.93,749949.86,149.99,Initial allocation,simulated
+S-GRO-20240102-011,2024-01-02,growth,GOOGL,buy,5428,138.17,749986.76,150.00,Initial allocation,simulated
+S-GRO-20240102-012,2024-01-02,growth,META,buy,2165,346.29,749717.85,149.94,Initial allocation,simulated
+S-GRO-20240102-013,2024-01-02,growth,AVGO,buy,6910,108.538,749997.58,150.00,Initial allocation,simulated
+S-GRO-20240102-014,2024-01-02,growth,LLY,buy,1266,592.2,749725.20,149.95,Initial allocation,simulated
+S-GRO-20240102-015,2024-01-02,growth,V,buy,2897,258.87,749946.39,149.99,Initial allocation,simulated
+S-GRO-20240102-016,2024-01-02,growth,MA,buy,1777,421.89,749698.53,149.94,Initial allocation,simulated
+S-GRO-20240102-017,2024-01-02,growth,ASML,buy,1046,716.92,749898.32,149.98,Initial allocation,simulated
+S-GRO-20240102-018,2024-01-02,growth,TSM,buy,7386,101.53,749900.58,149.98,Initial allocation,simulated
+S-GRO-20240102-019,2024-01-02,growth,COST,buy,1152,650.65,749548.80,149.91,Initial allocation,simulated
+S-GRO-20240102-020,2024-01-02,growth,ISRG,buy,2265,330.98,749669.70,149.93,Initial allocation,simulated
+S-GRO-20240102-021,2024-01-02,growth,IEF,buy,10413,96.03,999960.39,199.99,Initial allocation,simulated
+S-GRO-20240102-022,2024-01-02,growth,LQD,buy,9098,109.91,999961.18,199.99,Initial allocation,simulated
+S-GRO-20240102-023,2024-01-02,growth,AMD,buy,5412,138.58,749994.96,150.00,Initial allocation,simulated
+S-MUL-20240102-002,2024-01-02,multi_asset,IVV,buy,2526,474.89,1199572.14,239.91,Initial allocation,simulated
+S-MUL-20240102-003,2024-01-02,multi_asset,VEA,buy,20265,47.37,959953.05,191.99,Initial allocation,simulated
+S-MUL-20240102-004,2024-01-02,multi_asset,VWO,buy,20679,40.62,839980.98,168.00,Initial allocation,simulated
+S-MUL-20240102-005,2024-01-02,multi_asset,ASML,buy,418,716.92,299672.56,59.93,Initial allocation,simulated
+S-MUL-20240102-006,2024-01-02,multi_asset,TSM,buy,2954,101.53,299919.62,59.98,Initial allocation,simulated
+S-MUL-20240102-007,2024-01-02,multi_asset,NVO,buy,2938,102.11,299999.18,60.00,Initial allocation,simulated
+S-MUL-20240102-008,2024-01-02,multi_asset,SAP,buy,1997,150.21,299969.37,59.99,Initial allocation,simulated
+S-MUL-20240102-009,2024-01-02,multi_asset,TM,buy,1654,181.37,299985.98,60.00,Initial allocation,simulated
+S-MUL-20240102-010,2024-01-02,multi_asset,SHEL,buy,4551,65.91,299956.41,59.99,Initial allocation,simulated
+S-MUL-20240102-011,2024-01-02,multi_asset,NVS,buy,2970,101,299970.00,59.99,Initial allocation,simulated
+S-MUL-20240102-012,2024-01-02,multi_asset,UL,buy,5493,54.6059,299950.21,59.99,Initial allocation,simulated
+S-MUL-20240102-013,2024-01-02,multi_asset,BHP,buy,4417,67.91,299958.47,59.99,Initial allocation,simulated
+S-MUL-20240102-014,2024-01-02,multi_asset,MSFT,buy,808,370.87,299662.96,59.93,Initial allocation,simulated
+S-MUL-20240102-015,2024-01-02,multi_asset,EMB,buy,9525,88.18,839914.50,167.98,Initial allocation,simulated
+S-MUL-20240102-016,2024-01-02,multi_asset,AGG,buy,12148,98.78,1199979.44,240.00,Initial allocation,simulated
+S-MUL-20240102-017,2024-01-02,multi_asset,GLD,buy,5033,190.72,959893.76,191.98,Initial allocation,simulated
+S-MUL-20240102-018,2024-01-02,multi_asset,DBC,buy,27447,21.86,599991.42,120.00,Initial allocation,simulated
+S-MUL-20240102-019,2024-01-02,multi_asset,VNQ,buy,6732,89.12,599955.84,119.99,Initial allocation,simulated
+S-MUL-20240102-020,2024-01-02,multi_asset,IGF,buy,12768,46.99,599968.32,119.99,Initial allocation,simulated
+S-MUL-20240102-021,2024-01-02,multi_asset,IEF,buy,9996,96.03,959915.88,191.98,Initial allocation,simulated
+S-GRO-20240201-029,2024-02-01,growth,VWO,buy,1851,39.91,73873.41,14.77,Invest new cash,simulated
+S-GRO-20240201-030,2024-02-01,growth,IVV,buy,126,491.64,61946.64,12.39,Invest new cash,simulated
+S-GRO-20240201-031,2024-02-01,growth,VEA,buy,1282,47.88,61382.16,12.28,Invest new cash,simulated
+S-GRO-20240201-032,2024-02-01,growth,QQQ,buy,92,421.88,38812.96,7.76,Invest new cash,simulated
+S-GRO-20240201-033,2024-02-01,growth,LQD,buy,293,110.63,32414.59,6.48,Invest new cash,simulated
+S-GRO-20240201-034,2024-02-01,growth,IEF,buy,327,96.82,31660.14,6.33,Invest new cash,simulated
+S-GRO-20240201-035,2024-02-01,growth,VUG,buy,452,53.7933,24314.57,5.00,Invest new cash,simulated
+S-GRO-20240201-036,2024-02-01,growth,AAPL,buy,130,186.86,24291.80,5.00,Invest new cash,simulated
+S-GRO-20240201-037,2024-02-01,growth,GOOGL,buy,139,141.16,19621.24,5.00,Invest new cash,simulated
+S-BAL-20240301-037,2024-03-01,balanced,AGG,buy,1879,97.53,183258.87,36.65,Invest new cash,simulated
+S-BAL-20240301-038,2024-03-01,balanced,IEF,buy,1089,94.4,102801.60,20.56,Invest new cash,simulated
+S-BAL-20240301-039,2024-03-01,balanced,LQD,buy,844,107.92,91084.48,18.22,Invest new cash,simulated
+S-BAL-20240301-040,2024-03-01,balanced,UNH,buy,122,489.53,59722.66,11.94,Invest new cash,simulated
+S-BAL-20240301-041,2024-03-01,balanced,TIP,buy,497,107.12,53238.64,10.65,Invest new cash,simulated
+S-BAL-20240301-042,2024-03-01,balanced,VEA,buy,855,49.2,42066.00,8.41,Invest new cash,simulated
+S-BAL-20240301-043,2024-03-01,balanced,AAPL,buy,210,179.66,37728.60,7.55,Invest new cash,simulated
+S-BAL-20240301-044,2024-03-01,balanced,GOOGL,buy,209,137.14,28662.26,5.73,Invest new cash,simulated
+S-BAL-20240301-045,2024-03-01,balanced,VWO,buy,665,41.57,27644.05,5.53,Invest new cash,simulated
+S-BAL-20240301-046,2024-03-01,balanced,GLD,buy,135,192.89,26040.15,5.21,Invest new cash,simulated
+S-BAL-20240301-047,2024-03-01,balanced,JNJ,buy,129,162.12,20913.48,5.00,Invest new cash,simulated
+S-BAL-20240301-048,2024-03-01,balanced,XOM,buy,126,105.84,13335.84,5.00,Invest new cash,simulated
+S-BAL-20240301-049,2024-03-01,balanced,USMV,buy,142,81.79,11614.18,5.00,Invest new cash,simulated
+S-BAL-20240401-059,2024-04-01,balanced,DIS,sell,1033,121.53,125540.49,25.11,Quarterly rebalance,simulated
+S-GRO-20240401-056,2024-04-01,growth,META,sell,375,491.35,184256.25,36.85,Quarterly rebalance,simulated
+S-GRO-20240401-057,2024-04-01,growth,NVDA,sell,5837,90.363,527448.83,105.49,Quarterly rebalance,simulated
+S-GRO-20240401-058,2024-04-01,growth,VEA,buy,1873,49.97,93593.81,18.72,Invest new cash,simulated
+S-GRO-20240401-059,2024-04-01,growth,AAPL,buy,546,170.03,92836.38,18.57,Invest new cash,simulated
+S-GRO-20240401-060,2024-04-01,growth,IEF,buy,980,93.53,91659.40,18.33,Invest new cash,simulated
+S-GRO-20240401-061,2024-04-01,growth,VWO,buy,2181,41.94,91471.14,18.29,Invest new cash,simulated
+S-GRO-20240401-062,2024-04-01,growth,LQD,buy,829,107.47,89092.63,17.82,Invest new cash,simulated
+S-GRO-20240401-063,2024-04-01,growth,IVV,buy,141,524.88,74008.08,14.80,Invest new cash,simulated
+S-GRO-20240401-064,2024-04-01,growth,QQQ,buy,157,444.95,69857.15,13.97,Invest new cash,simulated
+S-GRO-20240401-065,2024-04-01,growth,V,buy,143,278.28,39794.04,7.96,Invest new cash,simulated
+S-GRO-20240401-066,2024-04-01,growth,VUG,buy,630,57.3783,36148.33,7.23,Invest new cash,simulated
+S-GRO-20240401-067,2024-04-01,growth,COST,buy,36,721.24,25964.64,5.19,Invest new cash,simulated
+S-GRO-20240401-068,2024-04-01,growth,MA,buy,33,478.4,15787.20,5.00,Invest new cash,simulated
+S-GRO-20240401-069,2024-04-01,growth,MSFT,buy,27,424.57,11463.39,5.00,Invest new cash,simulated
+S-MUL-20240401-044,2024-04-01,multi_asset,ASML,sell,95,992.95,94330.25,18.87,Quarterly rebalance,simulated
+S-MUL-20240401-045,2024-04-01,multi_asset,SAP,sell,359,196.03,70374.77,14.07,Quarterly rebalance,simulated
+S-MUL-20240401-046,2024-04-01,multi_asset,TM,sell,328,242.15,79425.20,15.89,Quarterly rebalance,simulated
+S-MUL-20240401-047,2024-04-01,multi_asset,TSM,sell,685,141.49,96920.65,19.38,Quarterly rebalance,simulated
+S-MUL-20240401-048,2024-04-01,multi_asset,AGG,buy,819,96.94,79393.86,15.88,Invest new cash,simulated
+S-MUL-20240401-049,2024-04-01,multi_asset,IEF,buy,736,93.53,68838.08,13.77,Invest new cash,simulated
+S-MUL-20240401-050,2024-04-01,multi_asset,VNQ,buy,610,85.03,51868.30,10.37,Invest new cash,simulated
+S-MUL-20240401-051,2024-04-01,multi_asset,BHP,buy,808,58.35,47146.80,9.43,Invest new cash,simulated
+S-MUL-20240401-052,2024-04-01,multi_asset,EMB,buy,436,88.92,38769.12,7.75,Invest new cash,simulated
+S-MUL-20240401-053,2024-04-01,multi_asset,NVS,buy,282,95.87,27035.34,5.41,Invest new cash,simulated
+S-MUL-20240401-054,2024-04-01,multi_asset,IGF,buy,557,47.51,26463.07,5.29,Invest new cash,simulated
+S-MUL-20240401-055,2024-04-01,multi_asset,VWO,buy,564,41.94,23654.16,5.00,Invest new cash,simulated
+S-MUL-20240401-056,2024-04-01,multi_asset,VEA,buy,221,49.97,11043.37,5.00,Invest new cash,simulated
+S-GRO-20240501-076,2024-05-01,growth,QQQ,buy,92,421.52,38779.84,7.76,Invest new cash,simulated
+S-GRO-20240501-077,2024-05-01,growth,IVV,buy,59,502.86,29668.74,5.93,Invest new cash,simulated
+S-GRO-20240501-078,2024-05-01,growth,AMD,buy,173,144.27,24958.71,5.00,Invest new cash,simulated
+S-GRO-20240501-079,2024-05-01,growth,VEA,buy,500,48.4,24200.00,5.00,Invest new cash,simulated
+S-GRO-20240501-080,2024-05-01,growth,META,buy,52,439.19,22837.88,5.00,Invest new cash,simulated
+S-GRO-20240501-081,2024-05-01,growth,IEF,buy,236,91.52,21598.72,5.00,Invest new cash,simulated
+S-GRO-20240501-082,2024-05-01,growth,LQD,buy,204,105.01,21422.04,5.00,Invest new cash,simulated
+S-GRO-20240501-083,2024-05-01,growth,AAPL,buy,109,169.3,18453.70,5.00,Invest new cash,simulated
+S-GRO-20240501-084,2024-05-01,growth,VUG,buy,334,54.815,18308.21,5.00,Invest new cash,simulated
+S-GRO-20240501-085,2024-05-01,growth,MA,buy,40,442.07,17682.80,5.00,Invest new cash,simulated
+S-GRO-20240501-086,2024-05-01,growth,NVDA,buy,178,83.041,14781.30,5.00,Invest new cash,simulated
+S-GRO-20240501-087,2024-05-01,growth,MSFT,buy,36,394.94,14217.84,5.00,Invest new cash,simulated
+S-GRO-20240501-088,2024-05-01,growth,V,buy,49,267.32,13098.68,5.00,Invest new cash,simulated
+S-BAL-20240603-075,2024-06-03,balanced,AGG,buy,664,96.8,64275.20,12.86,Invest new cash,simulated
+S-BAL-20240603-076,2024-06-03,balanced,IEF,buy,416,93.13,38742.08,7.75,Invest new cash,simulated
+S-BAL-20240603-077,2024-06-03,balanced,DIS,buy,324,102.77,33297.48,6.66,Invest new cash,simulated
+S-BAL-20240603-078,2024-06-03,balanced,LQD,buy,282,107.22,30236.04,6.05,Invest new cash,simulated
+S-BAL-20240603-079,2024-06-03,balanced,JNJ,buy,173,147.74,25559.02,5.11,Invest new cash,simulated
+S-BAL-20240603-080,2024-06-03,balanced,TIP,buy,188,106.42,20006.96,5.00,Invest new cash,simulated
+S-BAL-20240603-081,2024-06-03,balanced,UNH,buy,20,497.44,9948.80,5.00,Invest new cash,simulated
+S-BAL-20240603-082,2024-06-03,balanced,V,buy,37,270.38,10004.06,5.00,Invest new cash,simulated
+S-EQU-20240603-075,2024-06-03,equity_income,SCHD,buy,5096,26.0467,132733.98,26.55,Invest new cash,simulated
+S-EQU-20240603-076,2024-06-03,equity_income,JEPI,buy,1952,56.2,109702.40,21.94,Invest new cash,simulated
+S-EQU-20240603-077,2024-06-03,equity_income,LQD,buy,941,107.22,100894.02,20.18,Invest new cash,simulated
+S-EQU-20240603-078,2024-06-03,equity_income,O,buy,1592,53.31,84869.52,16.97,Invest new cash,simulated
+S-EQU-20240603-079,2024-06-03,equity_income,HYG,buy,1073,77.01,82631.73,16.53,Invest new cash,simulated
+S-EQU-20240603-080,2024-06-03,equity_income,JNJ,buy,535,147.74,79040.90,15.81,Invest new cash,simulated
+S-EQU-20240603-081,2024-06-03,equity_income,HD,buy,205,328.01,67242.05,13.45,Invest new cash,simulated
+S-EQU-20240603-082,2024-06-03,equity_income,PFF,buy,2090,31.74,66336.60,13.27,Invest new cash,simulated
+S-EQU-20240603-083,2024-06-03,equity_income,IDV,buy,1691,29.7,50222.70,10.04,Invest new cash,simulated
+S-EQU-20240603-084,2024-06-03,equity_income,PEP,buy,289,171.23,49485.47,9.90,Invest new cash,simulated
+S-EQU-20240603-085,2024-06-03,equity_income,VIG,buy,255,180.13,45933.15,9.19,Invest new cash,simulated
+S-EQU-20240603-086,2024-06-03,equity_income,ABBV,buy,276,160.19,44212.44,8.84,Invest new cash,simulated
+S-EQU-20240603-087,2024-06-03,equity_income,KO,buy,354,62.93,22277.22,5.00,Invest new cash,simulated
+S-EQU-20240603-088,2024-06-03,equity_income,CVX,buy,138,157.46,21729.48,5.00,Invest new cash,simulated
+S-EQU-20240603-089,2024-06-03,equity_income,VZ,buy,522,40.98,21391.56,5.00,Invest new cash,simulated
+S-BAL-20240701-093,2024-07-01,balanced,GOOGL,sell,795,182.99,145477.05,29.10,Quarterly rebalance,simulated
+S-GRO-20240701-107,2024-07-01,growth,LLY,sell,221,914.37,202075.77,40.42,Quarterly rebalance,simulated
+S-GRO-20240701-108,2024-07-01,growth,NVDA,sell,2222,124.3,276194.60,55.24,Quarterly rebalance,simulated
+S-GRO-20240701-109,2024-07-01,growth,TSM,sell,1840,172.33,317087.20,63.42,Quarterly rebalance,simulated
+S-GRO-20240701-110,2024-07-01,growth,VEA,buy,3288,49.46,162624.48,32.52,Invest new cash,simulated
+S-GRO-20240701-111,2024-07-01,growth,IVV,buy,190,548.41,104197.90,20.84,Invest new cash,simulated
+S-GRO-20240701-112,2024-07-01,growth,LQD,buy,922,106.11,97833.42,19.57,Invest new cash,simulated
+S-GRO-20240701-113,2024-07-01,growth,IEF,buy,1043,92.67,96654.81,19.33,Invest new cash,simulated
+S-GRO-20240701-114,2024-07-01,growth,VWO,buy,2169,43.86,95132.34,19.03,Invest new cash,simulated
+S-GRO-20240701-115,2024-07-01,growth,MA,buy,194,437.61,84896.34,16.98,Invest new cash,simulated
+S-GRO-20240701-116,2024-07-01,growth,V,buy,315,263.24,82920.60,16.58,Invest new cash,simulated
+S-GRO-20240701-117,2024-07-01,growth,AMD,buy,276,157.69,43522.44,8.70,Invest new cash,simulated
+S-GRO-20240701-118,2024-07-01,growth,QQQ,buy,35,481.92,16867.20,5.00,Invest new cash,simulated
+S-GRO-20240701-119,2024-07-01,growth,META,buy,30,504.68,15140.40,5.00,Invest new cash,simulated
+S-MUL-20240701-077,2024-07-01,multi_asset,IEF,sell,10732,92.67,994534.44,198.91,Model change: add inflation protection,simulated
+S-MUL-20240701-078,2024-07-01,multi_asset,NVO,sell,665,145.42,96704.30,19.34,Quarterly rebalance,simulated
+S-MUL-20240701-079,2024-07-01,multi_asset,TIP,buy,9989,105.92,1058034.88,211.61,Quarterly rebalance,simulated
+S-MUL-20240701-080,2024-07-01,multi_asset,AGG,buy,287,96.25,27623.75,5.52,Invest new cash,simulated
+S-MUL-20240701-081,2024-07-01,multi_asset,TM,buy,110,203.71,22408.10,5.00,Invest new cash,simulated
+S-MUL-20240701-082,2024-07-01,multi_asset,VNQ,buy,233,82.97,19332.01,5.00,Invest new cash,simulated
+S-MUL-20240701-083,2024-07-01,multi_asset,EMB,buy,219,87.75,19217.25,5.00,Invest new cash,simulated
+S-MUL-20240701-084,2024-07-01,multi_asset,VEA,buy,336,49.46,16618.56,5.00,Invest new cash,simulated
+S-MUL-20240701-085,2024-07-01,multi_asset,BHP,buy,187,57.71,10791.77,5.00,Invest new cash,simulated
+S-BAL-20240801-101,2024-08-01,balanced,AGG,buy,439,99.22,43557.58,8.71,Invest new cash,simulated
+S-BAL-20240801-102,2024-08-01,balanced,DIS,buy,466,93.05,43361.30,8.67,Invest new cash,simulated
+S-BAL-20240801-103,2024-08-01,balanced,VEA,buy,765,49.61,37951.65,7.59,Invest new cash,simulated
+S-BAL-20240801-104,2024-08-01,balanced,LQD,buy,204,109.53,22344.12,5.00,Invest new cash,simulated
+S-BAL-20240801-105,2024-08-01,balanced,IEF,buy,219,96.19,21065.61,5.00,Invest new cash,simulated
+S-BAL-20240801-106,2024-08-01,balanced,GOOGL,buy,100,170.76,17076.00,5.00,Invest new cash,simulated
+S-BAL-20240801-107,2024-08-01,balanced,TIP,buy,158,108.15,17087.70,5.00,Invest new cash,simulated
+S-BAL-20240801-108,2024-08-01,balanced,V,buy,56,265.93,14892.08,5.00,Invest new cash,simulated
+S-GRO-20240801-126,2024-08-01,growth,AMD,buy,539,132.54,71439.06,14.29,Invest new cash,simulated
+S-GRO-20240801-127,2024-08-01,growth,NVDA,buy,390,109.21,42591.90,8.52,Invest new cash,simulated
+S-GRO-20240801-128,2024-08-01,growth,QQQ,buy,82,459.66,37692.12,7.54,Invest new cash,simulated
+S-GRO-20240801-129,2024-08-01,growth,MSFT,buy,69,417.11,28780.59,5.76,Invest new cash,simulated
+S-GRO-20240801-130,2024-08-01,growth,LLY,buy,34,832.44,28302.96,5.66,Invest new cash,simulated
+S-GRO-20240801-131,2024-08-01,growth,TSM,buy,160,158.18,25308.80,5.06,Invest new cash,simulated
+S-GRO-20240801-132,2024-08-01,growth,VEA,buy,448,49.61,22225.28,5.00,Invest new cash,simulated
+S-GRO-20240801-133,2024-08-01,growth,VUG,buy,287,60.2117,17280.76,5.00,Invest new cash,simulated
+S-GRO-20240801-134,2024-08-01,growth,VWO,buy,313,43.56,13634.28,5.00,Invest new cash,simulated
+S-GRO-20240801-135,2024-08-01,growth,V,buy,47,265.93,12498.71,5.00,Invest new cash,simulated
+S-BAL-20240903-119,2024-09-03,balanced,AGG,buy,922,100.36,92531.92,18.51,Invest new cash,simulated
+S-BAL-20240903-120,2024-09-03,balanced,DIS,buy,747,89.13,66580.11,13.32,Invest new cash,simulated
+S-BAL-20240903-121,2024-09-03,balanced,GOOGL,buy,337,157.36,53030.32,10.61,Invest new cash,simulated
+S-BAL-20240903-122,2024-09-03,balanced,IEF,buy,471,97.42,45884.82,9.18,Invest new cash,simulated
+S-BAL-20240903-123,2024-09-03,balanced,LQD,buy,381,111.14,42344.34,8.47,Invest new cash,simulated
+S-BAL-20240903-124,2024-09-03,balanced,VEA,buy,727,51.48,37425.96,7.49,Invest new cash,simulated
+S-BAL-20240903-125,2024-09-03,balanced,TIP,buy,324,109.06,35335.44,7.07,Invest new cash,simulated
+S-BAL-20240903-126,2024-09-03,balanced,VWO,buy,507,44.04,22328.28,5.00,Invest new cash,simulated
+S-BAL-20240903-127,2024-09-03,balanced,MSFT,buy,46,409.44,18834.24,5.00,Invest new cash,simulated
+S-BAL-20240903-128,2024-09-03,balanced,V,buy,43,278.54,11977.22,5.00,Invest new cash,simulated
+S-MUL-20240903-098,2024-09-03,multi_asset,AGG,buy,2186,100.36,219386.96,43.88,Invest new cash,simulated
+S-MUL-20240903-099,2024-09-03,multi_asset,DBC,buy,8271,21.67,179232.57,35.85,Invest new cash,simulated
+S-MUL-20240903-100,2024-09-03,multi_asset,VEA,buy,3261,51.48,167876.28,33.58,Invest new cash,simulated
+S-MUL-20240903-101,2024-09-03,multi_asset,EMB,buy,1691,91.37,154506.67,30.90,Invest new cash,simulated
+S-MUL-20240903-102,2024-09-03,multi_asset,TIP,buy,1380,109.06,150502.80,30.10,Invest new cash,simulated
+S-MUL-20240903-103,2024-09-03,multi_asset,VWO,buy,3389,44.04,149251.56,29.85,Invest new cash,simulated
+S-MUL-20240903-104,2024-09-03,multi_asset,IVV,buy,266,555.26,147699.16,29.54,Invest new cash,simulated
+S-MUL-20240903-105,2024-09-03,multi_asset,TM,buy,641,186.15,119322.15,23.86,Invest new cash,simulated
+S-MUL-20240903-106,2024-09-03,multi_asset,ASML,buy,134,845.39,113282.26,22.66,Invest new cash,simulated
+S-MUL-20240903-107,2024-09-03,multi_asset,BHP,buy,1978,52.34,103528.52,20.71,Invest new cash,simulated
+S-MUL-20240903-108,2024-09-03,multi_asset,GLD,buy,355,230.29,81752.95,16.35,Invest new cash,simulated
+S-MUL-20240903-109,2024-09-03,multi_asset,IGF,buy,1522,52.21,79463.62,15.89,Invest new cash,simulated
+S-MUL-20240903-110,2024-09-03,multi_asset,NVO,buy,568,136.26,77395.68,15.48,Invest new cash,simulated
+S-MUL-20240903-111,2024-09-03,multi_asset,SHEL,buy,1030,69.38,71461.40,14.29,Invest new cash,simulated
+S-MUL-20240903-112,2024-09-03,multi_asset,MSFT,buy,138,409.44,56502.72,11.30,Invest new cash,simulated
+S-MUL-20240903-113,2024-09-03,multi_asset,VNQ,buy,580,95.08,55146.40,11.03,Invest new cash,simulated
+S-MUL-20240903-114,2024-09-03,multi_asset,SAP,buy,152,216.49,32906.48,6.58,Invest new cash,simulated
+S-MUL-20240903-115,2024-09-03,multi_asset,TSM,buy,147,160.49,23592.03,5.00,Invest new cash,simulated
+S-BAL-20241001-139,2024-10-01,balanced,DIS,sell,6016,94.05,565804.80,113.16,Model change: swap media for home-improvement exposure,simulated
+S-BAL-20241001-140,2024-10-01,balanced,HD,buy,1456,409.05,595576.80,119.12,Quarterly rebalance,simulated
+S-CON-20241001-124,2024-10-01,conservative_income,WMT,sell,725,81.27,58920.75,11.78,Quarterly rebalance,simulated
+S-GRO-20241101-160,2024-11-01,growth,ASML,buy,148,674.73,99860.04,19.97,Invest new cash,simulated
+S-GRO-20241101-161,2024-11-01,growth,VEA,buy,1122,50.21,56335.62,11.27,Invest new cash,simulated
+S-GRO-20241101-162,2024-11-01,growth,LLY,buy,47,818.93,38489.71,7.70,Invest new cash,simulated
+S-GRO-20241101-163,2024-11-01,growth,MSFT,buy,93,410.37,38164.41,7.63,Invest new cash,simulated
+S-GRO-20241101-164,2024-11-01,growth,IEF,buy,403,93.67,37749.01,7.55,Invest new cash,simulated
+S-GRO-20241101-165,2024-11-01,growth,LQD,buy,324,108.01,34995.24,7.00,Invest new cash,simulated
+S-GRO-20241101-166,2024-11-01,growth,AMD,buy,212,141.86,30074.32,6.01,Invest new cash,simulated
+S-GRO-20241101-167,2024-11-01,growth,QQQ,buy,48,487.43,23396.64,5.00,Invest new cash,simulated
+S-GRO-20241101-168,2024-11-01,growth,IVV,buy,36,573.72,20653.92,5.00,Invest new cash,simulated
+S-GRO-20241101-169,2024-11-01,growth,GOOGL,buy,84,171.29,14388.36,5.00,Invest new cash,simulated
+S-EQU-20241218-161,2024-12-18,equity_income,IDV,buy,2266,27.03,61249.98,12.25,Invest new cash,simulated
+S-EQU-20241218-162,2024-12-18,equity_income,PEP,buy,150,154.43,23164.50,5.00,Invest new cash,simulated
+S-EQU-20241218-163,2024-12-18,equity_income,CVX,buy,137,144.08,19738.96,5.00,Invest new cash,simulated
+S-EQU-20241218-164,2024-12-18,equity_income,XOM,buy,129,106.42,13728.18,5.00,Invest new cash,simulated
+S-EQU-20241218-165,2024-12-18,equity_income,LQD,buy,99,107.14,10606.86,5.00,Invest new cash,simulated
+S-EQU-20241218-166,2024-12-18,equity_income,JNJ,buy,72,144.75,10422.00,5.00,Invest new cash,simulated
+S-EQU-20241218-167,2024-12-18,equity_income,PFF,buy,322,31.62,10181.64,5.00,Invest new cash,simulated
+S-CON-20241219-157,2024-12-19,conservative_income,AGG,buy,234,96.7,22627.80,5.00,Invest new cash,simulated
+S-CON-20241219-158,2024-12-19,conservative_income,IEF,buy,226,92.27,20853.02,5.00,Invest new cash,simulated
+S-CON-20241219-159,2024-12-19,conservative_income,SHY,buy,166,81.77,13573.82,5.00,Invest new cash,simulated
+S-MUL-20241220-144,2024-12-20,multi_asset,NVO,buy,491,85,41735.00,8.35,Invest new cash,simulated
+S-MUL-20241220-145,2024-12-20,multi_asset,VEA,buy,517,47.57,24593.69,5.00,Invest new cash,simulated
+S-MUL-20241220-146,2024-12-20,multi_asset,NVS,buy,206,97.11,20004.66,5.00,Invest new cash,simulated
+S-MUL-20241220-147,2024-12-20,multi_asset,ASML,buy,25,705.68,17642.00,5.00,Invest new cash,simulated
+S-MUL-20241220-148,2024-12-20,multi_asset,SHEL,buy,221,60.64,13401.44,5.00,Invest new cash,simulated
+S-MUL-20241220-149,2024-12-20,multi_asset,AGG,buy,121,96.96,11732.16,5.00,Invest new cash,simulated
+S-MUL-20241220-150,2024-12-20,multi_asset,VNQ,buy,131,89.33,11702.23,5.00,Invest new cash,simulated
+S-BAL-20250102-167,2025-01-02,balanced,AAPL,sell,490,243.85,119486.50,23.90,Quarterly rebalance,simulated
+S-BAL-20250102-168,2025-01-02,balanced,AMZN,sell,662,220.22,145785.64,29.16,Quarterly rebalance,simulated
+S-BAL-20250102-169,2025-01-02,balanced,AGG,buy,988,96.91,95747.08,19.15,Invest new cash,simulated
+S-BAL-20250102-170,2025-01-02,balanced,VEA,buy,1852,47.72,88377.44,17.68,Invest new cash,simulated
+S-BAL-20250102-171,2025-01-02,balanced,IEF,buy,687,92.5,63547.50,12.71,Invest new cash,simulated
+S-BAL-20250102-172,2025-01-02,balanced,LQD,buy,445,106.85,47548.25,9.51,Invest new cash,simulated
+S-BAL-20250102-173,2025-01-02,balanced,JNJ,buy,301,144.02,43350.02,8.67,Invest new cash,simulated
+S-BAL-20250102-174,2025-01-02,balanced,TIP,buy,250,106.71,26677.50,5.34,Invest new cash,simulated
+S-BAL-20250102-175,2025-01-02,balanced,XOM,buy,216,107.31,23178.96,5.00,Invest new cash,simulated
+S-BAL-20250102-176,2025-01-02,balanced,UNH,buy,44,504.51,22198.44,5.00,Invest new cash,simulated
+S-BAL-20250102-177,2025-01-02,balanced,PG,buy,84,165.98,13942.32,5.00,Invest new cash,simulated
+S-BAL-20250102-178,2025-01-02,balanced,VWO,buy,261,43.92,11463.12,5.00,Invest new cash,simulated
+S-BAL-20250102-179,2025-01-02,balanced,HD,buy,26,388.46,10099.96,5.00,Invest new cash,simulated
+S-EQU-20250102-172,2025-01-02,equity_income,JPM,sell,562,240,134880.00,26.98,Quarterly rebalance,simulated
+S-GRO-20250102-188,2025-01-02,growth,AMD,sell,6612,120.63,797605.56,159.52,Model change: rotate part of semiconductor exposure into software,simulated
+S-GRO-20250102-189,2025-01-02,growth,AVGO,sell,2464,231.98,571598.72,114.32,Quarterly rebalance,simulated
+S-GRO-20250102-190,2025-01-02,growth,NOW,buy,4891,210.868,1031355.39,206.27,Quarterly rebalance,simulated
+S-GRO-20250102-191,2025-01-02,growth,VEA,buy,2390,47.72,114050.80,22.81,Invest new cash,simulated
+S-GRO-20250102-192,2025-01-02,growth,VWO,buy,1800,43.92,79056.00,15.81,Invest new cash,simulated
+S-GRO-20250102-193,2025-01-02,growth,ASML,buy,96,700.42,67240.32,13.45,Invest new cash,simulated
+S-GRO-20250102-194,2025-01-02,growth,LLY,buy,69,778.07,53686.83,10.74,Invest new cash,simulated
+S-GRO-20250102-195,2025-01-02,growth,IEF,buy,507,92.5,46897.50,9.38,Invest new cash,simulated
+S-GRO-20250102-196,2025-01-02,growth,LQD,buy,415,106.85,44342.75,8.87,Invest new cash,simulated
+S-GRO-20250102-197,2025-01-02,growth,MSFT,buy,75,418.58,31393.50,6.28,Invest new cash,simulated
+S-GRO-20250102-198,2025-01-02,growth,IVV,buy,53,587.45,31134.85,6.23,Invest new cash,simulated
+S-MUL-20250102-154,2025-01-02,multi_asset,TSM,sell,502,201.58,101193.16,20.24,Quarterly rebalance,simulated
+S-MUL-20250102-155,2025-01-02,multi_asset,NVO,buy,1077,87.52,94259.04,18.85,Quarterly rebalance,simulated
+S-BAL-20250303-194,2025-03-03,balanced,AGG,buy,911,99.16,90334.76,18.07,Invest new cash,simulated
+S-BAL-20250303-195,2025-03-03,balanced,IEF,buy,508,95.39,48458.12,9.69,Invest new cash,simulated
+S-BAL-20250303-196,2025-03-03,balanced,UNH,buy,93,467.05,43435.65,8.69,Invest new cash,simulated
+S-BAL-20250303-197,2025-03-03,balanced,LQD,buy,386,109.54,42282.44,8.46,Invest new cash,simulated
+S-BAL-20250303-198,2025-03-03,balanced,MSFT,buy,87,388.49,33798.63,6.76,Invest new cash,simulated
+S-BAL-20250303-199,2025-03-03,balanced,AMZN,buy,151,205.02,30958.02,6.19,Invest new cash,simulated
+S-BAL-20250303-200,2025-03-03,balanced,XOM,buy,222,107.76,23922.72,5.00,Invest new cash,simulated
+S-BAL-20250303-201,2025-03-03,balanced,VWO,buy,507,44.3,22460.10,5.00,Invest new cash,simulated
+S-BAL-20250303-202,2025-03-03,balanced,VEA,buy,405,51.45,20837.25,5.00,Invest new cash,simulated
+S-BAL-20250303-203,2025-03-03,balanced,TIP,buy,181,110.64,20025.84,5.00,Invest new cash,simulated
+S-BAL-20250303-204,2025-03-03,balanced,AAPL,buy,79,238.03,18804.37,5.00,Invest new cash,simulated
+S-BAL-20250303-205,2025-03-03,balanced,HD,buy,44,389.69,17146.36,5.00,Invest new cash,simulated
+S-BAL-20250303-206,2025-03-03,balanced,GOOGL,buy,99,167.01,16533.99,5.00,Invest new cash,simulated
+S-EQU-20250328-199,2025-03-28,equity_income,JEPI,buy,687,56.68,38939.16,7.79,Invest new cash,simulated
+S-EQU-20250328-200,2025-03-28,equity_income,PEP,buy,229,149.27,34182.83,6.84,Invest new cash,simulated
+S-EQU-20250328-201,2025-03-28,equity_income,PFF,buy,1091,30.85,33657.35,6.73,Invest new cash,simulated
+S-EQU-20250328-202,2025-03-28,equity_income,LQD,buy,182,108.48,19743.36,5.00,Invest new cash,simulated
+S-EQU-20250328-203,2025-03-28,equity_income,HYG,buy,236,78.8,18596.80,5.00,Invest new cash,simulated
+S-BAL-20250401-218,2025-04-01,balanced,BRK-B,sell,232,532.99,123653.68,24.73,Quarterly rebalance,simulated
+S-BAL-20250401-219,2025-04-01,balanced,GLD,sell,729,287.57,209638.53,41.93,Quarterly rebalance,simulated
+S-BAL-20250401-220,2025-04-01,balanced,IVV,buy,107,563.78,60324.46,12.06,Invest new cash,simulated
+S-BAL-20250401-221,2025-04-01,balanced,AGG,buy,544,98.96,53834.24,10.77,Invest new cash,simulated
+S-BAL-20250401-222,2025-04-01,balanced,AMZN,buy,217,192.17,41700.89,8.34,Invest new cash,simulated
+S-BAL-20250401-223,2025-04-01,balanced,AAPL,buy,150,223.19,33478.50,6.70,Invest new cash,simulated
+S-BAL-20250401-224,2025-04-01,balanced,HD,buy,89,365.52,32531.28,6.51,Invest new cash,simulated
+S-BAL-20250401-225,2025-04-01,balanced,LQD,buy,288,108.66,31294.08,6.26,Invest new cash,simulated
+S-BAL-20250401-226,2025-04-01,balanced,GOOGL,buy,196,157.07,30785.72,6.16,Invest new cash,simulated
+S-BAL-20250401-227,2025-04-01,balanced,MSFT,buy,72,382.19,27517.68,5.50,Invest new cash,simulated
+S-BAL-20250401-228,2025-04-01,balanced,IEF,buy,277,95.4,26425.80,5.29,Invest new cash,simulated
+S-BAL-20250401-229,2025-04-01,balanced,JNJ,buy,158,153.25,24213.50,5.00,Invest new cash,simulated
+S-BAL-20250401-230,2025-04-01,balanced,VEA,buy,332,51.01,16935.32,5.00,Invest new cash,simulated
+S-BAL-20250401-231,2025-04-01,balanced,PG,buy,84,170.56,14327.04,5.00,Invest new cash,simulated
+S-BAL-20250401-232,2025-04-01,balanced,TIP,buy,95,110.45,10492.75,5.00,Invest new cash,simulated
+S-GRO-20250401-223,2025-04-01,growth,V,sell,592,346.35,205039.20,41.01,Quarterly rebalance,simulated
+S-GRO-20250401-224,2025-04-01,growth,AVGO,buy,1430,168.52,240983.60,48.20,Quarterly rebalance,simulated
+S-MUL-20250401-176,2025-04-01,multi_asset,GLD,sell,961,287.57,276354.77,55.27,Quarterly rebalance,simulated
+S-MUL-20250401-177,2025-04-01,multi_asset,SAP,sell,319,270.34,86238.46,17.25,Quarterly rebalance,simulated
+S-MUL-20250401-178,2025-04-01,multi_asset,NVO,buy,1439,68.03,97895.17,19.58,Quarterly rebalance,simulated
+S-MUL-20250401-179,2025-04-01,multi_asset,ASML,buy,100,667.34,66734.00,13.35,Invest new cash,simulated
+S-MUL-20250401-180,2025-04-01,multi_asset,TSM,buy,391,168.64,65938.24,13.19,Invest new cash,simulated
+S-MUL-20250401-181,2025-04-01,multi_asset,AGG,buy,457,98.96,45224.72,9.04,Invest new cash,simulated
+S-MUL-20250401-182,2025-04-01,multi_asset,VNQ,buy,438,90.58,39674.04,7.93,Invest new cash,simulated
+S-MUL-20250401-183,2025-04-01,multi_asset,EMB,buy,388,90.48,35106.24,7.02,Invest new cash,simulated
+S-MUL-20250401-184,2025-04-01,multi_asset,BHP,buy,673,48.78,32828.94,6.57,Invest new cash,simulated
+S-MUL-20250401-185,2025-04-01,multi_asset,MSFT,buy,83,382.19,31721.77,6.34,Invest new cash,simulated
+S-MUL-20250401-186,2025-04-01,multi_asset,TM,buy,179,174.42,31221.18,6.24,Invest new cash,simulated
+S-MUL-20250401-187,2025-04-01,multi_asset,UL,buy,384,67.0833,25759.99,5.15,Invest new cash,simulated
+S-MUL-20250401-188,2025-04-01,multi_asset,NVS,buy,151,109.61,16551.11,5.00,Invest new cash,simulated
+S-MUL-20250401-189,2025-04-01,multi_asset,VEA,buy,316,51.01,16119.16,5.00,Invest new cash,simulated
+S-MUL-20250401-190,2025-04-01,multi_asset,TIP,buy,139,110.45,15352.55,5.00,Invest new cash,simulated
+S-MUL-20250401-191,2025-04-01,multi_asset,IVV,buy,27,563.78,15222.06,5.00,Invest new cash,simulated
+S-GRO-20250403-225,2025-04-03,growth,NOW,buy,337,154.814,52172.32,10.43,Invest new cash,simulated
+S-GRO-20250403-226,2025-04-03,growth,QQQ,buy,90,450.66,40559.40,8.11,Invest new cash,simulated
+S-GRO-20250403-227,2025-04-03,growth,ASML,buy,63,623.22,39262.86,7.85,Invest new cash,simulated
+S-GRO-20250403-228,2025-04-03,growth,NVDA,buy,343,101.8,34917.40,6.98,Invest new cash,simulated
+S-GRO-20250403-229,2025-04-03,growth,VUG,buy,518,59.2633,30698.39,6.14,Invest new cash,simulated
+S-GRO-20250403-230,2025-04-03,growth,GOOGL,buy,180,150.72,27129.60,5.43,Invest new cash,simulated
+S-GRO-20250403-231,2025-04-03,growth,MSFT,buy,62,373.11,23132.82,5.00,Invest new cash,simulated
+S-GRO-20250403-232,2025-04-03,growth,IVV,buy,37,540.07,19982.59,5.00,Invest new cash,simulated
+S-GRO-20250403-233,2025-04-03,growth,AMZN,buy,91,178.41,16235.31,5.00,Invest new cash,simulated
+S-GRO-20250403-234,2025-04-03,growth,TSM,buy,94,157.38,14793.72,5.00,Invest new cash,simulated
+S-GRO-20250403-235,2025-04-03,growth,AVGO,buy,84,154.01,12936.84,5.00,Invest new cash,simulated
+S-GRO-20250501-241,2025-05-01,growth,IVV,buy,119,561.11,66772.09,13.35,Invest new cash,simulated
+S-GRO-20250501-242,2025-05-01,growth,QQQ,buy,97,481.68,46722.96,9.34,Invest new cash,simulated
+S-GRO-20250501-243,2025-05-01,growth,ASML,buy,64,666.72,42670.08,8.53,Invest new cash,simulated
+S-GRO-20250501-244,2025-05-01,growth,NVDA,buy,265,111.61,29576.65,5.92,Invest new cash,simulated
+S-GRO-20250501-245,2025-05-01,growth,GOOGL,buy,182,161.3,29356.60,5.87,Invest new cash,simulated
+S-GRO-20250501-246,2025-05-01,growth,LLY,buy,33,794.1,26205.30,5.24,Invest new cash,simulated
+S-GRO-20250501-247,2025-05-01,growth,VUG,buy,410,63.9733,26229.05,5.25,Invest new cash,simulated
+S-GRO-20250501-248,2025-05-01,growth,LQD,buy,229,107.17,24541.93,5.00,Invest new cash,simulated
+S-GRO-20250501-249,2025-05-01,growth,VWO,buy,490,45.23,22162.70,5.00,Invest new cash,simulated
+S-GRO-20250501-250,2025-05-01,growth,AMZN,buy,101,190.2,19210.20,5.00,Invest new cash,simulated
+S-GRO-20250501-251,2025-05-01,growth,V,buy,45,342.45,15410.25,5.00,Invest new cash,simulated
+S-GRO-20250501-252,2025-05-01,growth,IEF,buy,141,95.34,13442.94,5.00,Invest new cash,simulated
+S-GRO-20250602-261,2025-06-02,growth,AVGO,sell,1732,248.71,430765.72,86.15,Raise cash for client withdrawal,simulated
+S-GRO-20250602-262,2025-06-02,growth,META,sell,305,670.9,204624.50,40.92,Raise cash for client withdrawal,simulated
+S-GRO-20250602-263,2025-06-02,growth,COST,sell,194,1056.85,205028.90,41.01,Raise cash for client withdrawal,simulated
+S-GRO-20250602-264,2025-06-02,growth,ISRG,sell,365,553.29,201950.85,40.39,Raise cash for client withdrawal,simulated
+S-GRO-20250602-265,2025-06-02,growth,VEA,sell,3245,56.22,182433.90,36.49,Raise cash for client withdrawal,simulated
+S-GRO-20250602-266,2025-06-02,growth,NVDA,sell,1033,137.38,141913.54,28.38,Raise cash for client withdrawal,simulated
+S-GRO-20250602-267,2025-06-02,growth,MA,sell,195,581.22,113337.90,22.67,Raise cash for client withdrawal,simulated
+S-BAL-20250701-259,2025-07-01,balanced,JPM,sell,716,290.41,207933.56,41.59,Quarterly rebalance,simulated
+S-BAL-20250701-260,2025-07-01,balanced,MSFT,sell,261,492.05,128425.05,25.69,Quarterly rebalance,simulated
+S-BAL-20250701-261,2025-07-01,balanced,UNH,buy,743,326.14,242322.02,48.46,Quarterly rebalance,simulated
+S-EQU-20250701-242,2025-07-01,equity_income,VZ,sell,13381,43.68,584482.08,116.90,Model change: replace telecom with a dividend-growing semiconductor name,simulated
+S-EQU-20250701-243,2025-07-01,equity_income,TXN,buy,2814,210.45,592206.30,118.44,Quarterly rebalance,simulated
+S-MUL-20250701-212,2025-07-01,multi_asset,TSM,sell,417,224.68,93691.56,18.74,Quarterly rebalance,simulated
+S-MUL-20250701-213,2025-07-01,multi_asset,AGG,buy,399,98.79,39417.21,7.88,Invest new cash,simulated
+S-MUL-20250701-214,2025-07-01,multi_asset,TIP,buy,302,109.6,33099.20,6.62,Invest new cash,simulated
+S-MUL-20250701-215,2025-07-01,multi_asset,VNQ,buy,252,89.71,22606.92,5.00,Invest new cash,simulated
+S-MUL-20250701-216,2025-07-01,multi_asset,DBC,buy,1022,21.93,22412.46,5.00,Invest new cash,simulated
+S-MUL-20250701-217,2025-07-01,multi_asset,EMB,buy,204,92.42,18853.68,5.00,Invest new cash,simulated
+S-MUL-20250701-218,2025-07-01,multi_asset,TM,buy,74,171.54,12693.96,5.00,Invest new cash,simulated
+S-MUL-20250701-219,2025-07-01,multi_asset,BHP,buy,224,48.67,10902.08,5.00,Invest new cash,simulated
+S-BAL-20250801-268,2025-08-01,balanced,UNH,buy,206,237.77,48980.62,9.80,Invest new cash,simulated
+S-BAL-20250801-269,2025-08-01,balanced,AGG,buy,459,99.14,45505.26,9.10,Invest new cash,simulated
+S-BAL-20250801-270,2025-08-01,balanced,PG,buy,194,150.65,29226.10,5.85,Invest new cash,simulated
+S-BAL-20250801-271,2025-08-01,balanced,AAPL,buy,140,202.38,28333.20,5.67,Invest new cash,simulated
+S-BAL-20250801-272,2025-08-01,balanced,BRK-B,buy,55,472.84,26006.20,5.20,Invest new cash,simulated
+S-BAL-20250801-273,2025-08-01,balanced,IEF,buy,242,95.68,23154.56,5.00,Invest new cash,simulated
+S-BAL-20250801-274,2025-08-01,balanced,LQD,buy,172,109.63,18856.36,5.00,Invest new cash,simulated
+S-BAL-20250801-275,2025-08-01,balanced,TIP,buy,139,110.17,15313.63,5.00,Invest new cash,simulated
+S-BAL-20250801-276,2025-08-01,balanced,USMV,buy,122,92.34,11265.48,5.00,Invest new cash,simulated
+S-BAL-20250801-277,2025-08-01,balanced,XOM,buy,93,109.64,10196.52,5.00,Invest new cash,simulated
+S-GRO-20250801-286,2025-08-01,growth,ISRG,buy,152,483.12,73434.24,14.69,Invest new cash,simulated
+S-GRO-20250801-287,2025-08-01,growth,LLY,buy,87,762.33,66322.71,13.26,Invest new cash,simulated
+S-GRO-20250801-288,2025-08-01,growth,VEA,buy,1173,56.02,65711.46,13.14,Invest new cash,simulated
+S-GRO-20250801-289,2025-08-01,growth,COST,buy,65,952.52,61913.80,12.38,Invest new cash,simulated
+S-GRO-20250801-290,2025-08-01,growth,NOW,buy,323,182.874,59068.30,11.81,Invest new cash,simulated
+S-GRO-20250801-291,2025-08-01,growth,IEF,buy,550,95.68,52624.00,10.52,Invest new cash,simulated
+S-GRO-20250801-292,2025-08-01,growth,AAPL,buy,254,202.38,51404.52,10.28,Invest new cash,simulated
+S-GRO-20250801-293,2025-08-01,growth,ASML,buy,74,689.82,51046.68,10.21,Invest new cash,simulated
+S-GRO-20250801-294,2025-08-01,growth,LQD,buy,461,109.63,50539.43,10.11,Invest new cash,simulated
+S-GRO-20250801-295,2025-08-01,growth,V,buy,141,339.35,47848.35,9.57,Invest new cash,simulated
+S-GRO-20250801-296,2025-08-01,growth,MA,buy,52,559.89,29114.28,5.82,Invest new cash,simulated
+S-GRO-20250801-297,2025-08-01,growth,IVV,buy,19,624.65,11868.35,5.00,Invest new cash,simulated
+S-GRO-20250801-298,2025-08-01,growth,VWO,buy,208,49.54,10304.32,5.00,Invest new cash,simulated
+S-BAL-20250902-288,2025-09-02,balanced,AGG,buy,1833,98.87,181228.71,36.25,Invest new cash,simulated
+S-BAL-20250902-289,2025-09-02,balanced,IEF,buy,982,95.55,93830.10,18.77,Invest new cash,simulated
+S-BAL-20250902-290,2025-09-02,balanced,LQD,buy,770,109.05,83968.50,16.79,Invest new cash,simulated
+S-BAL-20250902-291,2025-09-02,balanced,TIP,buy,511,110.55,56491.05,11.30,Invest new cash,simulated
+S-BAL-20250902-292,2025-09-02,balanced,PG,buy,274,157.99,43289.26,8.66,Invest new cash,simulated
+S-BAL-20250902-293,2025-09-02,balanced,BRK-B,buy,71,501.14,35580.94,7.12,Invest new cash,simulated
+S-BAL-20250902-294,2025-09-02,balanced,USMV,buy,329,94.02,30932.58,6.19,Invest new cash,simulated
+S-BAL-20250902-295,2025-09-02,balanced,XOM,buy,156,114.69,17891.64,5.00,Invest new cash,simulated
+S-BAL-20250902-296,2025-09-02,balanced,AAPL,buy,69,229.72,15850.68,5.00,Invest new cash,simulated
+S-BAL-20251001-308,2025-10-01,balanced,GOOGL,sell,942,244.9,230695.80,46.14,Quarterly rebalance,simulated
+S-BAL-20251001-309,2025-10-01,balanced,AGG,buy,832,100.18,83349.76,16.67,Invest new cash,simulated
+S-BAL-20251001-310,2025-10-01,balanced,IEF,buy,477,96.49,46025.73,9.21,Invest new cash,simulated
+S-BAL-20251001-311,2025-10-01,balanced,LQD,buy,295,111.51,32895.45,6.58,Invest new cash,simulated
+S-BAL-20251001-312,2025-10-01,balanced,TIP,buy,268,111.22,29806.96,5.96,Invest new cash,simulated
+S-BAL-20251001-313,2025-10-01,balanced,PG,buy,179,153.18,27419.22,5.48,Invest new cash,simulated
+S-BAL-20251001-314,2025-10-01,balanced,BRK-B,buy,39,498.2,19429.80,5.00,Invest new cash,simulated
+S-BAL-20251001-315,2025-10-01,balanced,XOM,buy,165,111.99,18478.35,5.00,Invest new cash,simulated
+S-BAL-20251001-316,2025-10-01,balanced,HD,buy,43,397.02,17071.86,5.00,Invest new cash,simulated
+S-BAL-20251001-317,2025-10-01,balanced,USMV,buy,167,94.97,15859.99,5.00,Invest new cash,simulated
+S-EQU-20251001-276,2025-10-01,equity_income,ABBV,sell,882,244.38,215543.16,43.11,Quarterly rebalance,simulated
+S-EQU-20251001-277,2025-10-01,equity_income,JEPI,buy,932,56.85,52984.20,10.60,Invest new cash,simulated
+S-EQU-20251001-278,2025-10-01,equity_income,SCHD,buy,1775,27.53,48865.75,9.77,Invest new cash,simulated
+S-EQU-20251001-279,2025-10-01,equity_income,TXN,buy,210,180.39,37881.90,7.58,Invest new cash,simulated
+S-EQU-20251001-280,2025-10-01,equity_income,PEP,buy,260,143.14,37216.40,7.44,Invest new cash,simulated
+S-EQU-20251001-281,2025-10-01,equity_income,PG,buy,231,153.18,35384.58,7.08,Invest new cash,simulated
+S-EQU-20251001-282,2025-10-01,equity_income,PFF,buy,892,31.74,28312.08,5.66,Invest new cash,simulated
+S-EQU-20251001-283,2025-10-01,equity_income,LQD,buy,188,111.51,20963.88,5.00,Invest new cash,simulated
+S-EQU-20251001-284,2025-10-01,equity_income,HYG,buy,253,80.96,20482.88,5.00,Invest new cash,simulated
+S-EQU-20251001-285,2025-10-01,equity_income,CVX,buy,128,154.58,19786.24,5.00,Invest new cash,simulated
+S-EQU-20251001-286,2025-10-01,equity_income,XOM,buy,171,111.99,19150.29,5.00,Invest new cash,simulated
+S-EQU-20251001-287,2025-10-01,equity_income,KO,buy,180,66.78,12020.40,5.00,Invest new cash,simulated
+S-GRO-20251001-317,2025-10-01,growth,ASML,sell,287,1003.27,287938.49,57.59,Quarterly rebalance,simulated
+S-GRO-20251001-318,2025-10-01,growth,GOOGL,sell,1077,244.9,263757.30,52.75,Quarterly rebalance,simulated
+S-GRO-20251001-319,2025-10-01,growth,TSM,sell,1610,288.47,464436.70,92.89,Quarterly rebalance,simulated
+S-GRO-20251001-320,2025-10-01,growth,ISRG,buy,707,438.04,309694.28,61.94,Quarterly rebalance,simulated
+S-GRO-20251001-321,2025-10-01,growth,COST,buy,120,917.34,110080.80,22.02,Invest new cash,simulated
+S-GRO-20251001-322,2025-10-01,growth,IEF,buy,978,96.49,94367.22,18.87,Invest new cash,simulated
+S-GRO-20251001-323,2025-10-01,growth,NOW,buy,498,182.486,90878.03,18.18,Invest new cash,simulated
+S-GRO-20251001-324,2025-10-01,growth,LQD,buy,780,111.51,86977.80,17.40,Invest new cash,simulated
+S-GRO-20251001-325,2025-10-01,growth,V,buy,200,347.83,69566.00,13.91,Invest new cash,simulated
+S-GRO-20251001-326,2025-10-01,growth,VEA,buy,1090,60.37,65803.30,13.16,Invest new cash,simulated
+S-GRO-20251001-327,2025-10-01,growth,LLY,buy,69,825.42,56953.98,11.39,Invest new cash,simulated
+S-GRO-20251001-328,2025-10-01,growth,MA,buy,95,573.77,54508.15,10.90,Invest new cash,simulated
+S-GRO-20251001-329,2025-10-01,growth,META,buy,54,717.34,38736.36,7.75,Invest new cash,simulated
+S-GRO-20251001-330,2025-10-01,growth,IVV,buy,46,671.84,30904.64,6.18,Invest new cash,simulated
+S-GRO-20251001-331,2025-10-01,growth,AMZN,buy,132,220.63,29123.16,5.82,Invest new cash,simulated
+S-MUL-20251001-239,2025-10-01,multi_asset,ASML,sell,132,1003.27,132431.64,26.49,Quarterly rebalance,simulated
+S-MUL-20251001-240,2025-10-01,multi_asset,TSM,sell,323,288.47,93175.81,18.64,Quarterly rebalance,simulated
+S-MUL-20251001-241,2025-10-01,multi_asset,NVO,buy,1782,59.17,105440.94,21.09,Quarterly rebalance,simulated
+S-MUL-20251001-242,2025-10-01,multi_asset,AGG,buy,466,100.18,46683.88,9.34,Invest new cash,simulated
+S-MUL-20251001-243,2025-10-01,multi_asset,TIP,buy,342,111.22,38037.24,7.61,Invest new cash,simulated
+S-MUL-20251001-244,2025-10-01,multi_asset,VNQ,buy,256,91.56,23439.36,5.00,Invest new cash,simulated
+S-MUL-20251001-245,2025-10-01,multi_asset,EMB,buy,239,95.12,22733.68,5.00,Invest new cash,simulated
+S-MUL-20251001-246,2025-10-01,multi_asset,DBC,buy,988,22.49,22220.12,5.00,Invest new cash,simulated
+S-MUL-20251001-247,2025-10-01,multi_asset,UL,buy,272,66.2275,18013.88,5.00,Invest new cash,simulated
+S-MUL-20251001-248,2025-10-01,multi_asset,SAP,buy,58,269.99,15659.42,5.00,Invest new cash,simulated
+S-GRO-20251103-338,2025-11-03,growth,META,buy,94,637.71,59944.74,11.99,Invest new cash,simulated
+S-GRO-20251103-339,2025-11-03,growth,VEA,buy,831,61.13,50799.03,10.16,Invest new cash,simulated
+S-GRO-20251103-340,2025-11-03,growth,LQD,buy,449,110.53,49627.97,9.93,Invest new cash,simulated
+S-GRO-20251103-341,2025-11-03,growth,IEF,buy,501,96.5,48346.50,9.67,Invest new cash,simulated
+S-GRO-20251103-342,2025-11-03,growth,MA,buy,86,544.07,46790.02,9.36,Invest new cash,simulated
+S-GRO-20251103-343,2025-11-03,growth,V,buy,133,336.9,44807.70,8.96,Invest new cash,simulated
+S-GRO-20251103-344,2025-11-03,growth,COST,buy,48,928.04,44545.92,8.91,Invest new cash,simulated
+S-GRO-20251103-345,2025-11-03,growth,IVV,buy,65,686.69,44634.85,8.93,Invest new cash,simulated
+S-GRO-20251103-346,2025-11-03,growth,NOW,buy,229,182.768,41853.87,8.37,Invest new cash,simulated
+S-GRO-20251103-347,2025-11-03,growth,VWO,buy,433,55.09,23853.97,5.00,Invest new cash,simulated
+S-MUL-20251103-254,2025-11-03,multi_asset,GLD,sell,641,368.78,236387.98,47.28,Raise cash for client withdrawal,simulated
+S-MUL-20251103-255,2025-11-03,multi_asset,IVV,sell,277,686.69,190213.13,38.04,Raise cash for client withdrawal,simulated
+S-MUL-20251103-256,2025-11-03,multi_asset,VWO,sell,2451,55.09,135025.59,27.01,Raise cash for client withdrawal,simulated
+S-MUL-20251103-257,2025-11-03,multi_asset,VEA,sell,2071,61.13,126600.23,25.32,Raise cash for client withdrawal,simulated
+S-MUL-20251103-258,2025-11-03,multi_asset,MSFT,sell,43,517.03,22232.29,5.00,Raise cash for client withdrawal,simulated
+S-BAL-20260102-344,2026-01-02,balanced,GOOGL,sell,576,315.15,181526.40,36.31,Quarterly rebalance,simulated
+S-BAL-20260102-345,2026-01-02,balanced,AGG,buy,936,99.85,93459.60,18.69,Invest new cash,simulated
+S-BAL-20260102-346,2026-01-02,balanced,IEF,buy,537,96.08,51594.96,10.32,Invest new cash,simulated
+S-BAL-20260102-347,2026-01-02,balanced,HD,buy,134,345.82,46339.88,9.27,Invest new cash,simulated
+S-BAL-20260102-348,2026-01-02,balanced,LQD,buy,413,110.16,45496.08,9.10,Invest new cash,simulated
+S-BAL-20260102-349,2026-01-02,balanced,PG,buy,283,141.79,40126.57,8.03,Invest new cash,simulated
+S-BAL-20260102-350,2026-01-02,balanced,TIP,buy,333,109.86,36583.38,7.32,Invest new cash,simulated
+S-BAL-20260102-351,2026-01-02,balanced,MSFT,buy,71,472.94,33578.74,6.72,Invest new cash,simulated
+S-BAL-20260102-352,2026-01-02,balanced,USMV,buy,226,93.65,21164.90,5.00,Invest new cash,simulated
+S-BAL-20260102-353,2026-01-02,balanced,BRK-B,buy,39,496.85,19377.15,5.00,Invest new cash,simulated
+S-CON-20260102-301,2026-01-02,conservative_income,VIG,sell,610,220.6,134566.00,26.91,Quarterly rebalance,simulated
+S-CON-20260102-302,2026-01-02,conservative_income,SHY,buy,441,82.86,36541.26,7.31,Invest new cash,simulated
+S-CON-20260102-303,2026-01-02,conservative_income,AGG,buy,324,99.85,32351.40,6.47,Invest new cash,simulated
+S-CON-20260102-304,2026-01-02,conservative_income,VCSH,buy,344,79.76,27437.44,5.49,Invest new cash,simulated
+S-CON-20260102-305,2026-01-02,conservative_income,BIL,buy,258,91.42,23586.36,5.00,Invest new cash,simulated
+S-CON-20260102-306,2026-01-02,conservative_income,IEF,buy,244,96.08,23443.52,5.00,Invest new cash,simulated
+S-CON-20260102-307,2026-01-02,conservative_income,LQD,buy,149,110.16,16413.84,5.00,Invest new cash,simulated
+S-CON-20260102-308,2026-01-02,conservative_income,PEP,buy,102,142.23,14507.46,5.00,Invest new cash,simulated
+S-CON-20260102-309,2026-01-02,conservative_income,TIP,buy,104,109.86,11425.44,5.00,Invest new cash,simulated
+S-EQU-20260102-320,2026-01-02,equity_income,IDV,sell,10765,39.99,430492.35,86.10,Quarterly rebalance,simulated
+S-EQU-20260102-321,2026-01-02,equity_income,JNJ,sell,714,207.35,148047.90,29.61,Quarterly rebalance,simulated
+S-EQU-20260102-322,2026-01-02,equity_income,JPM,sell,420,325.48,136701.60,27.34,Quarterly rebalance,simulated
+S-EQU-20260102-323,2026-01-02,equity_income,PG,buy,684,141.79,96984.36,19.40,Invest new cash,simulated
+S-EQU-20260102-324,2026-01-02,equity_income,JEPI,buy,1643,57.32,94176.76,18.84,Invest new cash,simulated
+S-EQU-20260102-325,2026-01-02,equity_income,SCHD,buy,3307,27.73,91703.11,18.34,Invest new cash,simulated
+S-EQU-20260102-326,2026-01-02,equity_income,TXN,buy,417,177.52,74025.84,14.81,Invest new cash,simulated
+S-EQU-20260102-327,2026-01-02,equity_income,PFF,buy,2282,31.27,71358.14,14.27,Invest new cash,simulated
+S-EQU-20260102-328,2026-01-02,equity_income,PEP,buy,484,142.23,68839.32,13.77,Invest new cash,simulated
+S-EQU-20260102-329,2026-01-02,equity_income,LQD,buy,523,110.16,57613.68,11.52,Invest new cash,simulated
+S-EQU-20260102-330,2026-01-02,equity_income,HYG,buy,612,80.67,49370.04,9.87,Invest new cash,simulated
+S-EQU-20260102-331,2026-01-02,equity_income,HD,buy,130,345.82,44956.60,8.99,Invest new cash,simulated
+S-EQU-20260102-332,2026-01-02,equity_income,ABBV,buy,172,229.31,39441.32,7.89,Invest new cash,simulated
+S-EQU-20260102-333,2026-01-02,equity_income,O,buy,660,57.31,37824.60,7.56,Invest new cash,simulated
+S-EQU-20260102-334,2026-01-02,equity_income,CVX,buy,222,155.9,34609.80,6.92,Invest new cash,simulated
+S-GRO-20260102-366,2026-01-02,growth,GOOGL,sell,907,315.15,285841.05,57.17,Quarterly rebalance,simulated
+S-GRO-20260102-367,2026-01-02,growth,ISRG,sell,500,561.98,280990.00,56.20,Quarterly rebalance,simulated
+S-GRO-20260102-368,2026-01-02,growth,NOW,buy,2335,147.45,344295.75,68.86,Quarterly rebalance,simulated
+S-GRO-20260120-370,2026-01-20,growth,META,buy,105,604.12,63432.60,12.69,Invest new cash,simulated
+S-GRO-20260120-371,2026-01-20,growth,NOW,buy,406,125.4,50912.40,10.18,Invest new cash,simulated
+S-GRO-20260120-372,2026-01-20,growth,MSFT,buy,109,454.52,49542.68,9.91,Invest new cash,simulated
+S-GRO-20260120-373,2026-01-20,growth,V,buy,138,325.82,44963.16,8.99,Invest new cash,simulated
+S-GRO-20260120-374,2026-01-20,growth,MA,buy,81,531.74,43070.94,8.61,Invest new cash,simulated
+S-GRO-20260120-375,2026-01-20,growth,IEF,buy,416,95.55,39748.80,7.95,Invest new cash,simulated
+S-GRO-20260120-376,2026-01-20,growth,LQD,buy,354,109.9,38904.60,7.78,Invest new cash,simulated
+S-GRO-20260120-377,2026-01-20,growth,IVV,buy,47,680.6,31988.20,6.40,Invest new cash,simulated
+S-GRO-20260120-378,2026-01-20,growth,COST,buy,21,964.26,20249.46,5.00,Invest new cash,simulated
+S-GRO-20260120-379,2026-01-20,growth,ISRG,buy,34,527.44,17932.96,5.00,Invest new cash,simulated
+S-GRO-20260120-380,2026-01-20,growth,VUG,buy,164,78.7617,12916.92,5.00,Invest new cash,simulated
+S-BAL-20260302-369,2026-03-02,balanced,VEA,sell,6974,69.01,481275.74,96.26,Raise cash for client withdrawal,simulated
+S-BAL-20260302-370,2026-03-02,balanced,GLD,sell,863,490,422870.00,84.57,Raise cash for client withdrawal,simulated
+S-BAL-20260302-371,2026-03-02,balanced,IVV,sell,404,689.45,278537.80,55.71,Raise cash for client withdrawal,simulated
+S-BAL-20260302-372,2026-03-02,balanced,JNJ,sell,1113,248.56,276647.28,55.33,Raise cash for client withdrawal,simulated
+S-BAL-20260302-373,2026-03-02,balanced,XOM,sell,57,154.22,8790.54,5.00,Raise cash for client withdrawal,simulated
+S-MUL-20260318-287,2026-03-18,multi_asset,SAP,buy,155,183.74,28479.70,5.70,Invest new cash,simulated
+S-MUL-20260318-288,2026-03-18,multi_asset,NVO,buy,744,37.45,27862.80,5.57,Invest new cash,simulated
+S-MUL-20260318-289,2026-03-18,multi_asset,AGG,buy,258,99.38,25640.04,5.13,Invest new cash,simulated
+S-MUL-20260318-290,2026-03-18,multi_asset,IVV,buy,36,662.85,23862.60,5.00,Invest new cash,simulated
+S-MUL-20260318-291,2026-03-18,multi_asset,TIP,buy,170,111.24,18910.80,5.00,Invest new cash,simulated
+S-MUL-20260318-292,2026-03-18,multi_asset,EMB,buy,149,94.36,14059.64,5.00,Invest new cash,simulated
+S-MUL-20260318-293,2026-03-18,multi_asset,VWO,buy,248,54.21,13444.08,5.00,Invest new cash,simulated
+S-MUL-20260318-294,2026-03-18,multi_asset,UL,buy,195,62.35,12158.25,5.00,Invest new cash,simulated
+S-MUL-20260318-295,2026-03-18,multi_asset,MSFT,buy,29,391.79,11361.91,5.00,Invest new cash,simulated
+S-MUL-20260318-296,2026-03-18,multi_asset,VNQ,buy,121,91.96,11127.16,5.00,Invest new cash,simulated
+S-GRO-20260326-400,2026-03-26,growth,MSFT,buy,201,365.97,73559.97,14.71,Invest new cash,simulated
+S-GRO-20260326-401,2026-03-26,growth,NOW,buy,654,103.64,67780.56,13.56,Invest new cash,simulated
+S-GRO-20260326-402,2026-03-26,growth,META,buy,94,547.54,51468.76,10.29,Invest new cash,simulated
+S-GRO-20260326-403,2026-03-26,growth,VUG,buy,530,72.12,38223.60,7.64,Invest new cash,simulated
+S-GRO-20260326-404,2026-03-26,growth,V,buy,101,305.53,30858.53,6.17,Invest new cash,simulated
+S-GRO-20260326-405,2026-03-26,growth,ISRG,buy,66,468.55,30924.30,6.18,Invest new cash,simulated
+S-GRO-20260326-406,2026-03-26,growth,MA,buy,57,500.75,28542.75,5.71,Invest new cash,simulated
+S-GRO-20260326-407,2026-03-26,growth,AMZN,buy,110,207.54,22829.40,5.00,Invest new cash,simulated
+S-GRO-20260326-408,2026-03-26,growth,IVV,buy,27,648.01,17496.27,5.00,Invest new cash,simulated
+S-GRO-20260326-409,2026-03-26,growth,GOOGL,buy,56,280.92,15731.52,5.00,Invest new cash,simulated
+S-GRO-20260326-410,2026-03-26,growth,LQD,buy,98,107.88,10572.24,5.00,Invest new cash,simulated
+S-BAL-20260401-383,2026-04-01,balanced,XOM,sell,1664,160.78,267537.92,53.51,Quarterly rebalance,simulated
+S-BAL-20260401-384,2026-04-01,balanced,MSFT,buy,439,369.37,162153.43,32.43,Quarterly rebalance,simulated
+S-CON-20260401-342,2026-04-01,conservative_income,JNJ,sell,229,244.12,55903.48,11.18,Quarterly rebalance,simulated
+S-CON-20260401-343,2026-04-01,conservative_income,WMT,sell,547,124.74,68232.78,13.65,Quarterly rebalance,simulated
+S-CON-20260401-344,2026-04-01,conservative_income,SHY,buy,328,82.32,27000.96,5.40,Invest new cash,simulated
+S-CON-20260401-345,2026-04-01,conservative_income,AGG,buy,266,99,26334.00,5.27,Invest new cash,simulated
+S-CON-20260401-346,2026-04-01,conservative_income,VCSH,buy,307,79.04,24265.28,5.00,Invest new cash,simulated
+S-CON-20260401-347,2026-04-01,conservative_income,IEF,buy,206,95.04,19578.24,5.00,Invest new cash,simulated
+S-CON-20260401-348,2026-04-01,conservative_income,BIL,buy,152,91.4,13892.80,5.00,Invest new cash,simulated
+S-CON-20260401-349,2026-04-01,conservative_income,LQD,buy,116,108.66,12604.56,5.00,Invest new cash,simulated
+S-EQU-20260401-367,2026-04-01,equity_income,XOM,sell,1096,160.78,176214.88,35.24,Quarterly rebalance,simulated
+S-EQU-20260401-368,2026-04-01,equity_income,JEPI,buy,771,56.41,43492.11,8.70,Invest new cash,simulated
+S-EQU-20260401-369,2026-04-01,equity_income,PFF,buy,1029,30.38,31261.02,6.25,Invest new cash,simulated
+S-EQU-20260401-370,2026-04-01,equity_income,JPM,buy,92,295.38,27174.96,5.43,Invest new cash,simulated
+S-EQU-20260401-371,2026-04-01,equity_income,HYG,buy,324,79.37,25715.88,5.14,Invest new cash,simulated
+S-EQU-20260401-372,2026-04-01,equity_income,LQD,buy,234,108.66,25426.44,5.09,Invest new cash,simulated
+S-EQU-20260401-373,2026-04-01,equity_income,ABBV,buy,110,214.98,23647.80,5.00,Invest new cash,simulated
+S-EQU-20260401-374,2026-04-01,equity_income,HD,buy,64,329.56,21091.84,5.00,Invest new cash,simulated
+S-EQU-20260401-375,2026-04-01,equity_income,PG,buy,87,144.09,12535.83,5.00,Invest new cash,simulated
+S-GRO-20260401-414,2026-04-01,growth,ASML,sell,310,1359.76,421525.60,84.31,Quarterly rebalance,simulated
+S-GRO-20260401-415,2026-04-01,growth,MSFT,buy,198,369.37,73135.26,14.63,Invest new cash,simulated
+S-GRO-20260401-416,2026-04-01,growth,NOW,buy,667,104.04,69394.68,13.88,Invest new cash,simulated
+S-GRO-20260401-417,2026-04-01,growth,V,buy,151,298.51,45075.01,9.02,Invest new cash,simulated
+S-GRO-20260401-418,2026-04-01,growth,MA,buy,84,491.65,41298.60,8.26,Invest new cash,simulated
+S-GRO-20260401-419,2026-04-01,growth,ISRG,buy,86,464.45,39942.70,7.99,Invest new cash,simulated
+S-GRO-20260401-420,2026-04-01,growth,VUG,buy,493,73.5933,36281.50,7.26,Invest new cash,simulated
+S-GRO-20260401-421,2026-04-01,growth,META,buy,61,579.23,35333.03,7.07,Invest new cash,simulated
+S-GRO-20260401-422,2026-04-01,growth,IVV,buy,37,658.06,24348.22,5.00,Invest new cash,simulated
+S-GRO-20260401-423,2026-04-01,growth,AMZN,buy,113,210.57,23794.41,5.00,Invest new cash,simulated
+S-GRO-20260401-424,2026-04-01,growth,IEF,buy,189,95.04,17962.56,5.00,Invest new cash,simulated
+S-GRO-20260401-425,2026-04-01,growth,LQD,buy,156,108.66,16950.96,5.00,Invest new cash,simulated
+S-MUL-20260401-302,2026-04-01,multi_asset,ASML,sell,114,1359.76,155012.64,31.00,Quarterly rebalance,simulated
+S-MUL-20260401-303,2026-04-01,multi_asset,BHP,sell,2068,73.56,152122.08,30.42,Quarterly rebalance,simulated
+S-MUL-20260401-304,2026-04-01,multi_asset,NVS,sell,659,155.08,102197.72,20.44,Quarterly rebalance,simulated
+S-MUL-20260401-305,2026-04-01,multi_asset,NVO,buy,4167,36.48,152012.16,30.40,Quarterly rebalance,simulated
+S-MUL-20260401-306,2026-04-01,multi_asset,SAP,buy,985,171.36,168789.60,33.76,Quarterly rebalance,simulated
+S-MUL-20260401-307,2026-04-01,multi_asset,UL,buy,1817,56.06,101861.02,20.37,Quarterly rebalance,simulated
+S-MUL-20260501-313,2026-05-01,multi_asset,AGG,buy,1330,98.9,131537.00,26.31,Invest new cash,simulated
+S-MUL-20260501-314,2026-05-01,multi_asset,TIP,buy,872,111.35,97097.20,19.42,Invest new cash,simulated
+S-MUL-20260501-315,2026-05-01,multi_asset,EMB,buy,742,95.57,70912.94,14.18,Invest new cash,simulated
+S-MUL-20260501-316,2026-05-01,multi_asset,IVV,buy,61,724.01,44164.61,8.83,Invest new cash,simulated
+S-MUL-20260501-317,2026-05-01,multi_asset,VNQ,buy,415,96.06,39864.90,7.97,Invest new cash,simulated
+S-MUL-20260501-318,2026-05-01,multi_asset,MSFT,buy,83,414.44,34398.52,6.88,Invest new cash,simulated
+S-MUL-20260501-319,2026-05-01,multi_asset,NVS,buy,194,146.57,28434.58,5.69,Invest new cash,simulated
+S-MUL-20260501-320,2026-05-01,multi_asset,TM,buy,131,188.71,24721.01,5.00,Invest new cash,simulated
+S-MUL-20260501-321,2026-05-01,multi_asset,VWO,buy,383,58.99,22593.17,5.00,Invest new cash,simulated
+S-MUL-20260501-322,2026-05-01,multi_asset,SAP,buy,97,170.76,16563.72,5.00,Invest new cash,simulated
+S-BAL-20260622-407,2026-06-22,balanced,AGG,buy,485,98.63,47835.55,9.57,Invest new cash,simulated
+S-BAL-20260622-408,2026-06-22,balanced,GLD,buy,119,384.59,45766.21,9.15,Invest new cash,simulated
+S-BAL-20260622-409,2026-06-22,balanced,IEF,buy,330,94,31020.00,6.20,Invest new cash,simulated
+S-BAL-20260622-410,2026-06-22,balanced,XOM,buy,221,138.47,30601.87,6.12,Invest new cash,simulated
+S-BAL-20260622-411,2026-06-22,balanced,HD,buy,85,326.62,27762.70,5.55,Invest new cash,simulated
+S-BAL-20260622-412,2026-06-22,balanced,LQD,buy,213,108.78,23170.14,5.00,Invest new cash,simulated
+S-BAL-20260622-413,2026-06-22,balanced,TIP,buy,157,108.94,17103.58,5.00,Invest new cash,simulated
+S-BAL-20260622-414,2026-06-22,balanced,JNJ,buy,63,231.29,14571.27,5.00,Invest new cash,simulated
+S-BAL-20260622-415,2026-06-22,balanced,PG,buy,72,147.68,10632.96,5.00,Invest new cash,simulated
+S-BAL-20260622-416,2026-06-22,balanced,BRK-B,buy,21,488.69,10262.49,5.00,Invest new cash,simulated
+S-BAL-20260701-421,2026-07-01,balanced,UNH,sell,492,426.54,209857.68,41.97,Quarterly rebalance,simulated
+S-BAL-20260701-422,2026-07-01,balanced,GLD,buy,489,370.6,181223.40,36.24,Quarterly rebalance,simulated
+S-EQU-20260701-408,2026-07-01,equity_income,TXN,sell,1172,298.41,349736.52,69.95,Quarterly rebalance,simulated
+S-EQU-20260701-409,2026-07-01,equity_income,JEPI,buy,1522,56.12,85414.64,17.08,Invest new cash,simulated
+S-EQU-20260701-410,2026-07-01,equity_income,XOM,buy,446,136.28,60780.88,12.16,Invest new cash,simulated
+S-EQU-20260701-411,2026-07-01,equity_income,PFF,buy,1727,30.47,52621.69,10.52,Invest new cash,simulated
+S-EQU-20260701-412,2026-07-01,equity_income,IDV,buy,1232,41.14,50684.48,10.14,Invest new cash,simulated
+S-EQU-20260701-413,2026-07-01,equity_income,LQD,buy,448,108.46,48590.08,9.72,Invest new cash,simulated
+S-EQU-20260701-414,2026-07-01,equity_income,HYG,buy,582,79.59,46321.38,9.26,Invest new cash,simulated
+S-EQU-20260701-415,2026-07-01,equity_income,PEP,buy,250,141.16,35290.00,7.06,Invest new cash,simulated
+S-EQU-20260701-416,2026-07-01,equity_income,PG,buy,116,147.43,17101.88,5.00,Invest new cash,simulated
+S-EQU-20260701-417,2026-07-01,equity_income,HD,buy,42,350.84,14735.28,5.00,Invest new cash,simulated
+S-GRO-20260701-450,2026-07-01,growth,TSM,sell,1074,444.23,477103.02,95.42,Quarterly rebalance,simulated
+S-GRO-20260701-451,2026-07-01,growth,NOW,buy,2745,105.8,290421.00,58.08,Quarterly rebalance,simulated
+S-GRO-20260701-452,2026-07-01,growth,ISRG,buy,995,402.38,400368.10,80.07,Quarterly rebalance,simulated
+S-MUL-20260701-339,2026-07-01,multi_asset,ASML,sell,72,1843.04,132698.88,26.54,Quarterly rebalance,simulated
+S-MUL-20260701-340,2026-07-01,multi_asset,NVO,sell,2564,48.77,125046.28,25.01,Quarterly rebalance,simulated
+S-MUL-20260701-341,2026-07-01,multi_asset,TSM,sell,470,444.23,208788.10,41.76,Quarterly rebalance,simulated
+S-MUL-20260701-342,2026-07-01,multi_asset,GLD,buy,331,370.6,122668.60,24.53,Invest new cash,simulated
+S-MUL-20260701-343,2026-07-01,multi_asset,TIP,buy,959,108.17,103735.03,20.75,Invest new cash,simulated
+S-MUL-20260701-344,2026-07-01,multi_asset,AGG,buy,1029,98.5,101356.50,20.27,Invest new cash,simulated
+S-MUL-20260701-345,2026-07-01,multi_asset,TM,buy,325,169.66,55139.50,11.03,Invest new cash,simulated
+S-MUL-20260701-346,2026-07-01,multi_asset,MSFT,buy,134,384.28,51493.52,10.30,Invest new cash,simulated
+S-MUL-20260701-347,2026-07-01,multi_asset,EMB,buy,476,96.02,45705.52,9.14,Invest new cash,simulated
+S-MUL-20260701-348,2026-07-01,multi_asset,SAP,buy,232,159.15,36922.80,7.38,Invest new cash,simulated
+S-MUL-20260701-349,2026-07-01,multi_asset,SHEL,buy,441,76.57,33767.37,6.75,Invest new cash,simulated
+S-MUL-20260701-350,2026-07-01,multi_asset,VNQ,buy,226,96.82,21881.32,5.00,Invest new cash,simulated
+S-GRO-20260803-459,2026-08-03,growth,IEF,buy,1213,92.82,112590.66,22.52,Invest new cash,simulated
+S-GRO-20260803-460,2026-08-03,growth,LQD,buy,1055,106.11,111946.05,22.39,Invest new cash,simulated
+S-GRO-20260803-461,2026-08-03,growth,META,buy,140,590.24,82633.60,16.53,Invest new cash,simulated
+S-GRO-20260803-462,2026-08-03,growth,COST,buy,78,954.08,74418.24,14.88,Invest new cash,simulated
+S-GRO-20260803-463,2026-08-03,growth,VWO,buy,1106,59.06,65320.36,13.06,Invest new cash,simulated
+S-GRO-20260803-464,2026-08-03,growth,TSM,buy,121,406.11,49139.31,9.83,Invest new cash,simulated
+S-GRO-20260803-465,2026-08-03,growth,ISRG,buy,108,375.41,40544.28,8.11,Invest new cash,simulated
+S-GRO-20260803-466,2026-08-03,growth,MA,buy,57,570.97,32545.29,6.51,Invest new cash,simulated
+S-GRO-20260803-467,2026-08-03,growth,IVV,buy,35,761.32,26646.20,5.33,Invest new cash,simulated
+S-GRO-20260803-468,2026-08-03,growth,V,buy,32,365.67,11701.44,5.00,Invest new cash,simulated
+S-BAL-20260901-438,2026-09-01,balanced,AGG,buy,2168,96.77,209797.36,41.96,Invest new cash,simulated
+S-BAL-20260901-439,2026-09-01,balanced,IEF,buy,1322,92.1,121756.20,24.35,Invest new cash,simulated
+S-BAL-20260901-440,2026-09-01,balanced,LQD,buy,1063,105.22,111848.86,22.37,Invest new cash,simulated
+S-BAL-20260901-441,2026-09-01,balanced,TIP,buy,676,106.81,72203.56,14.44,Invest new cash,simulated
+S-BAL-20260901-442,2026-09-01,balanced,HD,buy,206,319.77,65872.62,13.17,Invest new cash,simulated
+S-BAL-20260901-443,2026-09-01,balanced,UNH,buy,95,396.3,37648.50,7.53,Invest new cash,simulated
+S-BAL-20260901-444,2026-09-01,balanced,PG,buy,249,146.21,36406.29,7.28,Invest new cash,simulated
+S-BAL-20260901-445,2026-09-01,balanced,VEA,buy,445,72.11,32088.95,6.42,Invest new cash,simulated
+S-BAL-20260901-446,2026-09-01,balanced,BRK-B,buy,47,502.33,23609.51,5.00,Invest new cash,simulated
+S-BAL-20260901-447,2026-09-01,balanced,XOM,buy,61,164.55,10037.55,5.00,Invest new cash,simulated
+S-BAL-20261001-458,2026-10-01,balanced,AAPL,sell,658,330.32,217350.56,43.47,Quarterly rebalance,simulated
+S-BAL-20261001-459,2026-10-01,balanced,MSFT,sell,390,512.8,199992.00,40.00,Quarterly rebalance,simulated
+S-BAL-20261001-460,2026-10-01,balanced,AGG,buy,1345,94.42,126994.90,25.40,Invest new cash,simulated
+S-BAL-20261001-461,2026-10-01,balanced,IEF,buy,899,89.3,80280.70,16.06,Invest new cash,simulated
+S-BAL-20261001-462,2026-10-01,balanced,LQD,buy,716,102.03,73053.48,14.61,Invest new cash,simulated
+S-BAL-20261001-463,2026-10-01,balanced,HD,buy,248,282.46,70050.08,14.01,Invest new cash,simulated
+S-BAL-20261001-464,2026-10-01,balanced,TIP,buy,411,104.31,42871.41,8.57,Invest new cash,simulated
+S-BAL-20261001-465,2026-10-01,balanced,UNH,buy,116,365.2,42363.20,8.47,Invest new cash,simulated
+S-BAL-20261001-466,2026-10-01,balanced,VEA,buy,382,70.21,26820.22,5.36,Invest new cash,simulated
+S-BAL-20261001-467,2026-10-01,balanced,PG,buy,130,143.95,18713.50,5.00,Invest new cash,simulated
+S-BAL-20261001-468,2026-10-01,balanced,USMV,buy,114,98.04,11176.56,5.00,Invest new cash,simulated
+S-EQU-20261001-450,2026-10-01,equity_income,CVX,sell,713,207.1,147662.30,29.53,Quarterly rebalance,simulated
+S-EQU-20261001-451,2026-10-01,equity_income,HD,buy,499,282.46,140947.54,28.19,Quarterly rebalance,simulated
+S-GRO-20261001-487,2026-10-01,growth,NOW,sell,2578,137.76,355145.28,71.03,Quarterly rebalance,simulated
+S-GRO-20261001-488,2026-10-01,growth,NVDA,sell,1385,230.86,319741.10,63.95,Quarterly rebalance,simulated
+S-GRO-20261001-489,2026-10-01,growth,IEF,buy,1551,89.3,138504.30,27.70,Invest new cash,simulated
+S-GRO-20261001-490,2026-10-01,growth,LQD,buy,1356,102.03,138352.68,27.67,Invest new cash,simulated
+S-GRO-20261001-491,2026-10-01,growth,COST,buy,106,914.94,96983.64,19.40,Invest new cash,simulated
+S-GRO-20261001-492,2026-10-01,growth,VWO,buy,1496,59.03,88308.88,17.66,Invest new cash,simulated
+S-GRO-20261001-493,2026-10-01,growth,MA,buy,113,550,62150.00,12.43,Invest new cash,simulated
+S-GRO-20261001-494,2026-10-01,growth,IVV,buy,79,767.38,60623.02,12.12,Invest new cash,simulated
+S-GRO-20261001-495,2026-10-01,growth,VEA,buy,837,70.21,58765.77,11.75,Invest new cash,simulated
+S-GRO-20261001-496,2026-10-01,growth,V,buy,92,359.85,33106.20,6.62,Invest new cash,simulated
+S-GRO-20261001-497,2026-10-01,growth,AMZN,buy,117,248.23,29042.91,5.81,Invest new cash,simulated
+S-GRO-20261001-498,2026-10-01,growth,GOOGL,buy,81,338.24,27397.44,5.48,Invest new cash,simulated
+S-MUL-20261001-369,2026-10-01,multi_asset,DBC,sell,7408,32.75,242612.00,48.52,Quarterly rebalance,simulated
+S-MUL-20261001-370,2026-10-01,multi_asset,MSFT,sell,264,512.8,135379.20,27.08,Quarterly rebalance,simulated
+S-MUL-20261001-371,2026-10-01,multi_asset,SAP,sell,643,210.79,135537.97,27.11,Quarterly rebalance,simulated
+S-MUL-20261001-372,2026-10-01,multi_asset,SHEL,sell,1051,95.61,100486.11,20.10,Quarterly rebalance,simulated
+S-MUL-20261001-373,2026-10-01,multi_asset,NVO,buy,3298,37.4,123345.20,24.67,Quarterly rebalance,simulated
+S-MUL-20261001-374,2026-10-01,multi_asset,AGG,buy,1297,94.42,122462.74,24.49,Invest new cash,simulated
+S-MUL-20261001-375,2026-10-01,multi_asset,EMB,buy,1128,90.26,101813.28,20.36,Invest new cash,simulated
+S-MUL-20261001-376,2026-10-01,multi_asset,TIP,buy,912,104.31,95130.72,19.03,Invest new cash,simulated
+S-MUL-20261001-377,2026-10-01,multi_asset,VNQ,buy,966,89.17,86138.22,17.23,Invest new cash,simulated
+S-MUL-20261001-378,2026-10-01,multi_asset,IGF,buy,1141,61.31,69954.71,13.99,Invest new cash,simulated
+S-MUL-20261001-379,2026-10-01,multi_asset,NVS,buy,318,141.05,44853.90,8.97,Invest new cash,simulated
+S-MUL-20261001-380,2026-10-01,multi_asset,VWO,buy,625,59.03,36893.75,7.38,Invest new cash,simulated
+S-MUL-20261001-381,2026-10-01,multi_asset,ASML,buy,8,1808.49,14467.92,5.00,Invest new cash,simulated
+S-MUL-20261001-382,2026-10-01,multi_asset,GLD,buy,28,382.76,10717.28,5.00,Invest new cash,simulated
