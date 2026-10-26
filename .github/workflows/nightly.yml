@@ -47,7 +47,8 @@ jobs:
           git add data/
           if git diff --cached --quiet; then echo "no changes"; exit 0; fi
           git commit -qm "Nightly market data and simulation update"
-          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
+          for i in 1 2 3; do git pull --rebase -q -X ours && git push -q && exit 0; git rebase --abort 2>/dev/null; sleep 5; done
+          echo "::error title=Nightly commit failed::could not push"; exit 1
 
       - name: Rebuild dashboard
         if: hashFiles('.github/workflows/refresh.yml') != ''

@@ -34,23 +34,25 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
 
-      - name: Pre-trade compliance and booking
+      - name: Pre-trade compliance, booking and commit
         env:
           PAYLOAD: ${{ inputs.payload }}
           REQ_ID: ${{ inputs.id }}
         run: |
           case "$REQ_ID" in *[!a-z0-9-]*|"") echo "bad id"; exit 1;; esac
-          python -m wealth.visitors --apply --id "$REQ_ID"
-
-      - name: Commit
-        env:
-          REQ_ID: ${{ inputs.id }}
-        run: |
           git config user.name "dashboard-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/visitor_trades.csv data/visitor_requests.json
-          git commit -qm "Visitor order $REQ_ID"
-          for i in 1 2 3 4; do git pull --rebase -q && git push -q && break; sleep 5; done
+          # Re-run the check on the latest ledger until the push lands (another order may
+          # have been booked in the meantime, which changes cash and limits).
+          for i in 1 2 3 4 5; do
+            git fetch -q origin main && git reset -q --hard origin/main
+            python -m wealth.visitors --apply --id "$REQ_ID"
+            git add data/visitor_trades.csv data/visitor_requests.json
+            git commit -qm "Visitor order $REQ_ID" || true
+            if git push -q origin HEAD:main; then echo "booked on attempt $i"; exit 0; fi
+            sleep $((RANDOM % 6 + 3))
+          done
+          echo "::error title=Could not save the order::push kept failing"; exit 1
 
       - name: Rebuild dashboard (only if a trade was booked)
         env:
