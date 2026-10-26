@@ -72,5 +72,11 @@
 "message": "Limit order O-20261026-003 working: buy 10 GLD at $340.00 or better in Global Multi-Asset (market $366.60). It fills if the price reaches the limit today and expires after the close.",
 "status": "working",
 "at": "2026-10-26T13:05:27+00:00"
+},
+"cxl-05": {
+"ok": true,
+"message": "Cancelled O-20261026-003: buy 10 GLD at $340.00",
+"status": "cancelled",
+"at": "2026-10-26T13:06:08+00:00"
 }
 }
