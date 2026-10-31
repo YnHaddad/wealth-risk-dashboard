@@ -1507,3 +1507,6 @@ F-CON-20261023-419,2026-10-23,conservative_income,dividend,914.76,PG,840 units x
 F-EQU-20261023-454,2026-10-23,equity_income,dividend,4877.63,PG,4479 units x $1.0890,simulated
 F-GRO-20261027-500,2026-10-27,growth,dividend,1884.55,ASML,894 units x $2.1080,simulated
 F-MUL-20261027-383,2026-10-27,multi_asset,dividend,573.38,ASML,272 units x $2.1080,simulated
+F-EQU-20261030-455,2026-10-30,equity_income,dividend,2934.34,O,10788 units x $0.2720,simulated
+F-EQU-20261030-456,2026-10-30,equity_income,dividend,3448.88,TXN,2269 units x $1.5200,simulated
+F-GRO-20261030-501,2026-10-30,growth,dividend,2105.04,COST,1432 units x $1.4700,simulated
