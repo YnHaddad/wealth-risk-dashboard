@@ -1510,3 +1510,6 @@ F-MUL-20261027-383,2026-10-27,multi_asset,dividend,573.38,ASML,272 units x $2.10
 F-EQU-20261030-455,2026-10-30,equity_income,dividend,2934.34,O,10788 units x $0.2720,simulated
 F-EQU-20261030-456,2026-10-30,equity_income,dividend,3448.88,TXN,2269 units x $1.5200,simulated
 F-GRO-20261030-501,2026-10-30,growth,dividend,2105.04,COST,1432 units x $1.4700,simulated
+F-CON-20261102-420,2026-11-02,conservative_income,withdrawal,-25000.00,,Monthly income distribution to client,simulated
+F-EQU-20261102-457,2026-11-02,equity_income,withdrawal,-45000.00,,Monthly income distribution to client,simulated
+F-GRO-20261102-502,2026-11-02,growth,contribution,499000.00,,Quarterly client contribution,simulated

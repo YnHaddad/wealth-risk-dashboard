@@ -717,3 +717,17 @@ S-MUL-20261001-379,2026-10-01,multi_asset,NVS,buy,318,141.05,44853.90,8.97,Inves
 S-MUL-20261001-380,2026-10-01,multi_asset,VWO,buy,625,59.03,36893.75,7.38,Invest new cash,simulated
 S-MUL-20261001-381,2026-10-01,multi_asset,ASML,buy,8,1808.49,14467.92,5.00,Invest new cash,simulated
 S-MUL-20261001-382,2026-10-01,multi_asset,GLD,buy,28,382.76,10717.28,5.00,Invest new cash,simulated
+S-GRO-20261102-503,2026-11-02,growth,NOW,buy,771,106.01,81733.71,16.35,Invest new cash,simulated
+S-GRO-20261102-504,2026-11-02,growth,GOOGL,buy,247,278.99,68910.53,13.78,Invest new cash,simulated
+S-GRO-20261102-505,2026-11-02,growth,VWO,buy,1195,55.7,66561.50,13.31,Invest new cash,simulated
+S-GRO-20261102-506,2026-11-02,growth,VUG,buy,557,84.03,46804.71,9.36,Invest new cash,simulated
+S-GRO-20261102-507,2026-11-02,growth,NVDA,buy,205,202.06,41422.30,8.28,Invest new cash,simulated
+S-GRO-20261102-508,2026-11-02,growth,META,buy,61,606.73,37010.53,7.40,Invest new cash,simulated
+S-GRO-20261102-509,2026-11-02,growth,TSM,buy,88,398.63,35079.44,7.02,Invest new cash,simulated
+S-GRO-20261102-510,2026-11-02,growth,LQD,buy,339,103.71,35157.69,7.03,Invest new cash,simulated
+S-GRO-20261102-511,2026-11-02,growth,IEF,buy,344,91.5,31476.00,6.30,Invest new cash,simulated
+S-GRO-20261102-512,2026-11-02,growth,IVV,buy,28,755.36,21150.08,5.00,Invest new cash,simulated
+S-GRO-20261102-513,2026-11-02,growth,AVGO,buy,50,322.23,16111.50,5.00,Invest new cash,simulated
+S-GRO-20261102-514,2026-11-02,growth,ASML,buy,10,1526.14,15261.40,5.00,Invest new cash,simulated
+S-GRO-20261102-515,2026-11-02,growth,VEA,buy,199,69.61,13852.39,5.00,Invest new cash,simulated
+S-GRO-20261102-516,2026-11-02,growth,QQQ,buy,18,681.09,12259.62,5.00,Invest new cash,simulated
