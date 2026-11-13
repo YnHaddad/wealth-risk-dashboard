@@ -1515,3 +1515,5 @@ F-EQU-20261102-457,2026-11-02,equity_income,withdrawal,-45000.00,,Monthly income
 F-GRO-20261102-502,2026-11-02,growth,contribution,499000.00,,Quarterly client contribution,simulated
 F-BAL-20261110-471,2026-11-10,balanced,dividend,1612.26,V,2067 units x $0.7800,simulated
 F-GRO-20261110-517,2026-11-10,growth,dividend,3035.76,V,3892 units x $0.7800,simulated
+F-BAL-20261112-472,2026-11-12,balanced,dividend,592.11,AAPL,2193 units x $0.2700,simulated
+F-GRO-20261112-518,2026-11-12,growth,dividend,1371.33,AAPL,5079 units x $0.2700,simulated
