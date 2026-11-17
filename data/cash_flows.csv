@@ -1520,3 +1520,5 @@ F-GRO-20261112-518,2026-11-12,growth,dividend,1371.33,AAPL,5079 units x $0.2700,
 F-GRO-20261113-519,2026-11-13,growth,dividend,2394.32,LLY,1384 units x $1.7300,simulated
 F-MUL-20261113-384,2026-11-13,multi_asset,dividend,4055.99,SHEL,5192 units x $0.7812,simulated
 F-MUL-20261113-385,2026-11-13,multi_asset,dividend,4260.04,UL,8161 units x $0.5220,simulated
+F-BAL-20261116-473,2026-11-16,balanced,dividend,4732.61,XOM,4423 units x $1.0700,simulated
+F-EQU-20261116-458,2026-11-16,equity_income,dividend,4851.38,XOM,4534 units x $1.0700,simulated
