@@ -1522,3 +1522,4 @@ F-MUL-20261113-384,2026-11-13,multi_asset,dividend,4055.99,SHEL,5192 units x $0.
 F-MUL-20261113-385,2026-11-13,multi_asset,dividend,4260.04,UL,8161 units x $0.5220,simulated
 F-BAL-20261116-473,2026-11-16,balanced,dividend,4732.61,XOM,4423 units x $1.0700,simulated
 F-EQU-20261116-458,2026-11-16,equity_income,dividend,4851.38,XOM,4534 units x $1.0700,simulated
+F-EQU-20261118-459,2026-11-18,equity_income,dividend,5795.68,CVX,3256 units x $1.7800,simulated
