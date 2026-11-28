@@ -1530,3 +1530,5 @@ F-BAL-20261124-475,2026-11-24,balanced,dividend,3800.24,JNJ,2836 units x $1.3400
 F-CON-20261124-421,2026-11-24,conservative_income,dividend,739.68,JNJ,552 units x $1.3400,simulated
 F-EQU-20261124-460,2026-11-24,equity_income,dividend,4044.12,JNJ,3018 units x $1.3400,simulated
 F-GRO-20261124-521,2026-11-24,growth,dividend,42960.00,COST,1432 units x $30.0000,simulated
+F-CON-20261127-422,2026-11-27,conservative_income,dividend,1264.69,NEE,2030 units x $0.6230,simulated
+F-EQU-20261127-461,2026-11-27,equity_income,dividend,5058.76,NEE,8120 units x $0.6230,simulated
